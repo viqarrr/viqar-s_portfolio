@@ -1,0 +1,28 @@
+# --- build / secrets ---
+node_modules
+dist
+.astro
+.vercel
+.env
+.env.*
+!.env.example
+.parity
+.DS_Store
+
+# --- AI / agent tooling: never part of the website repo ---
+AGENTS.md
+GEMINI.md
+CLAUDE.md
+.agent/
+.agents/
+.gemini/
+.claude/
+.cursor/
+.planning/
+.planning-seed/
+docs/PROMPTS.md
+
+# --- one-off migration material (original HTML + generators) ---
+legacy/
+scripts/split-reference.mjs
+scripts/extract-content.mjs
