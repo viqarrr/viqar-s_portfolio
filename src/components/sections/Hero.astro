@@ -1,0 +1,22 @@
+---
+import type { SiteSettings } from '../../lib/content';
+
+export interface Props {
+  settings?: SiteSettings;
+}
+
+const { settings } = Astro.props;
+const heroLead = settings?.hero_lead ?? 'Software and Game Development student at SMK Negeri 12 Surabaya. Building responsive web platforms, cross-platform mobile apps with Flutter, and gameplay systems in Unity.';
+const heroWord = settings?.hero_word ?? 'Viqar';
+const lenStyle = `--len:${heroWord.length}`;
+---
+
+<section id="hero" data-8b-section="hero" aria-labelledby="hero-title">
+  <div class="hero__intro">
+    <p class="m-text-5 hero__lead">{heroLead}</p>
+    <a class="m-link hero__link" href="#work"><span class="m-link__label">Explore work</span><svg class="m-link__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></a>
+  </div>
+  <h1 class="m-text-2 hero__title" id="hero-title" style={lenStyle}>
+    <span class="hero__word"><span class="hero__mask"><span class="hero__glyphs">{heroWord}</span></span></span><span class="hero__period" aria-hidden="true"><span class="hero__stage"><span class="hero__orbit"><span class="hero__moon"></span></span><span class="hero__aperture"><div class="hero__img vinyl-disc" aria-hidden="true"></div><span class="hero__tint"></span></span></span></span>
+  </h1>
+</section>
