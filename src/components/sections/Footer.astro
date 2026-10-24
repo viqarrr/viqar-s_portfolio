@@ -1,0 +1,41 @@
+---
+import type { SiteSettings } from '../../lib/content';
+
+export interface Props {
+  settings?: SiteSettings;
+}
+
+const { settings } = Astro.props;
+const brandName = settings?.brand_name ?? 'Viqar';
+const lenStyle = `--len:${brandName.length}`;
+---
+
+<footer id="footer" class="footer" data-8b-section="footer">
+  <div class="wrap">
+    <p class="m-text-2 footer__word" style={lenStyle} data-8b-motion="register">{brandName}<span class="m-dot" aria-hidden="true"></span></p>
+    <div class="footer__cols">
+      <nav class="footer__nav" aria-label="Footer">
+        <ul>
+          <li><a class="footer__link" href="#work">Work</a></li>
+          <li><a class="footer__link" href="#again">Skills</a></li>
+          <li><a class="footer__link" href="#capabilities">Recognitions</a></li>
+          <li><a class="footer__link" href="#method">Experience</a></li>
+          <li><a class="footer__link" href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="footer__right">
+        <ul class="footer__social">
+          <li><a class="footer__link" href="https://github.com/placeholder" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+          <li><a class="footer__link" href="https://linkedin.com/in/placeholder" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+          <li><a class="footer__link" href="mailto:viqar@example.com">viqar@example.com</a></li>
+        </ul>
+        <a class="footer__to-top" href="#hero" aria-label="Back to top">
+          <span class="footer__to-top-dot" aria-hidden="true"></span>
+          <svg viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M8 13V3M3.5 7.5 8 3l4.5 4.5"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>

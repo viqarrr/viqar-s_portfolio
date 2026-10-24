@@ -3,9 +3,27 @@ import Base from '../layouts/Base.astro';
 import Header from '../components/sections/Header.astro';
 import Hero from '../components/sections/Hero.astro';
 import Statement from '../components/sections/Statement.astro';
-import { getSettings } from '../lib/content';
+import Work from '../components/sections/Work.astro';
+import Again from '../components/sections/Again.astro';
+import Capabilities from '../components/sections/Capabilities.astro';
+import Method from '../components/sections/Method.astro';
+import Contact from '../components/sections/Contact.astro';
+import Footer from '../components/sections/Footer.astro';
+import {
+  getSettings,
+  getProjects,
+  getSkills,
+  getCredentials,
+  getExperiences,
+  getContactLinks
+} from '../lib/content';
 
 const settings = getSettings();
+const projects = getProjects();
+const skills = getSkills();
+const credentials = getCredentials();
+const experiences = getExperiences();
+const contactLinks = getContactLinks();
 ---
 
 <Base title={settings.site_title} description={settings.meta_description}>
@@ -13,5 +31,11 @@ const settings = getSettings();
   <main id="main">
     <Hero settings={settings} />
     <Statement settings={settings} />
+    <Work settings={settings} projects={projects} />
+    <Again settings={settings} skills={skills} />
+    <Capabilities settings={settings} credentials={credentials} />
+    <Method settings={settings} experiences={experiences} />
+    <Contact settings={settings} contactLinks={contactLinks} />
   </main>
+  <Footer settings={settings} />
 </Base>

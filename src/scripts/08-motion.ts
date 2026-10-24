@@ -24,6 +24,7 @@ function layoutBox(element) {
   while (node) { x += node.offsetLeft; y += node.offsetTop; node = node.offsetParent; }
   return { x, y, w: element.offsetWidth, h: element.offsetHeight, cx: x + element.offsetWidth / 2, cy: y + element.offsetHeight / 2 };
 }
+(window as any).layoutBox = layoutBox;
 function splitWords(element) {
   const original = element.innerHTML;
   const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT);

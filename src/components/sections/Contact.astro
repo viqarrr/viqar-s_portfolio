@@ -1,0 +1,30 @@
+---
+import type { SiteSettings, ContactLink } from '../../lib/content';
+
+export interface Props {
+  settings?: SiteSettings;
+  contactLinks?: ContactLink[];
+}
+
+const { settings, contactLinks = [] } = Astro.props;
+const contactLead = settings?.contact_lead ?? 'Interested in working together, discussing a project, or just connecting? Choose the channel that works best for you.';
+---
+
+<section id="contact" data-8b-section="contact" aria-labelledby="contact-title">
+  <div class="contact__header">
+    <h2 class="m-text-3 contact__title" id="contact-title" style="--len:10"><span class="contact__voice">Let's talk</span><span class="m-dot" aria-hidden="true"></span></h2>
+    <p class="m-text-5 contact__lead">{contactLead}</p>
+  </div>
+  <div class="contact__links">
+    {contactLinks.map((link) => (
+      <a class="contact__link" href={link.href} target={link.external ? "_blank" : undefined} rel={link.external ? "noopener noreferrer" : undefined}>
+        <div class="contact__link-head">
+          <Fragment set:html={link.icon_svg} />
+          <span class="m-text-7 contact__link-name">{link.label}</span>
+          <svg class="contact__link-arrow" viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12 12 4M5 4h7v7"/></svg>
+        </div>
+        <p class="m-text contact__link-desc">{link.description}</p>
+      </a>
+    ))}
+  </div>
+</section>

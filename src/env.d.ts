@@ -9,6 +9,7 @@ declare var queueMotion: (setup: () => void | (() => void), options?: { first?: 
 declare var adjacent: (a: string, b: string) => boolean;
 declare var refreshScroll: () => void;
 declare var motionReady: Promise<any>;
+declare var layoutBox: (element: Element) => { x: number; y: number; w: number; h: number; cx: number; cy: number };
 
 interface Window {
   gsap: any;

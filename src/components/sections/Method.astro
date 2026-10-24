@@ -1,0 +1,44 @@
+---
+import type { SiteSettings, Experience } from '../../lib/content';
+
+export interface Props {
+  settings?: SiteSettings;
+  experiences?: Experience[];
+}
+
+const { settings, experiences = [] } = Astro.props;
+const methodLead = settings?.method_lead ?? 'Hands-on work experience and vocational training across frontend engineering, game development, and production software systems.';
+---
+
+<section id="method" data-8b-section="method" aria-labelledby="method-title">
+  <div class="method__head">
+    <h2 class="m-text-3" id="method-title" data-8b-motion="rise">Experience &amp; Training<span class="m-dot" aria-hidden="true"></span></h2>
+    <p class="m-text-5 method__lead" data-8b-motion="ink">{methodLead}</p>
+  </div>
+  <div class="method__body">
+    <div class="method__lane" aria-hidden="true">
+      <div class="method__carriage">
+        <div class="method__trail m-trail"></div>
+        <span class="method__drum m-disc"></span>
+      </div>
+    </div>
+    <ol class="method__steps">
+      {experiences.map((exp) => (
+        <li class="step" data-experience-id={exp.slug} data-kind={exp.kind}>
+          <div class="step__meta">
+            <span class="step__tag">{exp.tag}</span>
+            <time class="step__period">{exp.period}</time>
+          </div>
+          <h3 class="m-text-4 step__title">{exp.title}</h3>
+          <p class="step__org">{exp.org}</p>
+          <p class="m-text-5 step__text">{exp.description}</p>
+          <ul class="step__tags" aria-label="Technologies used">
+            {exp.tags.map((t) => (
+              <li>{t}</li>
+            ))}
+          </ul>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
