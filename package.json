@@ -11,6 +11,7 @@
     "parity:motion": "node scripts/parity.mjs --mode=motion"
   },
   "dependencies": {
+    "@astrojs/sitemap": "^3.7.4",
     "@astrojs/vercel": "^11.0.16",
     "astro": "^7.4.2",
     "gsap": "3.13.0",
