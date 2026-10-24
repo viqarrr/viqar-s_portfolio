@@ -34,7 +34,7 @@ const capabilitiesLead = settings?.capabilities_lead ?? 'Selected achievements i
           <p class="m-text-5 service__line">{cred.description}</p>
         </div>
         <div class="service__media" data-8b-motion="iris">
-          <img src={cred.image_src} width={cred.image_width} height={cred.image_height} alt={cred.image_alt} loading="lazy" />
+          <img src={cred.image_src} width={cred.image_width} height={cred.image_height} alt={cred.image_alt} loading="lazy" decoding="async" />
         </div>
         <span class="service__shade" aria-hidden="true"></span>
       </li>
