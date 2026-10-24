@@ -1,0 +1,34 @@
+---
+import type { SiteSettings, Skill } from '../../lib/content';
+
+export interface Props {
+  settings?: SiteSettings;
+  skills?: Skill[];
+}
+
+const { settings, skills = [] } = Astro.props;
+const againLead = settings?.again_lead ?? 'Technologies, frameworks, and tools applied across web platforms, mobile apps, and game engines.';
+---
+
+<section id="again" data-8b-section="again" aria-labelledby="again-title">
+  <div class="again__stage">
+    <div class="again__head">
+      <h2 class="m-text-3" id="again-title"><span class="again__category">Languages</span><span class="m-dot" aria-hidden="true"></span></h2>
+      <p class="m-text-5 again__lead">{againLead}</p>
+    </div>
+    <div class="again__swing">
+      <ul class="again__wheel">
+        {skills.map((skill) => (
+          <li class="partner" data-category={skill.category} data-skill-id={skill.slug}>
+            <div class="partner__card" style={`background-color: ${skill.card_bg};`}>
+              <div class="partner__content">
+                <div class="partner__logo" aria-hidden="true" set:html={skill.logo_svg} />
+                <h3 class="partner__name">{skill.name}</h3>
+              </div>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,43 @@
+---
+import type { SiteSettings, Credential } from '../../lib/content';
+
+export interface Props {
+  settings?: SiteSettings;
+  credentials?: Credential[];
+}
+
+const { settings, credentials = [] } = Astro.props;
+const capabilitiesLead = settings?.capabilities_lead ?? 'Selected achievements in digital innovation, software development, and technology competitions.';
+---
+
+<section id="capabilities" data-8b-section="capabilities" aria-labelledby="capabilities-title">
+  <div class="capabilities__head">
+    <h2 class="m-text-3" id="capabilities-title" data-8b-motion="rise">Recognitions<span class="m-dot" aria-hidden="true"></span></h2>
+    <p class="m-text-5 capabilities__lead">{capabilitiesLead}</p>
+  </div>
+  <ol class="capabilities__deck">
+    {credentials.map((cred) => (
+      <li class="service m-surface" data-credential-id={cred.slug} data-kind={cred.kind} data-level={cred.level} data-year={cred.year} data-sort-order={cred.sort_order} data-status={cred.status}>
+        <div class="service__text">
+          <div class="recognition__meta">
+            <div class="recognition__scope">
+              <Fragment set:html={cred.scope_icon_svg} />
+              <span>{cred.scope_label}</span>
+            </div>
+            <span class="recognition__year">{cred.year}</span>
+          </div>
+          <h3 class="m-text-4 recognition__award">{cred.award}</h3>
+          <div class="recognition__info">
+            <p class="m-text-7 recognition__name">{cred.name}</p>
+            <p class="m-text-6 recognition__issuer">{cred.issuer}</p>
+          </div>
+          <p class="m-text-5 service__line">{cred.description}</p>
+        </div>
+        <div class="service__media" data-8b-motion="iris">
+          <img src={cred.image_src} width={cred.image_width} height={cred.image_height} alt={cred.image_alt} loading="lazy" />
+        </div>
+        <span class="service__shade" aria-hidden="true"></span>
+      </li>
+    ))}
+  </ol>
+</section>
