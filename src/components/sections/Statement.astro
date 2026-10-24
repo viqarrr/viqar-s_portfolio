@@ -1,0 +1,29 @@
+---
+import type { SiteSettings } from '../../lib/content';
+
+export interface Props {
+  settings?: SiteSettings;
+}
+
+const { settings } = Astro.props;
+const lines = settings?.statement_lines ?? ['Turning complex logic', 'into smooth experiences'];
+const line1 = lines[0] ?? 'Turning complex logic';
+const line2 = lines[1] ?? 'into smooth experiences';
+const statementLead = settings?.statement_lead ?? 'Writing clean code is only the start. Creating digital products that feel fluid, responsive, and dependable every single day is the real craft. Combining modern web engineering, Flutter architecture, and interactive game programming.';
+---
+
+<section id="statement" data-8b-section="statement" aria-labelledby="statement-title">
+  <h2 class="m-text-3 statement__title" id="statement-title"><span class="statement__line">{line1}</span><span class="statement__line">{line2}<span class="m-dot statement__dot" aria-hidden="true"></span></span></h2>
+  <div class="statement__body">
+    <p class="m-text-5 statement__lead" data-8b-motion="ink">{statementLead}</p>
+    <nav class="statement__index" aria-label="On this page">
+      <ul>
+        <li><a class="m-link" href="#work"><span class="m-link__label">Selected work</span><svg class="m-link__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></a></li>
+        <li><a class="m-link" href="#again"><span class="m-link__label">Skills</span><svg class="m-link__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></a></li>
+        <li><a class="m-link" href="#capabilities"><span class="m-link__label">Recognitions</span><svg class="m-link__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></a></li>
+        <li><a class="m-link" href="#method"><span class="m-link__label">Experience</span><svg class="m-link__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></a></li>
+        <li><a class="m-link" href="#contact"><span class="m-link__label">Get in touch</span><svg class="m-link__arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 3.5 13.5 8 9 12.5"/></svg></a></li>
+      </ul>
+    </nav>
+  </div>
+</section>

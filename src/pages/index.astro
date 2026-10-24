@@ -1,7 +1,17 @@
 ---
 import Base from '../layouts/Base.astro';
+import Header from '../components/sections/Header.astro';
+import Hero from '../components/sections/Hero.astro';
+import Statement from '../components/sections/Statement.astro';
+import { getSettings } from '../lib/content';
+
+const settings = getSettings();
 ---
 
-<Base>
-  <h1>Viqar 'Ammar Zulfa Mulya</h1>
+<Base title={settings.site_title} description={settings.meta_description}>
+  <Header settings={settings} />
+  <main id="main">
+    <Hero settings={settings} />
+    <Statement settings={settings} />
+  </main>
 </Base>
