@@ -1,0 +1,32 @@
+---
+import type { SiteSettings, Project } from '../../lib/content';
+
+export interface Props {
+  settings?: SiteSettings;
+  projects?: Project[];
+}
+
+const { settings, projects = [] } = Astro.props;
+const workLead = settings?.work_lead ?? 'Five featured software, mobile, and game projects developed with modern frameworks.';
+---
+
+<section id="work" data-8b-section="work" aria-labelledby="work-title">
+  <div class="work__plate" aria-hidden="true"></div>
+  <div class="work__stage">
+    <div class="work__head">
+      <h2 class="m-text-3" id="work-title">Selected work<span class="m-dot" aria-hidden="true"></span></h2>
+      <p class="m-text-5 work__lead">{workLead}</p>
+    </div>
+    <div class="work__window">
+      <ul class="work__track">
+        {projects.map((project) => (
+          <li class="case">
+            <div class="case__media"><img srcset={project.image_srcset} sizes={project.image_sizes} style={`background:${project.image_bg}`} class="case__img" src={project.image_src} width={project.image_width} height={project.image_height} alt={project.image_alt} loading="lazy" /></div>
+            <span class="m-badge case__tag">{project.tag}</span>
+            <div class="case__text"><h3 class="m-text-4 case__name">{project.name}</h3><p class="m-text-5 case__line">{project.line}</p></div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>
