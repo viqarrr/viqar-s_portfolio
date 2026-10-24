@@ -1,0 +1,25 @@
+@layer sections {
+#method { position: relative; padding: var(--space-2) var(--space-1); background: var(--color-2); }
+#method .method__head { display: grid; gap: 24px; max-width: 60rem; margin-bottom: clamp(48px, 9vh, 110px); }
+#method .method__lead { max-width: 34rem; }
+#method .method__body { display: grid; grid-template-columns: 26px minmax(0, 1fr); gap: 0 16px; }
+#method .method__lane { position: relative; overflow: clip; }
+#method .method__carriage { position: absolute; inset: auto 0 0; }
+#method .method__trail { --trail-cols: 3; position: absolute; inset: auto 0 50%; height: 340px; }
+#method .method__drum { position: relative; width: 100%; }
+#method .method__steps { display: grid; gap: clamp(56px, 14vh, 140px); }
+#method .step { display: grid; gap: 12px; max-width: 38rem; transition: opacity 0.35s; }
+#method .step__meta { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+#method .step__tag { font-family: var(--font-2); font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-3); }
+#method .step__period { font-family: var(--font-2); font-size: 13px; font-weight: 600; letter-spacing: 0.02em; color: var(--color-6); font-variant-numeric: tabular-nums; }
+#method .step__title { margin: 0; line-height: 1.05; }
+#method .step__org { font-family: var(--font-2); font-size: 14px; font-weight: 600; color: var(--color-1); text-transform: uppercase; letter-spacing: 0.04em; margin: -2px 0 2px; }
+#method .step__text { color: var(--color-6); line-height: 1.45; }
+#method .step__tags { display: flex; flex-wrap: wrap; gap: 6px 12px; margin-top: 4px; color: var(--color-6); font-family: var(--font-2); font-size: 13px; font-weight: 500; }
+#method .step__tags li { display: inline-flex; align-items: center; }
+#method .step__tags li:not(:last-child)::after { content: "·"; margin-left: 12px; color: var(--color-5); }
+@media (min-width: 900px) {
+  #method .method__body { grid-template-columns: 44px minmax(0, 1fr); gap: 0 28px; }
+  #method .method__trail { --trail-cols: 4; height: 440px; }
+}
+}

@@ -1,0 +1,5 @@
+@layer scenes {
+@media (prefers-reduced-motion: no-preference) {
+  #method .step[data-waiting] { opacity: 0.2; }
+}
+}

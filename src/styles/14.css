@@ -1,0 +1,5 @@
+@layer scenes {
+@media (prefers-reduced-motion: no-preference) {
+  #capabilities.is-deck .service { position: sticky; top: calc(clamp(80px, 12svh, 108px) + var(--i) * 14px); transform-origin: 50% 0; }
+}
+}

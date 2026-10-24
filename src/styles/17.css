@@ -1,0 +1,20 @@
+@layer sections {
+#contact { position: relative; padding: var(--space-2) var(--space-1); background: var(--color-3); color: var(--color-1); }
+#contact :focus-visible { outline-color: var(--color-1); }
+#contact .contact__title { font-size: min(19vw, calc((100vw - 2 * var(--space-1)) / (var(--len) * 0.5))); line-height: 0.86; white-space: nowrap; }
+#contact .contact__title .m-dot { background: var(--color-1); }
+#contact .contact__header { display: grid; gap: clamp(24px, 4vh, 40px); }
+#contact .contact__lead { max-width: 38rem; margin: 0; color: color-mix(in srgb, var(--color-1) 85%, transparent); }
+#contact .contact__links { display: grid; grid-template-columns: minmax(0, 1fr); gap: 36px; margin-top: clamp(64px, 10vh, 120px); }
+#contact .contact__link { display: grid; align-content: start; gap: 10px; background: none; border: 0; border-radius: 0; box-shadow: none; padding: 0; color: var(--color-1); text-decoration: none; }
+#contact .contact__link-head { display: inline-flex; align-items: center; gap: 10px; }
+#contact .contact__link-logo { flex: none; color: currentColor; }
+#contact .contact__link-name { margin: 0; line-height: 1; color: var(--color-1); }
+#contact .contact__link-arrow { flex: none; color: currentColor; opacity: 0.6; transition: transform 0.2s ease, opacity 0.2s ease; }
+#contact .contact__link:hover .contact__link-arrow { opacity: 1; transform: translate(2px, -2px); }
+#contact .contact__link:hover .contact__link-name { text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1.5px; }
+#contact .contact__link-desc { margin: 0; color: color-mix(in srgb, var(--color-1) 75%, transparent); font-size: 15px; line-height: 1.45; }
+@media (min-width: 860px) {
+  #contact .contact__links { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(32px, 5vw, 64px); }
+}
+}

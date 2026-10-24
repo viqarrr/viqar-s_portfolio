@@ -1,0 +1,25 @@
+@layer sections {
+  @property --link-dot { syntax: "<percentage>"; inherits: false; initial-value: 45%; }
+  #footer { overflow: clip; padding: clamp(80px, 12vh, 140px) var(--space-1) clamp(48px, 8vh, 80px); background: var(--color-1); color: var(--color-2); }
+  #footer .wrap { width: 100%; margin-inline: auto; }
+  #footer [data-8b-motion~="register"] {
+    text-shadow: var(--register-x, 0em) var(--register-y, 0em) 0 color-mix(in srgb, var(--register-ink, var(--color-3)) calc(var(--register-a, 0) * 100%), transparent);
+  }
+  #footer .footer__word { margin: 0; padding-bottom: 0.22em; width: fit-content; white-space: nowrap; color: var(--color-2); }
+  #footer .footer__cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; margin-top: clamp(24px, 4vh, 48px); padding-top: 32px; border-top: 1px solid color-mix(in srgb, var(--color-2) 16%, transparent); }
+  #footer .footer__nav ul, #footer .footer__social { display: grid; gap: 12px; justify-items: start; align-content: start; }
+  #footer .footer__link { --link-dot: 45%; display: inline-block; padding-bottom: 7px; color: var(--color-2); font-weight: 600; text-decoration: none; background: radial-gradient(circle closest-side, var(--color-3) var(--link-dot), transparent calc(var(--link-dot) + 14%)) 0 100% / 6px 4px repeat-x; transition: --link-dot 0.4s cubic-bezier(0.3, 0.7, 0.2, 1), color 0.3s; }
+  #footer .footer__right { display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; }
+  #footer .footer__to-top { position: relative; overflow: hidden; display: inline-grid; place-items: center; width: 48px; height: 48px; flex: none; border: 1.5px solid color-mix(in srgb, var(--color-2) 20%, transparent); border-radius: var(--radius-2); color: var(--color-2); text-decoration: none; transition: border-color 0.3s, transform 0.3s cubic-bezier(0.3, 0.7, 0.2, 1); }
+  #footer .footer__to-top-dot { position: absolute; left: 50%; bottom: 6px; width: 6px; height: 6px; margin-left: -3px; border-radius: var(--radius-2); background: var(--color-3); transition: transform 0.4s cubic-bezier(0.3, 0.7, 0.2, 1), opacity 0.3s; }
+  #footer .footer__to-top svg { transition: transform 0.35s cubic-bezier(0.3, 0.7, 0.2, 1); }
+  @media (hover: hover) {
+    #footer .footer__to-top:hover { border-color: var(--color-3); transform: translateY(-3px); }
+    #footer .footer__to-top:hover svg { transform: translateY(-2px); }
+    #footer .footer__to-top:hover .footer__to-top-dot { transform: translateY(-26px); }
+    #footer .footer__link:hover { --link-dot: 170%; color: var(--color-3); }
+  }
+  @media (max-width: 639px) {
+    #footer .footer__cols { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+  }
+}

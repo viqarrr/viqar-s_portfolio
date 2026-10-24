@@ -1,0 +1,73 @@
+@layer sections {
+#hero { --ap: min(74vw, 44svh); position: relative; z-index: 3; display: grid; grid-template-rows: 1fr auto; min-height: max(100svh, 560px); padding: 0 var(--space-1); background: var(--color-1); color: var(--color-2); overflow: clip visible; }
+#hero .hero__intro { display: grid; justify-items: start; align-content: start; gap: 18px; max-width: 32rem; padding-top: clamp(92px, 14svh, 150px); }
+#hero .hero__lead { color: var(--color-2); }
+#hero .hero__title { position: static; align-self: end; padding-bottom: clamp(18px, 5svh, 52px); white-space: nowrap; }
+#hero .hero__word, #hero .hero__mask, #hero .hero__glyphs { display: inline-block; }
+#hero .hero__period { position: static; display: inline-block; width: 0.19em; height: 0.19em; margin-left: 0.035em; border-radius: var(--radius-2); background: var(--color-3); vertical-align: baseline; }
+#hero .hero__stage { position: absolute; left: calc(50% - var(--ap) / 2); top: calc(57% - var(--ap) / 2); width: var(--ap); height: var(--ap); font-size: 16px; line-height: 0; }
+#hero .hero__aperture { position: absolute; inset: 0; display: block; overflow: hidden; border-radius: var(--radius-2); background: var(--color-3); }
+#hero .hero__img { width: 100%; height: 100%; object-fit: cover; }
+#hero .hero__tint { position: absolute; inset: 0; background: var(--color-3); opacity: 0; }
+#hero .hero__orbit { position: absolute; inset: -9%; display: block; border-radius: var(--radius-2); border: 1px solid color-mix(in srgb, var(--color-2) 16%, transparent); }
+#hero .hero__moon { position: absolute; left: 50%; top: 0; width: 9%; height: 9%; margin: -4.5% 0 0 -4.5%; border-radius: var(--radius-2); background: var(--color-3); }
+#hero .vinyl-disc {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius-2);
+  background:
+    radial-gradient(circle at center, #0d0c11 0%, #0d0c11 26%, #1a1820 27%, #0d0c11 28%, transparent 29%),
+    conic-gradient(from 40deg, rgba(255, 255, 255, 0.22) 0deg, transparent 45deg, transparent 135deg, rgba(255, 255, 255, 0.22) 180deg, transparent 225deg, transparent 315deg, rgba(255, 255, 255, 0.22) 360deg),
+    repeating-radial-gradient(circle at center, #0d0c11 0px, #0d0c11 1.5px, #211e29 2px, #0d0c11 3px);
+  background-blend-mode: normal, screen, normal;
+  box-shadow: inset 0 0 25px rgba(0, 0, 0, 0.95), 0 0 1px rgba(255, 255, 255, 0.15);
+}
+#hero .vinyl-disc::before {
+  content: "";
+  position: absolute;
+  inset: 37%;
+  border-radius: var(--radius-2);
+  background:
+    radial-gradient(circle at center, transparent 38%, rgba(13, 12, 17, 0.45) 39%, transparent 41%),
+    radial-gradient(circle at center, transparent 65%, rgba(13, 12, 17, 0.3) 66%, transparent 68%),
+    var(--color-3);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.6), 0 0 0 3px #0d0c11;
+}
+#hero .vinyl-disc::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 14px;
+  height: 14px;
+  margin: -7px 0 0 -7px;
+  border-radius: var(--radius-2);
+  background: #0d0c11;
+  box-shadow: 0 0 0 1.5px rgba(255, 255, 255, 0.5), inset 0 0 3px #000000;
+}
+@media (min-width: 900px) and (orientation: landscape) {
+  #hero { --ap: min(36vw, 60svh); }
+  #hero .hero__title { font-size: min(26.5vw, 43svh); }
+  #hero .hero__period { position: relative; background: transparent; }
+  #hero .hero__stage { left: 0; top: auto; bottom: 0; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  #hero .hero__mask { animation: hero-mask .95s linear backwards; }
+  #hero .hero__glyphs { animation: hero-rise .95s cubic-bezier(.16, .84, .24, 1) backwards; }
+  #hero .hero__stage { transform-origin: 50% 50%; animation: hero-swell 1.1s cubic-bezier(.2, .9, .25, 1.12) backwards; }
+  #hero .hero__intro { animation: hero-lift .9s .12s cubic-bezier(.16, .84, .24, 1) backwards; }
+  #hero .hero__img { animation: hero-turn 46s linear infinite; }
+  #hero .hero__orbit { animation: hero-orbit 13s linear infinite; }
+  #hero.is-offscreen .hero__img, #hero.is-offscreen .hero__orbit { animation-play-state: paused; }
+  @media (min-width: 900px) and (orientation: landscape) { #hero .hero__stage { transform-origin: 0 100%; animation-name: hero-inflate; } }
+  @keyframes hero-mask { from, to { clip-path: inset(-40% -8% 0 -8%); } }
+  @keyframes hero-rise { from { transform: translateY(92%); } }
+  @keyframes hero-swell { from { transform: scale(.72); } }
+  @keyframes hero-inflate { from { transform: scale(.36); } }
+  @keyframes hero-lift { from { transform: translateY(26px); } }
+  @keyframes hero-turn { to { transform: rotate(360deg); } }
+  @keyframes hero-orbit { to { transform: rotate(360deg); } }
+}
+}
