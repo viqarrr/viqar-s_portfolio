@@ -2,5 +2,6 @@
   "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
     "strict": true
-  }
+  },
+  "exclude": ["legacy", "dist", "node_modules"]
 }
