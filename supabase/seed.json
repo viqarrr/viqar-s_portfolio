@@ -1,0 +1,338 @@
+{
+  "settings": {
+    "site_title": "Viqar — Front-End, Mobile & Game Developer",
+    "meta_description": "Viqar 'Ammar Zulfa Mulya is a Software and Game Development student at SMK Negeri 12 Surabaya specializing in front-end web, Flutter mobile, and Unity game programming.",
+    "og_title": "Viqar — Front-End, Mobile & Game Developer",
+    "og_description": "Personal developer portfolio of Viqar 'Ammar Zulfa Mulya. Front-end web development with Next.js & Laravel, mobile apps with Flutter, and game programming in Unity & C#.",
+    "og_image": "https://example.com/preview.png",
+    "brand_name": "Viqar",
+    "hero_lead": "Software and Game Development student at SMK Negeri 12 Surabaya. Building responsive web platforms, cross-platform mobile apps with Flutter, and gameplay systems in Unity.",
+    "hero_word": "Viqar",
+    "statement_lines": [
+      "Turning complex logic",
+      "into smooth experiences"
+    ],
+    "statement_lead": "Writing clean code is only the start. Creating digital products that feel fluid, responsive, and dependable every single day is the real craft. Combining modern web engineering, Flutter architecture, and interactive game programming.",
+    "work_lead": "Five featured software, mobile, and game projects developed with modern frameworks.",
+    "again_lead": "Technologies, frameworks, and tools applied across web platforms, mobile apps, and game engines.",
+    "capabilities_lead": "Selected achievements in digital innovation, software development, and technology competitions.",
+    "method_lead": "Hands-on work experience and vocational training across frontend engineering, game development, and production software systems.",
+    "contact_lead": "Interested in working together, discussing a project, or just connecting? Choose the channel that works best for you."
+  },
+  "projects": [
+    {
+      "slug": "plenty",
+      "name": "Plenty",
+      "tag": "Mobile, Flutter",
+      "line": "Gamified plant care mobile app with offline-first SQLite and Firebase sync.",
+      "image_srcset": "https://images.unsplash.com/photo-1620802090791-fd9420668913?ixid=M3w0Mzc5fDB8MXxzZWFyY2h8M3x8ZWxlY3RyaWMlMjBiaWtlJTIwY2l0eSUyMHJpZGVyfGVufDF8MHx8fDE3OTEyMDk3MDZ8MA&ixlib=rb-4.1.0&auto=format&fit=crop&w=400&h=250&q=80 400w, https://images.unsplash.com/photo-1620802090791-fd9420668913?ixid=M3w0Mzc5fDB8MXxzZWFyY2h8M3x8ZWxlY3RyaWMlMjBiaWtlJTIwY2l0eSUyMHJpZGVyfGVufDF8MHx8fDE3OTEyMDk3MDZ8MA&ixlib=rb-4.1.0&auto=format&fit=crop&w=690&h=431&q=80 690w, https://images.unsplash.com/photo-1620802090791-fd9420668913?ixid=M3w0Mzc5fDB8MXxzZWFyY2h8M3x8ZWxlY3RyaWMlMjBiaWtlJTIwY2l0eSUyMHJpZGVyfGVufDF8MHx8fDE3OTEyMDk3MDZ8MA&ixlib=rb-4.1.0&auto=format&fit=crop&w=960&h=600&q=80 960w, https://images.unsplash.com/photo-1620802090791-fd9420668913?ixid=M3w0Mzc5fDB8MXxzZWFyY2h8M3x8ZWxlY3RyaWMlMjBiaWtlJTIwY2l0eSUyMHJpZGVyfGVufDF8MHx8fDE3OTEyMDk3MDZ8MA&ixlib=rb-4.1.0&auto=format&fit=crop&w=1340&h=838&q=80 1340w, https://images.unsplash.com/photo-1620802090791-fd9420668913?ixid=M3w0Mzc5fDB8MXxzZWFyY2h8M3x8ZWxlY3RyaWMlMjBiaWtlJTIwY2l0eSUyMHJpZGVyfGVufDF8MHx8fDE3OTEyMDk3MDZ8MA&ixlib=rb-4.1.0&auto=format&fit=crop&w=1600&h=1000&q=80 1600w",
+      "image_src": "https://images.unsplash.com/photo-1620802090791-fd9420668913?ixid=M3w0Mzc5fDB8MXxzZWFyY2h8M3x8ZWxlY3RyaWMlMjBiaWtlJTIwY2l0eSUyMHJpZGVyfGVufDF8MHx8fDE3OTEyMDk3MDZ8MA&ixlib=rb-4.1.0&auto=format&fit=crop&w=1600&h=1000&q=80",
+      "image_sizes": "(max-width: 767px) 183vw, 52vw",
+      "image_width": 1600,
+      "image_height": 1000,
+      "image_alt": "Plenty mobile application showing plant health dashboard and watering streak tracker",
+      "image_bg": "#c0c0c0",
+      "sort_order": 1,
+      "status": "published"
+    },
+    {
+      "slug": "arbana-outdoor",
+      "name": "Arbana Outdoor",
+      "tag": "Web, Laravel",
+      "line": "Equipment rental and booking platform built during frontend internship at Maxiidea.",
+      "image_srcset": "https://images.unsplash.com/photo-1713371690087-baafaf440240?ixid=M3w0Mzc5fDB8MXxzZWFyY2h8NXx8d29tYW4lMjBzbWlsaW5nJTIwaG9sZGluZyUyMHBob25lJTIwY29sb3JmdWx8ZW58MXwwfHx8MTc5MTIwOTcwN3ww&ixlib=rb-4.1.0&auto=format&fit=crop&w=400&h=250&q=80 400w, https://images.unsplash.com/photo-1713371690087-baafaf440240?ixid=M3w0Mzc5fDB8MXxzZWFyY2h8NXx8d29tYW4lMjBzbWlsaW5nJTIwaG9sZGluZyUyMHBob25lJTIwY29sb3JmdWx8ZW58MXwwfHx8MTc5MTIwOTcwN3ww&ixlib=rb-4.1.0&auto=format&fit=crop&w=690&h=431&q=80 690w, https://images.unsplash.com/photo-1713371690087-baafaf440240?ixid=M3w0Mzc5fDB8MXxzZWFyY2h8NXx8d29tYW4lMjBzbWlsaW5nJTIwaG9sZGluZyUyMHBob25lJTIwY29sb3JmdWx8ZW58MXwwfHx8MTc5MTIwOTcwN3ww&ixlib=rb-4.1.0&auto=format&fit=crop&w=960&h=600&q=80 960w, https://images.unsplash.com/photo-1713371690087-baafaf440240?ixid=M3w0Mzc5fDB8MXxzZWFyY2h8NXx8d29tYW4lMjBzbWlsaW5nJTIwaG9sZGluZyUyMHBob25lJTIwY29sb3JmdWx8ZW58MXwwfHx8MTc5MTIwOTcwN3ww&ixlib=rb-4.1.0&auto=format&fit=crop&w=1340&h=838&q=80 1340w, https://images.unsplash.com/photo-1713371690087-baafaf440240?ixid=M3w0Mzc5fDB8MXxzZWFyY2h8NXx8d29tYW4lMjBzbWlsaW5nJTIwaG9sZGluZyUyMHBob25lJTIwY29sb3JmdWx8ZW58MXwwfHx8MTc5MTIwOTcwN3ww&ixlib=rb-4.1.0&auto=format&fit=crop&w=1600&h=1000&q=80 1600w",
+      "image_src": "https://images.unsplash.com/photo-1713371690087-baafaf440240?ixid=M3w0Mzc5fDB8MXxzZWFyY2h8NXx8d29tYW4lMjBzbWlsaW5nJTIwaG9sZGluZyUyMHBob25lJTIwY29sb3JmdWx8ZW58MXwwfHx8MTc5MTIwOTcwN3ww&ixlib=rb-4.1.0&auto=format&fit=crop&w=1600&h=1000&q=80",
+      "image_sizes": "(max-width: 767px) 183vw, 52vw",
+      "image_width": 1600,
+      "image_height": 1000,
+      "image_alt": "Arbana Outdoor gear catalog and online equipment reservation interface",
+      "image_bg": "#a68cd9",
+      "sort_order": 2,
+      "status": "published"
+    },
+    {
+      "slug": "portal-pesantren",
+      "name": "Portal Pesantren",
+      "tag": "Fullstack, PHP",
+      "line": "Administrative management portal with custom relational database and report generation.",
+      "image_srcset": "https://images.unsplash.com/photo-1587241321921-91a834d6d191?ixid=M3w0Mzc5fDB8MXxzZWFyY2h8MXx8YXJ0aXNhbiUyMGJha2VyeSUyMGJyZWFkJTIwY291bnRlcnxlbnwxfDB8fHwxNzkxMjA5NzA3fDA&ixlib=rb-4.1.0&auto=format&fit=crop&w=400&h=250&q=80 400w, https://images.unsplash.com/photo-1587241321921-91a834d6d191?ixid=M3w0Mzc5fDB8MXxzZWFyY2h8MXx8YXJ0aXNhbiUyMGJha2VyeSUyMGJyZWFkJTIwY291bnRlcnxlbnwxfDB8fHwxNzkxMjA5NzA3fDA&ixlib=rb-4.1.0&auto=format&fit=crop&w=690&h=431&q=80 690w, https://images.unsplash.com/photo-1587241321921-91a834d6d191?ixid=M3w0Mzc5fDB8MXxzZWFyY2h8MXx8YXJ0aXNhbiUyMGJha2VyeSUyMGJyZWFkJTIwY291bnRlcnxlbnwxfDB8fHwxNzkxMjA5NzA3fDA&ixlib=rb-4.1.0&auto=format&fit=crop&w=960&h=600&q=80 960w, https://images.unsplash.com/photo-1587241321921-91a834d6d191?ixid=M3w0Mzc5fDB8MXxzZWFyY2h8MXx8YXJ0aXNhbiUyMGJha2VyeSUyMGJyZWFkJTIwY291bnRlcnxlbnwxfDB8fHwxNzkxMjA5NzA3fDA&ixlib=rb-4.1.0&auto=format&fit=crop&w=1340&h=838&q=80 1340w, https://images.unsplash.com/photo-1587241321921-91a834d6d191?ixid=M3w0Mzc5fDB8MXxzZWFyY2h8MXx8YXJ0aXNhbiUyMGJha2VyeSUyMGJyZWFkJTIwY291bnRlcnxlbnwxfDB8fHwxNzkxMjA5NzA3fDA&ixlib=rb-4.1.0&auto=format&fit=crop&w=1600&h=1000&q=80 1600w",
+      "image_src": "https://images.unsplash.com/photo-1587241321921-91a834d6d191?ixid=M3w0Mzc5fDB8MXxzZWFyY2h8MXx8YXJ0aXNhbiUyMGJha2VyeSUyMGJyZWFkJTIwY291bnRlcnxlbnwxfDB8fHwxNzkxMjA5NzA3fDA&ixlib=rb-4.1.0&auto=format&fit=crop&w=1600&h=1000&q=80",
+      "image_sizes": "(max-width: 767px) 183vw, 52vw",
+      "image_width": 1600,
+      "image_height": 1000,
+      "image_alt": "Portal Pesantren administrative management dashboard and records view",
+      "image_bg": "#262626",
+      "sort_order": 3,
+      "status": "published"
+    },
+    {
+      "slug": "game-studio-site",
+      "name": "Game Studio Site",
+      "tag": "Web, Next.js",
+      "line": "Headless studio portfolio built with Next.js, Sanity CMS, Tailwind CSS, and shadcn/ui.",
+      "image_srcset": "https://images.unsplash.com/photo-1544213456-bc37cb97df74?ixid=M3w0Mzc5fDB8MXxzZWFyY2h8Nnx8bXVzZXVtJTIwZ2FsbGVyeSUyMHZpc2l0b3JzfGVufDF8MHx8fDE3OTEyMDk3MDd8MA&ixlib=rb-4.1.0&auto=format&fit=crop&w=400&h=250&q=80 400w, https://images.unsplash.com/photo-1544213456-bc37cb97df74?ixid=M3w0Mzc5fDB8MXxzZWFyY2h8Nnx8bXVzZXVtJTIwZ2FsbGVyeSUyMHZpc2l0b3JzfGVufDF8MHx8fDE3OTEyMDk3MDd8MA&ixlib=rb-4.1.0&auto=format&fit=crop&w=690&h=431&q=80 690w, https://images.unsplash.com/photo-1544213456-bc37cb97df74?ixid=M3w0Mzc5fDB8MXxzZWFyY2h8Nnx8bXVzZXVtJTIwZ2FsbGVyeSUyMHZpc2l0b3JzfGVufDF8MHx8fDE3OTEyMDk3MDd8MA&ixlib=rb-4.1.0&auto=format&fit=crop&w=960&h=600&q=80 960w, https://images.unsplash.com/photo-1544213456-bc37cb97df74?ixid=M3w0Mzc5fDB8MXxzZWFyY2h8Nnx8bXVzZXVtJTIwZ2FsbGVyeSUyMHZpc2l0b3JzfGVufDF8MHx8fDE3OTEyMDk3MDd8MA&ixlib=rb-4.1.0&auto=format&fit=crop&w=1340&h=838&q=80 1340w, https://images.unsplash.com/photo-1544213456-bc37cb97df74?ixid=M3w0Mzc5fDB8MXxzZWFyY2h8Nnx8bXVzZXVtJTIwZ2FsbGVyeSUyMHZpc2l0b3JzfGVufDF8MHx8fDE3OTEyMDk3MDd8MA&ixlib=rb-4.1.0&auto=format&fit=crop&w=1600&h=1000&q=80 1600w",
+      "image_src": "https://images.unsplash.com/photo-1544213456-bc37cb97df74?ixid=M3w0Mzc5fDB8MXxzZWFyY2h8Nnx8bXVzZXVtJTIwZ2FsbGVyeSUyMHZpc2l0b3JzfGVufDF8MHx8fDE3OTEyMDk3MDd8MA&ixlib=rb-4.1.0&auto=format&fit=crop&w=1600&h=1000&q=80",
+      "image_sizes": "(max-width: 767px) 183vw, 52vw",
+      "image_width": 1600,
+      "image_height": 1000,
+      "image_alt": "Game studio showcase website displaying game releases and media gallery",
+      "image_bg": "#d9d9d9",
+      "sort_order": 4,
+      "status": "published"
+    },
+    {
+      "slug": "budaya-go",
+      "name": "BUDAYA GO!",
+      "tag": "Game, Unity",
+      "line": "3rd Place award-winning cultural game prototype built with Unity Engine and C#.",
+      "image_srcset": "https://images.unsplash.com/photo-1614149162883-504ce4d13909?ixid=M3w0Mzc5fDB8MXxzZWFyY2h8Nnx8aGVhZHBob25lcyUyMGNvbG9yZnVsJTIwYmFja2dyb3VuZHxlbnwxfDB8fHwxNzkxMjA5NzA4fDA&ixlib=rb-4.1.0&auto=format&fit=crop&w=400&h=250&q=80 400w, https://images.unsplash.com/photo-1614149162883-504ce4d13909?ixid=M3w0Mzc5fDB8MXxzZWFyY2h8Nnx8aGVhZHBob25lcyUyMGNvbG9yZnVsJTIwYmFja2dyb3VuZHxlbnwxfDB8fHwxNzkxMjA5NzA4fDA&ixlib=rb-4.1.0&auto=format&fit=crop&w=690&h=431&q=80 690w, https://images.unsplash.com/photo-1614149162883-504ce4d13909?ixid=M3w0Mzc5fDB8MXxzZWFyY2h8Nnx8aGVhZHBob25lcyUyMGNvbG9yZnVsJTIwYmFja2dyb3VuZHxlbnwxfDB8fHwxNzkxMjA5NzA4fDA&ixlib=rb-4.1.0&auto=format&fit=crop&w=960&h=600&q=80 960w, https://images.unsplash.com/photo-1614149162883-504ce4d13909?ixid=M3w0Mzc5fDB8MXxzZWFyY2h8Nnx8aGVhZHBob25lcyUyMGNvbG9yZnVsJTIwYmFja2dyb3VuZHxlbnwxfDB8fHwxNzkxMjA5NzA4fDA&ixlib=rb-4.1.0&auto=format&fit=crop&w=1380&h=863&q=80 1380w, https://images.unsplash.com/photo-1614149162883-504ce4d13909?ixid=M3w0Mzc5fDB8MXxzZWFyY2h8Nnx8aGVhZHBob25lcyUyMGNvbG9yZnVsJTIwYmFja2dyb3VuZHxlbnwxfDB8fHwxNzkxMjA5NzA4fDA&ixlib=rb-4.1.0&auto=format&fit=crop&w=1600&h=1000&q=80 1600w",
+      "image_src": "https://images.unsplash.com/photo-1614149162883-504ce4d13909?ixid=M3w0Mzc5fDB8MXxzZWFyY2h8Nnx8aGVhZHBob25lcyUyMGNvbG9yZnVsJTIwYmFja2dyb3VuZHxlbnwxfDB8fHwxNzkxMjA5NzA4fDA&ixlib=rb-4.1.0&auto=format&fit=crop&w=1600&h=1000&q=80",
+      "image_sizes": "(max-width: 767px) 183vw, 106vw",
+      "image_width": 1600,
+      "image_height": 1000,
+      "image_alt": "BUDAYA GO! interactive Indonesian cultural game scene running in Unity",
+      "image_bg": "#0c8cd9",
+      "sort_order": 5,
+      "status": "published"
+    }
+  ],
+  "skills": [
+    {
+      "slug": "typescript",
+      "name": "TypeScript",
+      "category": "Languages",
+      "card_bg": "#0c1829",
+      "logo_svg": "<svg viewBox=\"0 0 256 256\" width=\"64\" height=\"64\" fill=\"none\"><rect width=\"256\" height=\"256\" rx=\"36\" fill=\"#3178C6\"></rect><path d=\"M149.2 166.5c3.6 4.8 9.2 7.7 15.6 7.7 8.2 0 13.5-4.4 13.5-10.5 0-7.3-6.1-9.9-17.7-14.9-16.7-7-25-14.8-25-29.3 0-16.1 12.3-27.8 30.6-27.8 12.6 0 21.6 4.3 28.5 13.6l-11.8 8.4c-4.5-6.2-9.6-8.2-16.7-8.2-7.8 0-12.7 4.1-12.7 9.8 0 6.4 5.3 8.7 17.5 13.9 17.7 7.5 25.4 15.5 25.4 30.5 0 17.9-13.7 28.7-32.9 28.7-15.1 0-26.4-5.8-33.5-16.8l11.7-8.8zm-79.6 19.9V105.7h-31V93.5h79.5v12.2H87v73.2h-17.4z\" fill=\"#FFF\"></path></svg>",
+      "sort_order": 1,
+      "status": "published"
+    },
+    {
+      "slug": "dart",
+      "name": "Dart",
+      "category": "Languages",
+      "card_bg": "#061e24",
+      "logo_svg": "<svg viewBox=\"0 0 256 256\" width=\"64\" height=\"64\"><path d=\"M54.4 135.5L135.5 54.4H223L54.4 223V135.5z\" fill=\"#00B4AB\"></path><path d=\"M135.5 54.4L54.4 135.5V54.4h81.1z\" fill=\"#0175C2\"></path><path d=\"M135.5 54.4l87.5 87.5-38.1 38.1-87.5-87.5 38.1-38.1z\" fill=\"#00B4AB\"></path><path d=\"M184.9 180l38.1-38.1V223h-81.1l43-43z\" fill=\"#0175C2\"></path><path d=\"M54.4 223l168.6-168.6V54.4L54.4 223z\" fill=\"#13B9FD\"></path></svg>",
+      "sort_order": 2,
+      "status": "published"
+    },
+    {
+      "slug": "csharp",
+      "name": "C#",
+      "category": "Languages",
+      "card_bg": "#240a22",
+      "logo_svg": "<svg viewBox=\"0 0 256 256\" width=\"64\" height=\"64\"><path d=\"M128 16l97 56v112l-97 56-97-56V72l97-56z\" fill=\"#9B4993\"></path><path d=\"M106 172c-24.3 0-44-19.7-44-44s19.7-44 44-44c14.2 0 26.8 6.7 34.8 17.2l-14.4 10.8c-4.8-6.3-12.2-10-20.4-10-14.3 0-26 11.7-26 26s11.7 26 26 26c8.2 0 15.6-3.7 20.4-10l14.4 10.8c-8 10.5-20.6 17.2-34.8 17.2zm52-60h10v12h12v-12h10v12h14v10h-14v16h14v10h-14v12h-10v-12h-12v12h-10v-12h-14v-10h14v-16h-14v-10h14v-12zm22 22h-12v16h12v-16z\" fill=\"#FFF\"></path></svg>",
+      "sort_order": 3,
+      "status": "published"
+    },
+    {
+      "slug": "php",
+      "name": "PHP",
+      "category": "Languages",
+      "card_bg": "#121424",
+      "logo_svg": "<svg viewBox=\"0 0 256 256\" width=\"64\" height=\"64\"><ellipse cx=\"128\" cy=\"128\" rx=\"112\" ry=\"68\" fill=\"#777BB4\"></ellipse><path d=\"M82.8 112h14.2c6.1 0 10.4 1.4 12.9 4.3 2.5 2.9 3.2 7 2.2 12.4-1.2 6.5-4.2 11.2-8.9 14.2-4.7 3-11 4.5-19 4.5H74.8l-8.6 30.6H50l24.2-66h8.6zm-2.8 10.8l-4 14.4h8.3c4 0 7-.7 8.9-2.2 1.9-1.5 3.1-3.9 3.6-7.3.5-3.3.1-5.6-1.4-6.8-1.5-1.2-4.1-1.8-7.8-1.8H80zM137 112h15.4l-3.8 14.4h11.2c7.2 0 12.5 1.6 15.9 4.8 3.4 3.2 4.4 8 2.9 14.4-1.6 7-5.4 12.1-11.4 15.3-6 3.2-14.2 4.8-24.6 4.8h-11.8l-3.6 13.8h-16.2l17.4-66.2zm7.6 14.4l-4 15h8.6c4.6 0 8-.9 10.2-2.7s3.5-4.5 4.1-8.1c.6-3.2.1-5.4-1.4-6.7-1.5-1.3-4.2-1.9-8.1-1.9h-9.4v4.4z\" fill=\"#FFF\"></path></svg>",
+      "sort_order": 4,
+      "status": "published"
+    },
+    {
+      "slug": "react-nextjs",
+      "name": "Next.js",
+      "category": "Frameworks",
+      "card_bg": "#0b0b0e",
+      "logo_svg": "<svg viewBox=\"0 0 256 256\" width=\"64\" height=\"64\"><circle cx=\"128\" cy=\"128\" r=\"120\" fill=\"#000\" stroke=\"#FFF\" stroke-width=\"8\"></circle><path d=\"M174.5 186.2l-64.8-83.6v83.6H93V75h17.8l63.5 82.3V75h16.7v111.2h-16.5z\" fill=\"#FFF\"></path></svg>",
+      "sort_order": 5,
+      "status": "published"
+    },
+    {
+      "slug": "laravel",
+      "name": "Laravel",
+      "category": "Frameworks",
+      "card_bg": "#2b0606",
+      "logo_svg": "<svg viewBox=\"0 0 256 256\" width=\"64\" height=\"64\"><path d=\"M83.4 46.1l44.6-25.7 44.5 25.7v51.4l-44.5 25.7-44.6-25.7V46.1z\" fill=\"#FF2D20\"></path><path d=\"M128 97.5l44.5-25.7v51.4L128 148.9V97.5z\" fill=\"#E6271B\"></path><path d=\"M128 97.5L83.4 71.8v51.4L128 148.9V97.5z\" fill=\"#C52016\"></path><path d=\"M38.8 123.2l44.6-25.7 44.6 25.7v51.4l-44.6 25.7-44.6-25.7v-51.4z\" fill=\"#FF2D20\"></path><path d=\"M83.4 174.6l44.6-25.7v51.4L83.4 226v-51.4z\" fill=\"#E6271B\"></path><path d=\"M83.4 174.6L38.8 148.9v51.4l44.6 25.7v-51.4z\" fill=\"#C52016\"></path><path d=\"M128 174.6l44.5-25.7 44.6 25.7v51.4L172.5 252 128 226.3v-51.7z\" fill=\"#FF2D20\"></path><path d=\"M172.5 226l44.6-25.7v51.4L172.5 277V226z\" fill=\"#E6271B\"></path><path d=\"M172.5 226L128 200.3v51.4l44.5 25.7V226z\" fill=\"#C52016\"></path></svg>",
+      "sort_order": 6,
+      "status": "published"
+    },
+    {
+      "slug": "tailwind",
+      "name": "Tailwind CSS",
+      "category": "Frameworks",
+      "card_bg": "#05202a",
+      "logo_svg": "<svg viewBox=\"0 0 256 256\" width=\"64\" height=\"64\"><path d=\"M64 112c10.7-21.3 26.7-32 48-32 32 0 40 24 56 28 10.7 2.7 21.3-.7 32-10-10.7 21.3-26.7 32-48 32-32 0-40-24-56-28-10.7-2.7-21.3.7-32 10zm-48 64c10.7-21.3 26.7-32 48-32 32 0 40 24 56 28 10.7 2.7 21.3-.7 32-10-10.7 21.3-26.7 32-48 32-32 0-40-24-56-28-10.7-2.7-21.3.7-32 10z\" fill=\"#38BDF8\"></path></svg>",
+      "sort_order": 7,
+      "status": "published"
+    },
+    {
+      "slug": "flutter",
+      "name": "Flutter",
+      "category": "Mobile Development",
+      "card_bg": "#07192c",
+      "logo_svg": "<svg viewBox=\"0 0 256 256\" width=\"64\" height=\"64\"><path d=\"M149.7 20.6L44.8 125.5l32.5 32.5 137.4-137.4h-65z\" fill=\"#54C5F8\"></path><path d=\"M149.7 122.9l-49.8 49.8 32.5 32.5 17.3-17.3 32.5 32.5h65l-65-65-32.5-32.5z\" fill=\"#02569B\"></path><path d=\"M99.9 172.7l32.5 32.5-32.5 32.5-32.5-32.5 32.5-32.5z\" fill=\"#0175C2\"></path></svg>",
+      "sort_order": 8,
+      "status": "published"
+    },
+    {
+      "slug": "unity",
+      "name": "Unity",
+      "category": "Game Development",
+      "card_bg": "#121318",
+      "logo_svg": "<svg viewBox=\"0 0 256 256\" width=\"64\" height=\"64\"><path d=\"M128 32l83.1 48v96L128 224l-83.1-48V80L128 32zm0 25.5L62.7 95.2l20.4 11.8 44.9-25.9 44.9 25.9 20.4-11.8L128 57.5zm55.2 60.1l-20.4 11.8v51.8l38.2 22 17.8-10.3v-58l-35.6-17.3zm-110.4 0l-35.6 17.3v58l17.8 10.3 38.2-22v-51.8l-20.4-11.8z\" fill=\"#FFF\"></path></svg>",
+      "sort_order": 9,
+      "status": "published"
+    },
+    {
+      "slug": "git-github",
+      "name": "Git & GitHub",
+      "category": "Tools",
+      "card_bg": "#2b0d07",
+      "logo_svg": "<svg viewBox=\"0 0 256 256\" width=\"64\" height=\"64\"><path d=\"M239.3 118.8L137.2 16.7c-6.2-6.2-16.3-6.2-22.6 0L93.8 37.5l28.6 28.6c6.6-2.2 14.3-.8 19.6 4.5 5.4 5.4 6.8 13.2 4.4 19.8l27.5 27.5c6.6-2.4 14.4-1 19.8 4.4 7.6 7.6 7.6 20 0 27.6-7.6 7.6-20 7.6-27.6 0-5.7-5.7-6.9-13.9-4-20.7l-25.7-25.7v58.2c1.9 1 3.7 2.4 5.1 3.9 7.6 7.6 7.6 20 0 27.6-7.6 7.6-20 7.6-27.6 0-7.6-7.6-7.6-20 0-27.6 1.8-1.8 3.9-3.1 6.1-4v-59.5c-2.2-.9-4.3-2.2-6.1-4-5.6-5.6-6.9-13.8-4.2-20.4L81 72.8 16.7 137.1c-6.2 6.2-6.2 16.3 0 22.6l102.1 102.1c6.2 6.2 16.3 6.2 22.6 0l97.9-97.9c6.2-6.3 6.2-16.4 0-22.6z\" fill=\"#F05032\"></path></svg>",
+      "sort_order": 10,
+      "status": "published"
+    },
+    {
+      "slug": "sanity",
+      "name": "Sanity CMS",
+      "category": "Tools",
+      "card_bg": "#2b0808",
+      "logo_svg": "<svg viewBox=\"0 0 256 256\" width=\"64\" height=\"64\"><path d=\"M192.5 125.7c-9.5-6.7-21.7-10.7-32.9-14.8-12.7-4.6-24.8-8.9-24.8-16.2 0-6.1 5.3-10.4 14.5-10.4 10.9 0 23.3 5.3 32.7 13.6l16.1-17.7C182.2 66.1 165.7 60 148.6 60c-24.1 0-40.4 13.9-40.4 34.2 0 22.4 18.9 30.1 34.6 35.8 13.8 5 27.3 9.9 27.3 17.6 0 7.5-6.9 12-16.8 12-13.7 0-28.7-7-39.2-17.1l-16.5 17.5c15.1 15 35.1 22.9 55.4 22.9 26.3 0 43.4-14.5 43.4-36.4-.1-9.3-5-15.6-13.9-20.8z\" fill=\"#F03E2F\"></path><path d=\"M72 176l-24 20h160l24-20H72z\" fill=\"#F03E2F\"></path></svg>",
+      "sort_order": 11,
+      "status": "published"
+    }
+  ],
+  "credentials": [
+    {
+      "slug": "cred-budaya-go",
+      "kind": "award",
+      "level": "National",
+      "year": 2025,
+      "scope_label": "National Competition",
+      "scope_icon_svg": "<svg class=\"recognition__icon\" viewBox=\"0 0 16 16\" width=\"14\" height=\"14\" aria-hidden=\"true\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4 2.5h8v4.5a4 4 0 0 1-8 0V2.5z\"></path><path d=\"M4 3.5H2.5a1.5 1.5 0 0 0 0 3H4\"></path><path d=\"M12 3.5h1.5a1.5 1.5 0 0 1 0 3H12\"></path><path d=\"M8 11v2.5\"></path><path d=\"M5.5 13.5h5\"></path></svg>",
+      "award": "Third Place",
+      "name": "BUDAYA GO! Digital Innovation in Indonesian Culture",
+      "issuer": "Kementerian Kebudayaan Republik Indonesia",
+      "description": "National digital culture innovation competition, engineering interactive gameplay systems in Unity and C# to preserve cultural heritage.",
+      "image_src": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20800%20600%22%20width%3D%22800%22%20height%3D%22600%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22bg1%22%20x1%3D%220%25%22%20y1%3D%220%25%22%20x2%3D%22100%25%22%20y2%3D%22100%25%22%3E%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%23181424%22%2F%3E%3Cstop%20offset%3D%2250%25%22%20stop-color%3D%22%23110d1c%22%2F%3E%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%230b0813%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%22800%22%20height%3D%22600%22%20fill%3D%22url(%23bg1)%22%2F%3E%3Crect%20x%3D%2230%22%20y%3D%2230%22%20width%3D%22740%22%20height%3D%22540%22%20rx%3D%2220%22%20fill%3D%22none%22%20stroke%3D%22rgba(255%2C255%2C255%2C0.06)%22%20stroke-width%3D%221.5%22%2F%3E%3Ccircle%20cx%3D%22400%22%20cy%3D%22300%22%20r%3D%22230%22%20fill%3D%22none%22%20stroke%3D%22rgba(108%2C60%2C255%2C0.08)%22%20stroke-width%3D%221.5%22%2F%3E%3Ccircle%20cx%3D%22400%22%20cy%3D%22300%22%20r%3D%22160%22%20fill%3D%22none%22%20stroke%3D%22rgba(255%2C255%2C255%2C0.03)%22%20stroke-dasharray%3D%225%205%22%2F%3E%3Cg%20transform%3D%22translate(400%2C%20110)%22%3E%3Crect%20x%3D%22-140%22%20y%3D%22-18%22%20width%3D%22280%22%20height%3D%2236%22%20rx%3D%2218%22%20fill%3D%22rgba(108%2C60%2C255%2C0.18)%22%20stroke%3D%22rgba(108%2C60%2C255%2C0.4)%22%20stroke-width%3D%221.5%22%2F%3E%3Ctext%20text-anchor%3D%22middle%22%20y%3D%225%22%20font-family%3D%22Arial%2C%20Helvetica%2C%20sans-serif%22%20font-size%3D%2212%22%20font-weight%3D%22700%22%20letter-spacing%3D%222%22%20fill%3D%22%23c4b5fd%22%3ENATIONAL%20COMPETITION%3C%2Ftext%3E%3C%2Fg%3E%3Cg%20transform%3D%22translate(400%2C%20210)%22%3E%3Ccircle%20cx%3D%220%22%20cy%3D%220%22%20r%3D%2248%22%20fill%3D%22rgba(108%2C60%2C255%2C0.2)%22%20stroke%3D%22%236c3cff%22%20stroke-width%3D%222.5%22%2F%3E%3Cpath%20d%3D%22M-18%20-16%20h36%20v14%20c0%2010%20-8%2018%20-18%2018%20s-18%20-8%20-18%20-18%20z%22%20fill%3D%22none%22%20stroke%3D%22%23fff%22%20stroke-width%3D%222.5%22%20stroke-linejoin%3D%22round%22%2F%3E%3Cpath%20d%3D%22M-18%20-10%20h-8%20c-4%200%20-6%203%20-6%207%20s3%207%207%207%20h7%22%20fill%3D%22none%22%20stroke%3D%22%23fff%22%20stroke-width%3D%222%22%2F%3E%3Cpath%20d%3D%22M18%20-10%20h8%20c4%200%206%203%206%207%20s-3%207%20-7%207%20h-7%22%20fill%3D%22none%22%20stroke%3D%22%23fff%22%20stroke-width%3D%222%22%2F%3E%3Cpath%20d%3D%22M0%2016%20v12%20M-12%2028%20h24%22%20fill%3D%22none%22%20stroke%3D%22%23fff%22%20stroke-width%3D%222.5%22%20stroke-linecap%3D%22round%22%2F%3E%3Ctext%20text-anchor%3D%22middle%22%20y%3D%223%22%20font-family%3D%22Arial%2C%20Helvetica%2C%20sans-serif%22%20font-size%3D%2213%22%20font-weight%3D%22800%22%20fill%3D%22%23fff%22%3E3RD%3C%2Ftext%3E%3C%2Fg%3E%3Ctext%20x%3D%22400%22%20y%3D%22310%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20Helvetica%2C%20sans-serif%22%20font-size%3D%2240%22%20font-weight%3D%22800%22%20letter-spacing%3D%22-1%22%20fill%3D%22%23ffffff%22%3EThird%20Place%20Award%3C%2Ftext%3E%3Ctext%20x%3D%22400%22%20y%3D%22352%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20Helvetica%2C%20sans-serif%22%20font-size%3D%2222%22%20font-weight%3D%22700%22%20fill%3D%22%23a78bfa%22%3EBUDAYA%20GO!%202025%3C%2Ftext%3E%3Cline%20x1%3D%22280%22%20y1%3D%22380%22%20x2%3D%22520%22%20y2%3D%22380%22%20stroke%3D%22rgba(255%2C255%2C255%2C0.12)%22%20stroke-width%3D%221.5%22%2F%3E%3Ctext%20x%3D%22400%22%20y%3D%22420%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20Helvetica%2C%20sans-serif%22%20font-size%3D%2215%22%20font-weight%3D%22600%22%20fill%3D%22%23ffffff%22%3EDigital%20Innovation%20in%20Indonesian%20Culture%3C%2Ftext%3E%3Ctext%20x%3D%22400%22%20y%3D%22450%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20Helvetica%2C%20sans-serif%22%20font-size%3D%2214%22%20font-weight%3D%22500%22%20fill%3D%22%239ca3af%22%3EKementerian%20Kebudayaan%20Republik%20Indonesia%3C%2Ftext%3E%3Cg%20transform%3D%22translate(400%2C%20515)%22%3E%3Ctext%20text-anchor%3D%22middle%22%20font-family%3D%22monospace%2C%20sans-serif%22%20font-size%3D%2211%22%20letter-spacing%3D%221.5%22%20fill%3D%22%238b5cf6%22%3EVERIFIED%20CREDENTIAL%20%2F%2F%202025%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fsvg%3E",
+      "image_width": 800,
+      "image_height": 600,
+      "image_alt": "Third Place Award Certificate — BUDAYA GO! 2025 Digital Innovation in Indonesian Culture",
+      "sort_order": 1,
+      "status": "published"
+    },
+    {
+      "slug": "cred-beefest",
+      "kind": "award",
+      "level": "University",
+      "year": 2025,
+      "scope_label": "University Competition",
+      "scope_icon_svg": "<svg class=\"recognition__icon\" viewBox=\"0 0 16 16\" width=\"14\" height=\"14\" aria-hidden=\"true\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4 2.5h8v4.5a4 4 0 0 1-8 0V2.5z\"></path><path d=\"M4 3.5H2.5a1.5 1.5 0 0 0 0 3H4\"></path><path d=\"M12 3.5h1.5a1.5 1.5 0 0 1 0 3H12\"></path><path d=\"M8 11v2.5\"></path><path d=\"M5.5 13.5h5\"></path></svg>",
+      "award": "Finalist",
+      "name": "Software Development and Logical Competition (BEE Fest 2025)",
+      "issuer": "School of Computer Science, BINUS University",
+      "description": "Selected as Finalist in competitive software development and logic, solving algorithmic problem sets and architecting robust systems.",
+      "image_src": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20800%20600%22%20width%3D%22800%22%20height%3D%22600%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22bg2%22%20x1%3D%220%25%22%20y1%3D%220%25%22%20x2%3D%22100%25%22%20y2%3D%22100%25%22%3E%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%23121824%22%2F%3E%3Cstop%20offset%3D%2250%25%22%20stop-color%3D%22%230c111a%22%2F%3E%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%23070a10%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%22800%22%20height%3D%22600%22%20fill%3D%22url(%23bg2)%22%2F%3E%3Crect%20x%3D%2230%22%20y%3D%2230%22%20width%3D%22740%22%20height%3D%22540%22%20rx%3D%2220%22%20fill%3D%22none%22%20stroke%3D%22rgba(255%2C255%2C255%2C0.06)%22%20stroke-width%3D%221.5%22%2F%3E%3Ccircle%20cx%3D%22400%22%20cy%3D%22300%22%20r%3D%22230%22%20fill%3D%22none%22%20stroke%3D%22rgba(14%2C165%2C233%2C0.08)%22%20stroke-width%3D%221.5%22%2F%3E%3Ccircle%20cx%3D%22400%22%20cy%3D%22300%22%20r%3D%22160%22%20fill%3D%22none%22%20stroke%3D%22rgba(255%2C255%2C255%2C0.03)%22%20stroke-dasharray%3D%225%205%22%2F%3E%3Cg%20transform%3D%22translate(400%2C%20110)%22%3E%3Crect%20x%3D%22-140%22%20y%3D%22-18%22%20width%3D%22280%22%20height%3D%2236%22%20rx%3D%2218%22%20fill%3D%22rgba(14%2C165%2C233%2C0.18)%22%20stroke%3D%22rgba(14%2C165%2C233%2C0.4)%22%20stroke-width%3D%221.5%22%2F%3E%3Ctext%20text-anchor%3D%22middle%22%20y%3D%225%22%20font-family%3D%22Arial%2C%20Helvetica%2C%20sans-serif%22%20font-size%3D%2212%22%20font-weight%3D%22700%22%20letter-spacing%3D%222%22%20fill%3D%22%237dd3fc%22%3EUNIVERSITY%20COMPETITION%3C%2Ftext%3E%3C%2Fg%3E%3Cg%20transform%3D%22translate(400%2C%20210)%22%3E%3Ccircle%20cx%3D%220%22%20cy%3D%220%22%20r%3D%2248%22%20fill%3D%22rgba(14%2C165%2C233%2C0.2)%22%20stroke%3D%22%230ea5e9%22%20stroke-width%3D%222.5%22%2F%3E%3Cpath%20d%3D%22M-14%20-12%20L-22%200%20L-14%2012%20M14%20-12%20L22%200%20L14%2012%20M-4%2014%20L4%20-14%22%20fill%3D%22none%22%20stroke%3D%22%23fff%22%20stroke-width%3D%222.5%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fg%3E%3Ctext%20x%3D%22400%22%20y%3D%22310%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20Helvetica%2C%20sans-serif%22%20font-size%3D%2240%22%20font-weight%3D%22800%22%20letter-spacing%3D%22-1%22%20fill%3D%22%23ffffff%22%3ECompetition%20Finalist%3C%2Ftext%3E%3Ctext%20x%3D%22400%22%20y%3D%22352%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20Helvetica%2C%20sans-serif%22%20font-size%3D%2222%22%20font-weight%3D%22700%22%20fill%3D%22%2338bdf8%22%3EBEE%20FEST%202025%3C%2Ftext%3E%3Cline%20x1%3D%22280%22%20y1%3D%22380%22%20x2%3D%22520%22%20y2%3D%22380%22%20stroke%3D%22rgba(255%2C255%2C255%2C0.12)%22%20stroke-width%3D%221.5%22%2F%3E%3Ctext%20x%3D%22400%22%20y%3D%22420%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20Helvetica%2C%20sans-serif%22%20font-size%3D%2215%22%20font-weight%3D%22600%22%20fill%3D%22%23ffffff%22%3ESoftware%20Development%20%26amp%3B%20Logical%20Competition%3C%2Ftext%3E%3Ctext%20x%3D%22400%22%20y%3D%22450%22%20text-anchor%3D%22middle%22%20font-family%3D%22Arial%2C%20Helvetica%2C%20sans-serif%22%20font-size%3D%2214%22%20font-weight%3D%22500%22%20fill%3D%22%239ca3af%22%3ESchool%20of%20Computer%20Science%2C%20BINUS%20University%3C%2Ftext%3E%3Cg%20transform%3D%22translate(400%2C%20515)%22%3E%3Ctext%20text-anchor%3D%22middle%22%20font-family%3D%22monospace%2C%20sans-serif%22%20font-size%3D%2211%22%20letter-spacing%3D%221.5%22%20fill%3D%22%230ea5e9%22%3EVERIFIED%20CREDENTIAL%20%2F%2F%202025%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fsvg%3E",
+      "image_width": 800,
+      "image_height": 600,
+      "image_alt": "Finalist Certificate — BEE Fest 2025 Software Development and Logical Competition",
+      "sort_order": 2,
+      "status": "published"
+    }
+  ],
+  "experiences": [
+    {
+      "slug": "exp-maxiidea",
+      "kind": "work",
+      "tag": "Internship",
+      "period": "Jun 2024 – Dec 2024",
+      "title": "Frontend Web Developer Intern",
+      "org": "Maxiidea",
+      "description": "Developed responsive web and online booking interfaces using Laravel and Tailwind CSS for client platforms including arbanaoutdoor.com, collaborating across distributed teams via Git and GitHub.",
+      "tags": [
+        "Laravel",
+        "Tailwind CSS",
+        "Git & GitHub",
+        "Responsive UI"
+      ],
+      "sort_order": 1,
+      "status": "published"
+    },
+    {
+      "slug": "exp-infinity",
+      "kind": "work",
+      "tag": "Game Studio",
+      "period": "Jan 2024 – Nov 2024",
+      "title": "Game Programmer",
+      "org": "Infinity Gameworks",
+      "description": "Engineered core gameplay loops, player movement mechanics, and modular state controllers in Unity Engine with C#, identifying and resolving runtime bugs and optimizing gameplay performance.",
+      "tags": [
+        "Unity Engine",
+        "C# Scripting",
+        "Gameplay Systems"
+      ],
+      "sort_order": 2,
+      "status": "published"
+    },
+    {
+      "slug": "exp-pesantren",
+      "kind": "work",
+      "tag": "Freelance",
+      "period": "Mar 2024 – May 2024",
+      "title": "Freelance Full-Stack Developer",
+      "org": "Pesantren Administration Client",
+      "description": "Engineered an administrative records portal using PHP Native and MySQL, delivering student management, automated fee tracking, and structured record export features.",
+      "tags": [
+        "PHP Native",
+        "MySQL",
+        "Database Architecture"
+      ],
+      "sort_order": 3,
+      "status": "published"
+    },
+    {
+      "slug": "exp-smkn12",
+      "kind": "training",
+      "tag": "Vocational Training",
+      "period": "2023 – 2026",
+      "title": "Software & Game Development (PPLG)",
+      "org": "SMK Negeri 12 Surabaya",
+      "description": "Comprehensive vocational curriculum in software engineering fundamentals, responsive web development, mobile application programming with Flutter, and interactive game mechanics with Unity.",
+      "tags": [
+        "Flutter & Dart",
+        "Web Engineering",
+        "Unity & C#",
+        "Software Architecture"
+      ],
+      "sort_order": 4,
+      "status": "published"
+    }
+  ],
+  "contact_links": [
+    {
+      "slug": "github",
+      "label": "GitHub",
+      "href": "https://github.com/placeholder",
+      "description": "Explore my projects and code.",
+      "icon_svg": "<svg class=\"contact__link-logo\" viewBox=\"0 0 24 24\" width=\"22\" height=\"22\" aria-hidden=\"true\" fill=\"currentColor\">\n          <path d=\"M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0 0 22 12.017C22 6.484 17.522 2 12 2z\"></path>\n        </svg>",
+      "external": true,
+      "sort_order": 1,
+      "status": "published"
+    },
+    {
+      "slug": "email",
+      "label": "Email",
+      "href": "mailto:viqar@example.com",
+      "description": "Have an opportunity or an idea? Send me a message.",
+      "icon_svg": "<svg class=\"contact__link-logo\" viewBox=\"0 0 24 24\" width=\"22\" height=\"22\" aria-hidden=\"true\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\n          <rect x=\"2\" y=\"4\" width=\"20\" height=\"16\" rx=\"3\"></rect>\n          <path d=\"m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7\"></path>\n        </svg>",
+      "external": false,
+      "sort_order": 2,
+      "status": "published"
+    },
+    {
+      "slug": "linkedin",
+      "label": "LinkedIn",
+      "href": "https://linkedin.com/in/placeholder",
+      "description": "Let's connect professionally.",
+      "icon_svg": "<svg class=\"contact__link-logo\" viewBox=\"0 0 24 24\" width=\"22\" height=\"22\" aria-hidden=\"true\" fill=\"currentColor\">\n          <path d=\"M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76a1.47 1.47 0 1 0 0-2.94 1.47 1.47 0 0 0 0 2.94m1.39 9.74V10.13H5.07v8.37h2.78z\"></path>\n        </svg>",
+      "external": true,
+      "sort_order": 3,
+      "status": "published"
+    }
+  ]
+}
