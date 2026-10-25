@@ -1,5 +1,6 @@
 ---
 import type { SiteSettings, Credential } from '../../lib/content';
+import { sanitizeSvg } from '../../lib/sanitize-svg';
 
 export interface Props {
   settings?: SiteSettings;
@@ -21,7 +22,7 @@ const capabilitiesLead = settings?.capabilities_lead ?? 'Selected achievements i
         <div class="service__text">
           <div class="recognition__meta">
             <div class="recognition__scope">
-              <Fragment set:html={cred.scope_icon_svg} />
+              <Fragment set:html={sanitizeSvg(cred.scope_icon_svg)} />
               <span>{cred.scope_label}</span>
             </div>
             <span class="recognition__year">{cred.year}</span>

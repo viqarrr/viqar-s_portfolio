@@ -1,5 +1,6 @@
 ---
 import type { SiteSettings, ContactLink } from '../../lib/content';
+import { sanitizeSvg } from '../../lib/sanitize-svg';
 
 export interface Props {
   settings?: SiteSettings;
@@ -19,7 +20,7 @@ const contactLead = settings?.contact_lead ?? 'Interested in working together, d
     {contactLinks.map((link) => (
       <a class="contact__link" href={link.href} target={link.external ? "_blank" : undefined} rel={link.external ? "noopener noreferrer" : undefined}>
         <div class="contact__link-head">
-          <Fragment set:html={link.icon_svg} />
+          <Fragment set:html={sanitizeSvg(link.icon_svg)} />
           <span class="m-text-7 contact__link-name">{link.label}</span>
           <svg class="contact__link-arrow" viewBox="0 0 16 16" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12 12 4M5 4h7v7"/></svg>
         </div>

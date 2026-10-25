@@ -1,5 +1,6 @@
 ---
 import type { SiteSettings, Skill } from '../../lib/content';
+import { sanitizeSvg } from '../../lib/sanitize-svg';
 
 export interface Props {
   settings?: SiteSettings;
@@ -22,7 +23,7 @@ const againLead = settings?.again_lead ?? 'Technologies, frameworks, and tools a
           <li class="partner" data-category={skill.category} data-skill-id={skill.slug}>
             <div class="partner__card" style={`background-color: ${skill.card_bg};`}>
               <div class="partner__content">
-                <div class="partner__logo" aria-hidden="true" set:html={skill.logo_svg} />
+                <div class="partner__logo" aria-hidden="true" set:html={sanitizeSvg(skill.logo_svg)} />
                 <h3 class="partner__name">{skill.name}</h3>
               </div>
             </div>
