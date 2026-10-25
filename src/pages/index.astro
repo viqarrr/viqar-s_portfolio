@@ -18,12 +18,12 @@ import {
   getContactLinks
 } from '../lib/content';
 
-const settings = getSettings();
-const projects = getProjects();
-const skills = getSkills();
-const credentials = getCredentials();
-const experiences = getExperiences();
-const contactLinks = getContactLinks();
+const settings = await getSettings();
+const projects = await getProjects();
+const skills = await getSkills();
+const credentials = await getCredentials();
+const experiences = await getExperiences();
+const contactLinks = await getContactLinks();
 ---
 
 <Base title={settings.site_title} description={settings.meta_description}>
