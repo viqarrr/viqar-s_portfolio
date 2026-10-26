@@ -11,7 +11,8 @@
     "test:admin": "playwright test tests/admin.spec.ts",
     "seed": "node scripts/seed-supabase.mjs",
     "parity": "node scripts/parity.mjs --mode=reduce",
-    "parity:motion": "node scripts/parity.mjs --mode=motion"
+    "parity:motion": "node scripts/parity.mjs --mode=motion",
+    "audit": "node scripts/audit-lighthouse.mjs"
   },
   "dependencies": {
     "@astrojs/react": "^7.1.1",
