@@ -4,6 +4,7 @@ queueMotion(() => {
   const nav = document.getElementById('navigation');
   const brandWord = nav.querySelector('.nav__brand');
   const word = hero.querySelector('.hero__word');
+  const stage = hero.querySelector('.hero__stage');
 
   let wordDot = word.querySelector('.hero__word-dot');
   if (!wordDot) {
@@ -12,6 +13,31 @@ queueMotion(() => {
     wordDot.setAttribute('aria-hidden', 'true');
     word.append(wordDot);
   }
+
+  const updateStagePosition = () => {
+    if (!hero || !stage) return;
+    if (window.matchMedia('(min-width: 900px) and (orientation: landscape)').matches) {
+      stage.style.top = '';
+      return;
+    }
+    const intro = hero.querySelector('.hero__intro');
+    const title = hero.querySelector('.hero__title');
+    const link = intro?.querySelector('.hero__link');
+    if (!intro || !title) return;
+
+    const heroRect = hero.getBoundingClientRect();
+    const linkRect = (link || intro).getBoundingClientRect();
+    const titleRect = title.getBoundingClientRect();
+
+    const introBottom = linkRect.bottom - heroRect.top;
+    const titleTop = titleRect.top - heroRect.top;
+    const center = introBottom + (titleTop - introBottom) / 2;
+    const ap = stage.offsetHeight || stage.offsetWidth;
+    stage.style.top = `${Math.round(center - ap / 2)}px`;
+  };
+
+  updateStagePosition();
+  window.addEventListener('resize', updateStagePosition, { passive: true });
 
   gsap.matchMedia().add('(prefers-reduced-motion: reduce)', () => {
     const onScroll = () => nav.classList.toggle('is-scrolled', window.scrollY > hero.offsetHeight * 0.35);
@@ -24,6 +50,8 @@ queueMotion(() => {
     if (!adjacent('hero', 'statement')) return;
     const target = document.getElementById('statement').querySelector('.statement__dot');
     const aperture = hero.querySelector('.hero__aperture');
+
+    ScrollTrigger.addEventListener('refreshInit', updateStagePosition);
 
     const geometry = () => {
       const from = layoutBox(aperture), to = layoutBox(target);
@@ -77,6 +105,7 @@ queueMotion(() => {
     return () => {
       nav.classList.remove('is-scrolled');
       gsap.set([word, wordDot], { clearProps: 'all' });
+      ScrollTrigger.removeEventListener('refreshInit', updateStagePosition);
     };
   });
 }, { first: true, id: 'scene:hero' });

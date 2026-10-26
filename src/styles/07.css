@@ -1,14 +1,16 @@
 @layer sections {
-#hero { --ap: min(65vw, 36svh); position: relative; z-index: 3; display: grid; grid-template-rows: 1fr auto; min-height: max(100svh, 560px); padding: 0 var(--space-1); background: var(--color-1); color: var(--color-2); overflow: clip visible; }
+#hero { --ap: min(60vw, 32svh); position: relative; z-index: 3; display: grid; grid-template-rows: 1fr auto; min-height: max(100svh, 560px); padding: 0 var(--space-1); background: var(--color-1); color: var(--color-2); overflow: clip visible; }
 #hero .hero__intro { display: grid; justify-items: start; align-content: start; gap: 18px; max-width: 32rem; padding-top: clamp(92px, 14svh, 150px); }
 #hero .hero__lead { color: var(--color-2); }
 #hero .hero__title { position: static; align-self: end; padding-bottom: clamp(16px, 4svh, 32px); white-space: nowrap; }
-#hero .hero__word, #hero .hero__mask, #hero .hero__glyphs { display: inline-block; list-style: none !important; text-decoration: none !important; }
+#hero .hero__title::before, #hero .hero__title::after,
 #hero .hero__word::before, #hero .hero__word::after,
 #hero .hero__mask::before, #hero .hero__mask::after,
-#hero .hero__glyphs::before, #hero .hero__glyphs::after { content: none !important; display: none !important; }
+#hero .hero__glyphs::before, #hero .hero__glyphs::after { content: none !important; display: none !important; width: 0 !important; height: 0 !important; border: none !important; background: transparent !important; }
+#hero .hero__title, #hero .hero__word, #hero .hero__mask, #hero .hero__glyphs { list-style: none !important; list-style-type: none !important; text-decoration: none !important; }
+#hero .hero__word, #hero .hero__mask, #hero .hero__glyphs { display: inline-block; }
 #hero .hero__period { position: static; display: inline-block; width: 0.19em; height: 0.19em; margin-left: 0.035em; border-radius: var(--radius-2); background: transparent; vertical-align: baseline; }
-#hero .hero__stage { position: absolute; left: calc(50% - var(--ap) / 2); top: calc(57% - var(--ap) / 2); width: var(--ap); height: var(--ap); font-size: 16px; line-height: 0; }
+#hero .hero__stage { position: absolute; left: calc(50% - var(--ap) / 2); top: calc(50% - var(--ap) / 2); width: var(--ap); height: var(--ap); font-size: 16px; line-height: 0; }
 #hero .hero__aperture { position: absolute; inset: 0; display: block; overflow: hidden; border-radius: var(--radius-2); background: var(--color-3); }
 #hero .hero__img { width: 100%; height: 100%; object-fit: cover; }
 #hero .hero__tint { position: absolute; inset: 0; background: var(--color-3); opacity: 0; }
@@ -66,7 +68,7 @@
   #hero.is-offscreen .hero__img, #hero.is-offscreen .hero__orbit { animation-play-state: paused; }
   @media (min-width: 900px) and (orientation: landscape) { #hero .hero__stage { transform-origin: 0 100%; animation-name: hero-inflate; } }
   @keyframes hero-mask { from, to { clip-path: inset(-40% -8% 0 -8%); } }
-  @keyframes hero-rise { from { transform: translateY(92%); } }
+  @keyframes hero-rise { from { transform: translateY(102%); } }
   @keyframes hero-swell { from { transform: scale(.72); } }
   @keyframes hero-inflate { from { transform: scale(.36); } }
   @keyframes hero-lift { from { transform: translateY(26px); } }

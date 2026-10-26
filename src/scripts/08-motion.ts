@@ -20,9 +20,14 @@ const effects = {
   }
 };
 function layoutBox(element) {
-  let x = 0, y = 0, node = element;
-  while (node) { x += node.offsetLeft; y += node.offsetTop; node = node.offsetParent; }
-  return { x, y, w: element.offsetWidth, h: element.offsetHeight, cx: x + element.offsetWidth / 2, cy: y + element.offsetHeight / 2 };
+  const rect = element.getBoundingClientRect();
+  const scrollX = window.pageXOffset || document.documentElement.scrollLeft || 0;
+  const scrollY = window.pageYOffset || document.documentElement.scrollTop || 0;
+  const gx = (window as any).gsap ? ((window as any).gsap.getProperty(element, 'x') || 0) : 0;
+  const gy = (window as any).gsap ? ((window as any).gsap.getProperty(element, 'y') || 0) : 0;
+  const x = rect.left + scrollX - Number(gx);
+  const y = rect.top + scrollY - Number(gy);
+  return { x, y, w: rect.width, h: rect.height, cx: x + rect.width / 2, cy: y + rect.height / 2 };
 }
 (window as any).layoutBox = layoutBox;
 function splitWords(element) {
