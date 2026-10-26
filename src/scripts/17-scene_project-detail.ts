@@ -22,6 +22,29 @@
   let savedScrollY = 0;
   let isAnimating = false;
 
+  const defaultHomepageTitle = "Viqar \u2014 Front-End, Mobile & Game Developer";
+  let originalTitle = document.title && !document.title.includes('— Viqar') ? document.title : defaultHomepageTitle;
+  let originalOgTitle = document.querySelector('meta[property="og:title"]')?.getAttribute('content');
+  if (!originalOgTitle || originalOgTitle.includes('— Viqar')) {
+    originalOgTitle = defaultHomepageTitle;
+  }
+  let originalTwitterTitle = document.querySelector('meta[name="twitter:title"]')?.getAttribute('content');
+  if (!originalTwitterTitle || originalTwitterTitle.includes('— Viqar')) {
+    originalTwitterTitle = defaultHomepageTitle;
+  }
+
+  const updateMetaTitle = (title: string) => {
+    document.title = title;
+    const ogTitleEl = document.querySelector('meta[property="og:title"]');
+    if (ogTitleEl) ogTitleEl.setAttribute('content', title);
+    const twitterTitleEl = document.querySelector('meta[name="twitter:title"]');
+    if (twitterTitleEl) twitterTitleEl.setAttribute('content', title);
+  };
+
+  const restoreMetaTitle = () => {
+    updateMetaTitle(originalTitle || defaultHomepageTitle);
+  };
+
   const populateProject = (project: any) => {
     const img = document.getElementById('pdetail-img');
     const hero = document.getElementById('pdetail-hero');
@@ -80,11 +103,25 @@
     if (!project || isAnimating) return;
     isAnimating = true;
 
+    // Save the original homepage title if currently on the homepage view
+    if (detailEl.hidden && document.title && !document.title.includes('— Viqar')) {
+      originalTitle = document.title;
+      const ogContent = document.querySelector('meta[property="og:title"]')?.getAttribute('content');
+      if (ogContent && !ogContent.includes('— Viqar')) originalOgTitle = ogContent;
+      const twContent = document.querySelector('meta[name="twitter:title"]')?.getAttribute('content');
+      if (twContent && !twContent.includes('— Viqar')) originalTwitterTitle = twContent;
+    }
+
+    // Immediately update browser tab title and dynamic Open Graph & Twitter meta tags
+    updateMetaTitle(`${project.name} — Viqar`);
+
     savedScrollY = window.scrollY;
     const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches || !window.gsap;
 
     if (pushState) {
-      history.pushState({ projectSlug: slug }, '', `/work/${slug}`);
+      const currentPath = window.location.pathname;
+      const prefix = currentPath.startsWith('/work/') ? '/work/' : '/project/';
+      history.pushState({ projectSlug: slug }, '', `${prefix}${slug}`);
     }
 
     if (reduce) {
@@ -152,6 +189,9 @@
   const closeProject = (pushState = true, targetAnchor: string | null = null) => {
     if (detailEl.hidden || isAnimating) return;
     isAnimating = true;
+
+    // Restore document title and meta tags back to default homepage title
+    restoreMetaTitle();
 
     const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches || !window.gsap;
 
@@ -285,32 +325,46 @@
   // Handle browser Back / Forward buttons
   window.addEventListener('popstate', () => {
     const path = window.location.pathname;
-    const workMatch = path.match(/^\/work\/([a-zA-Z0-9_-]+)/);
+    const projectMatch = path.match(/^\/(?:work|project)\/([a-zA-Z0-9_-]+)/);
 
-    if (workMatch) {
-      openProject(workMatch[1], false);
-    } else if (!detailEl.hidden) {
-      closeProject(false);
+    if (projectMatch) {
+      const slug = projectMatch[1];
+      openProject(slug, false);
+      const project = projectsData.find(p => p.slug === slug);
+      if (project) {
+        updateMetaTitle(`${project.name} — Viqar`);
+      }
+    } else {
+      if (!detailEl.hidden) {
+        closeProject(false);
+      }
+      restoreMetaTitle();
     }
   });
 
-  // Ensure scroll is ready if direct load on /work/:slug
+  // Ensure scroll is ready if direct load on /work/:slug or /project/:slug
   if (!detailEl.hidden) {
     window.lenis?.start();
     window.lenis?.resize();
     window.ScrollTrigger?.refresh();
   }
 
-  // Handle initial page load if URL has /work/:slug
+  // Handle initial page load if URL has /work/:slug or /project/:slug
   const initialPath = window.location.pathname;
-  const initialWorkMatch = initialPath.match(/^\/work\/([a-zA-Z0-9_-]+)/);
+  const initialProjectMatch = initialPath.match(/^\/(?:work|project)\/([a-zA-Z0-9_-]+)/);
 
-  if (initialWorkMatch && detailEl.hidden) {
-    const initialSlug = initialWorkMatch[1];
-    if (document.readyState === 'complete') {
-      openProject(initialSlug, false);
-    } else {
-      window.addEventListener('load', () => openProject(initialSlug, false), { once: true });
+  if (initialProjectMatch) {
+    const initialSlug = initialProjectMatch[1];
+    const initialProject = projectsData.find(p => p.slug === initialSlug);
+    if (initialProject) {
+      updateMetaTitle(`${initialProject.name} — Viqar`);
+    }
+    if (detailEl.hidden) {
+      if (document.readyState === 'complete') {
+        openProject(initialSlug, false);
+      } else {
+        window.addEventListener('load', () => openProject(initialSlug, false), { once: true });
+      }
     }
   }
 })();
