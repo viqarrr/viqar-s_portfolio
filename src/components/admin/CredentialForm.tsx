@@ -93,7 +93,7 @@ export default function CredentialForm({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md overflow-y-auto">
-      <div className="bg-[#18171f] rounded-3xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl space-y-6 my-8 max-h-[90vh] overflow-y-auto admin-scrollbar">
+      <div className="bg-[#1f1d26] rounded-[28px] max-w-2xl w-full p-6 sm:p-8 shadow-2xl space-y-6 my-8 max-h-[90vh] overflow-y-auto admin-scrollbar border border-white/[0.04]">
         <div className="flex items-center justify-between border-b border-white/[0.06] pb-4">
           <h3 className="text-xl font-heading font-extrabold text-white tracking-tight">
             {credential?.id ? 'Edit Credential' : 'Create New Credential'}
@@ -185,10 +185,10 @@ export default function CredentialForm({
               </label>
               <select
                 {...register('status')}
-                className="w-full px-4 py-3 bg-white/[0.04] focus:bg-white/[0.07] text-white rounded-xl text-sm outline-none ring-1 ring-white/10 focus:ring-2 focus:ring-[#6c3cff] min-h-[44px] transition-all"
+                className="w-full px-4 py-3 bg-white/[0.04] focus:bg-white/[0.07] text-white rounded-[14px] text-sm outline-none ring-1 ring-white/10 focus:ring-2 focus:ring-[#f6db00] min-h-[44px] transition-all"
               >
-                <option value="draft" className="bg-[#18171f] text-white">Draft</option>
-                <option value="published" className="bg-[#18171f] text-white">Published</option>
+                <option value="draft" className="bg-[#1f1d26] text-white">Draft</option>
+                <option value="published" className="bg-[#1f1d26] text-white">Published</option>
               </select>
             </div>
           </div>

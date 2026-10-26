@@ -60,9 +60,9 @@ export default function MediaGallery() {
   return (
     <div className="space-y-8">
       {/* Upload Zone */}
-      <div className="p-6 md:p-8 bg-[#18171f] rounded-3xl space-y-5 shadow-xl">
+      <div className="p-6 md:p-8 bg-[#1f1d26] rounded-[28px] space-y-5 shadow-xl border border-white/[0.04]">
         <h3 className="text-base font-heading font-extrabold text-white tracking-tight flex items-center gap-2.5">
-          <span className="w-2.5 h-2.5 rounded-full bg-[#6c3cff]"></span>
+          <span className="w-2 h-2 rounded-full bg-[#f6db00]"></span>
           Upload New Asset
         </h3>
         <MediaUploader onUploadComplete={() => fetchFiles()} />
@@ -82,7 +82,7 @@ export default function MediaGallery() {
         {loading ? (
           <div className="p-12 text-center text-[#aaa7b4] text-sm">Loading media files...</div>
         ) : files.length === 0 ? (
-          <div className="p-12 text-center bg-[#18171f] rounded-3xl text-[#5d5a67] text-sm">
+          <div className="p-12 text-center bg-[#1f1d26] rounded-[28px] text-[#5d5a67] text-sm border border-white/[0.04]">
             No media files found in the storage bucket. Upload your first asset above.
           </div>
         ) : (
@@ -90,7 +90,7 @@ export default function MediaGallery() {
             {files.map((file) => (
               <div
                 key={file.path}
-                className="bg-[#18171f] rounded-2xl overflow-hidden group flex flex-col justify-between shadow-lg hover:shadow-xl transition-all duration-200"
+                className="bg-[#1f1d26] rounded-[20px] overflow-hidden group flex flex-col justify-between shadow-lg hover:shadow-xl transition-all duration-200 border border-white/[0.04]"
               >
                 <div className="h-36 bg-black/40 flex items-center justify-center p-3 relative overflow-hidden">
                   <img
@@ -107,7 +107,7 @@ export default function MediaGallery() {
                     <button
                       type="button"
                       onClick={() => copyUrl(file.publicUrl)}
-                      className="text-xs font-semibold text-[#6c3cff] hover:text-[#a78bfa] min-h-[36px] flex items-center active:scale-95 transition-all"
+                      className="text-xs font-semibold text-[#f6db00] hover:text-[#e6cc00] min-h-[36px] flex items-center active:scale-95 transition-all"
                     >
                       {copiedPath === file.publicUrl ? 'Copied!' : 'Copy URL'}
                     </button>

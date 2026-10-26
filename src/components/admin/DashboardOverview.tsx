@@ -10,75 +10,164 @@ export interface CollectionCounts {
 
 interface DashboardOverviewProps {
   counts: CollectionCounts;
-  userEmail: string;
+  userEmail?: string;
 }
 
-export default function DashboardOverview({ counts, userEmail }: DashboardOverviewProps) {
+export default function DashboardOverview({ counts }: DashboardOverviewProps) {
   const collections = [
     {
       title: 'Projects',
-      count: counts.projects,
+      countBadge: `${counts.projects}`,
       href: '/admin/projects',
       desc: 'Portfolio showcase cases and featured work',
-      icon: (
-        <svg className="w-6 h-6 text-[#6c3cff]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+      heroGraphic: (
+        <svg
+          viewBox="0 0 96 96"
+          className="w-20 h-20 sm:w-24 sm:h-24 text-[#aaa7b4] opacity-35 group-hover:opacity-60 transition-opacity duration-300"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
+        >
+          {/* Layered Showcase Windows / Screens */}
+          <rect x="8" y="16" width="80" height="60" rx="10" fill="currentColor" fillOpacity="0.1" stroke="currentColor" strokeWidth="2" strokeOpacity="0.6" />
+          <path d="M8 28H88" stroke="currentColor" strokeWidth="1.5" strokeOpacity="0.4" />
+          <circle cx="18" cy="22" r="2.5" fill="currentColor" fillOpacity="0.8" />
+          <circle cx="26" cy="22" r="2.5" fill="currentColor" fillOpacity="0.5" />
+          <circle cx="34" cy="22" r="2.5" fill="currentColor" fillOpacity="0.3" />
+          {/* Inner Content Card Preview */}
+          <rect x="18" y="36" width="36" height="26" rx="6" fill="currentColor" fillOpacity="0.15" stroke="currentColor" strokeWidth="1.5" strokeOpacity="0.5" />
+          <rect x="60" y="36" width="20" height="5" rx="2" fill="currentColor" fillOpacity="0.5" />
+          <rect x="60" y="45" width="14" height="4" rx="2" fill="currentColor" fillOpacity="0.3" />
+          <rect x="60" y="53" width="18" height="4" rx="2" fill="currentColor" fillOpacity="0.2" />
+          {/* Floating Action Star / Badge */}
+          <circle cx="70" cy="64" r="13" fill="#f6db00" fillOpacity="0.85" />
+          <path d="M70 57L72.2 61.8L77.5 62.5L73.6 66L74.6 71.2L70 68.7L65.4 71.2L66.4 66L62.5 62.5L67.8 61.8L70 57Z" fill="#0d0c11" />
         </svg>
       ),
     },
     {
       title: 'Skills & Tools',
-      count: counts.skills,
+      countBadge: `${counts.skills}`,
       href: '/admin/skills',
       desc: 'Interactive radar nodes and categorized stack',
-      icon: (
-        <svg className="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+      heroGraphic: (
+        <svg
+          viewBox="0 0 96 96"
+          className="w-20 h-20 sm:w-24 sm:h-24 text-[#aaa7b4] opacity-35 group-hover:opacity-60 transition-opacity duration-300"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
+        >
+          {/* Orbital Radar System */}
+          <circle cx="48" cy="48" r="38" stroke="currentColor" strokeWidth="1.5" strokeOpacity="0.3" strokeDasharray="4 4" />
+          <circle cx="48" cy="48" r="26" stroke="currentColor" strokeWidth="1.8" strokeOpacity="0.5" />
+          <circle cx="48" cy="48" r="14" fill="currentColor" fillOpacity="0.12" stroke="currentColor" strokeWidth="2" strokeOpacity="0.7" />
+          <circle cx="48" cy="48" r="5" fill="#f6db00" />
+          {/* Sweep Lines */}
+          <line x1="48" y1="10" x2="48" y2="86" stroke="currentColor" strokeWidth="1.5" strokeOpacity="0.25" />
+          <line x1="10" y1="48" x2="86" y2="48" stroke="currentColor" strokeWidth="1.5" strokeOpacity="0.25" />
+          {/* Constellation Nodes */}
+          <circle cx="70" cy="32" r="6" fill="currentColor" fillOpacity="0.3" stroke="currentColor" strokeWidth="2" />
+          <circle cx="26" cy="62" r="5" fill="currentColor" fillOpacity="0.3" stroke="currentColor" strokeWidth="2" />
+          <circle cx="64" cy="68" r="4.5" fill="#f6db00" fillOpacity="0.7" stroke="#f6db00" strokeWidth="1.5" />
+          <path d="M48 48L70 32M48 48L26 62M48 48L64 68" stroke="currentColor" strokeWidth="1.5" strokeOpacity="0.4" />
         </svg>
       ),
     },
     {
       title: 'Credentials & Honours',
-      count: counts.credentials,
+      countBadge: `${counts.credentials}`,
       href: '/admin/credentials',
       desc: 'Stacked cards for recognitions and achievements',
-      icon: (
-        <svg className="w-6 h-6 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+      heroGraphic: (
+        <svg
+          viewBox="0 0 96 96"
+          className="w-20 h-20 sm:w-24 sm:h-24 text-[#aaa7b4] opacity-35 group-hover:opacity-60 transition-opacity duration-300"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
+        >
+          {/* Ribbon Tail */}
+          <path d="M32 58L22 86L48 74L74 86L64 58" fill="currentColor" fillOpacity="0.1" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" strokeOpacity="0.5" />
+          {/* Rosette Medal */}
+          <circle cx="48" cy="40" r="28" fill="currentColor" fillOpacity="0.08" stroke="currentColor" strokeWidth="2" strokeOpacity="0.6" />
+          <circle cx="48" cy="40" r="22" stroke="currentColor" strokeWidth="1.5" strokeOpacity="0.4" strokeDasharray="3 3" />
+          <circle cx="48" cy="40" r="16" fill="currentColor" fillOpacity="0.15" />
+          {/* Star Laureate */}
+          <path d="M48 24L52.8 34.6L64 36.2L55.8 44.4L58 56L48 50.4L38 56L40.2 44.4L32 36.2L43.2 34.6L48 24Z" fill="#f6db00" />
         </svg>
       ),
     },
     {
       title: 'Work Experiences',
-      count: counts.experiences,
+      countBadge: `${counts.experiences}`,
       href: '/admin/experiences',
       desc: 'Chronological career milestones and positions',
-      icon: (
-        <svg className="w-6 h-6 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+      heroGraphic: (
+        <svg
+          viewBox="0 0 96 96"
+          className="w-20 h-20 sm:w-24 sm:h-24 text-[#aaa7b4] opacity-35 group-hover:opacity-60 transition-opacity duration-300"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
+        >
+          {/* Executive Career Briefcase */}
+          <rect x="12" y="32" width="72" height="48" rx="10" fill="currentColor" fillOpacity="0.08" stroke="currentColor" strokeWidth="2.2" strokeOpacity="0.6" />
+          <path d="M34 32V23C34 19.6863 36.6863 17 40 17H56C59.3137 17 62 19.6863 62 23V32" stroke="currentColor" strokeWidth="2.2" strokeOpacity="0.7" />
+          <line x1="12" y1="48" x2="84" y2="48" stroke="currentColor" strokeWidth="1.8" strokeOpacity="0.3" />
+          <rect x="41" y="44" width="14" height="10" rx="3" fill="#f6db00" fillOpacity="0.85" />
+          {/* Milestone Growth Chart Line */}
+          <path d="M22 66L38 56L50 62L70 48" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" strokeOpacity="0.7" />
+          <circle cx="70" cy="48" r="4" fill="#f6db00" />
         </svg>
       ),
     },
     {
       title: 'Contact Links',
-      count: counts.contactLinks,
+      countBadge: `${counts.contactLinks}`,
       href: '/admin/contact',
       desc: 'Social channels and direct contact destinations',
-      icon: (
-        <svg className="w-6 h-6 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+      heroGraphic: (
+        <svg
+          viewBox="0 0 96 96"
+          className="w-20 h-20 sm:w-24 sm:h-24 text-[#aaa7b4] opacity-35 group-hover:opacity-60 transition-opacity duration-300"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
+        >
+          {/* Global Communication Sphere */}
+          <circle cx="48" cy="48" r="34" fill="currentColor" fillOpacity="0.08" stroke="currentColor" strokeWidth="2.2" strokeOpacity="0.6" />
+          <ellipse cx="48" cy="48" rx="15" ry="34" stroke="currentColor" strokeWidth="1.5" strokeOpacity="0.5" />
+          <line x1="14" y1="48" x2="82" y2="48" stroke="currentColor" strokeWidth="1.5" strokeOpacity="0.5" />
+          <path d="M20 33C30 38 40 40 48 40C56 40 66 38 76 33" stroke="currentColor" strokeWidth="1.5" strokeOpacity="0.3" />
+          <path d="M20 63C30 58 40 56 48 56C56 56 66 58 76 63" stroke="currentColor" strokeWidth="1.5" strokeOpacity="0.3" />
+          {/* Active Beacon Signal */}
+          <circle cx="68" cy="28" r="6" fill="#f6db00" />
+          <path d="M68 18C74 20 80 25 82 31" stroke="#f6db00" strokeWidth="2.2" strokeLinecap="round" strokeOpacity="0.7" />
         </svg>
       ),
     },
     {
       title: 'Site Settings',
-      count: 1,
+      countBadge: '1 configured',
       href: '/admin/settings',
       desc: 'Global metadata, hero lead, and SEO settings',
-      icon: (
-        <svg className="w-6 h-6 text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+      heroGraphic: (
+        <svg
+          viewBox="0 0 96 96"
+          className="w-20 h-20 sm:w-24 sm:h-24 text-[#aaa7b4] opacity-35 group-hover:opacity-60 transition-opacity duration-300"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
+        >
+          {/* Precision Cogs & Knobs */}
+          <circle cx="42" cy="42" r="20" fill="currentColor" fillOpacity="0.08" stroke="currentColor" strokeWidth="2.2" strokeOpacity="0.6" />
+          <circle cx="42" cy="42" r="8" fill="#f6db00" fillOpacity="0.85" />
+          <path d="M42 16V22M42 62V68M16 42H22M62 42H68M24 24L28 28M56 56L60 60M24 60L28 56M56 28L60 24" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeOpacity="0.7" />
+          {/* Satellite Toggle Matrix */}
+          <circle cx="70" cy="70" r="14" fill="currentColor" fillOpacity="0.08" stroke="currentColor" strokeWidth="2" strokeOpacity="0.5" />
+          <circle cx="70" cy="70" r="5" fill="#f6db00" />
+          <path d="M70 52V56M70 84V88M52 70H56M84 70H88" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeOpacity="0.5" />
         </svg>
       ),
     },
@@ -86,70 +175,66 @@ export default function DashboardOverview({ counts, userEmail }: DashboardOvervi
 
   return (
     <div className="space-y-8">
-      {/* Welcome Banner */}
-      <div className="p-6 md:p-8 bg-[#18171f] rounded-3xl shadow-apple-card flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-        <div className="space-y-1.5">
-          <div className="flex items-center gap-2">
-            <span className="w-2.5 h-2.5 rounded-full bg-[#6c3cff]"></span>
-            <span className="text-xs font-semibold uppercase tracking-wider text-[#aaa7b4]">Control Center</span>
-          </div>
-          <h2 className="font-heading font-extrabold text-2xl md:text-3xl text-white tracking-tight">
-            Welcome back
-          </h2>
+      {/* Clean Page Header (no AI slop / banner cards) */}
+      <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-2 border-b border-white/[0.04]">
+        <div className="space-y-1">
+          <h1 className="font-display font-bold text-3xl md:text-4xl text-white tracking-tight">
+            Overview
+          </h1>
           <p className="text-sm text-[#aaa7b4]">
-            Signed in as <span className="text-white font-medium">{userEmail}</span> with full administrative privileges.
+            Manage, organize, and publish content across your portfolio collections.
           </p>
         </div>
-        <div className="flex flex-wrap items-center gap-3">
+        <div className="flex items-center gap-3 flex-shrink-0">
           <a
             href="/admin/preview"
-            className="inline-flex items-center justify-center min-h-[44px] px-5 py-2.5 text-xs font-semibold bg-[#6c3cff] hover:bg-[#5a2de0] text-white rounded-xl shadow-md transition-all active:scale-[0.98]"
+            className="inline-flex items-center gap-2 px-4 py-2 text-xs font-semibold bg-[#f6db00] hover:bg-[#e6cc00] text-[#0d0c11] rounded-full shadow-sm transition-all active:scale-[0.98]"
           >
-            Draft Preview &rarr;
+            <span>Draft Preview</span>
           </a>
           <a
             href="/"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center min-h-[44px] px-5 py-2.5 text-xs font-semibold bg-white/[0.06] hover:bg-white/[0.1] text-white rounded-xl transition-all active:scale-[0.98]"
+            className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold bg-[#1f1d26] hover:bg-white/[0.1] text-white rounded-full border border-white/[0.08] transition-all active:scale-[0.98]"
           >
-            Live Site &nearr;
+            <span>Live Site</span>
+            <span aria-hidden="true" className="text-sm leading-none">↗</span>
           </a>
         </div>
       </div>
 
-      {/* Grid of collections */}
+      {/* Asymmetric 2-Column Collection Cards Grid */}
       <div className="space-y-4">
-        <h3 className="font-heading font-bold text-sm uppercase tracking-wider text-[#aaa7b4] px-1">
-          Content Collections
-        </h3>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {collections.map((col) => (
             <a
               key={col.title}
               href={col.href}
-              className="p-6 bg-[#18171f] hover:bg-[#1f1d26] rounded-3xl transition-all duration-150 shadow-apple-card group flex flex-col justify-between active:scale-[0.98] min-h-[160px]"
+              className="group relative flex flex-row items-center justify-between p-6 bg-[#1f1d26] hover:bg-[#282631] rounded-[28px] border border-white/[0.04] hover:border-white/[0.08] transition-all duration-300 overflow-hidden shadow-apple-card hover:shadow-apple-float min-h-[175px] select-none"
             >
-              <div>
-                <div className="flex items-center justify-between mb-4">
-                  <div className="w-12 h-12 rounded-2xl bg-white/[0.04] flex items-center justify-center">
-                    {col.icon}
-                  </div>
-                  <span className="font-heading font-extrabold text-3xl text-white group-hover:text-[#6c3cff] transition-colors">
-                    {col.count}
-                  </span>
+              {/* Left Column (Content & Action) */}
+              <div className="flex-1 flex flex-col justify-between h-full z-10 pr-3 min-w-0">
+                <div className="space-y-1.5">
+                  <h2 className="font-display font-bold text-xl text-white tracking-tight truncate">
+                    {col.countBadge} {col.title}
+                  </h2>
+                  <p className="text-xs text-[#aaa7b4] leading-relaxed line-clamp-2">
+                    {col.desc}
+                  </p>
                 </div>
-                <h4 className="font-heading font-bold text-lg text-white group-hover:text-[#6c3cff] transition-colors">
-                  {col.title}
-                </h4>
-                <p className="text-xs text-[#aaa7b4] mt-1 leading-relaxed">
-                  {col.desc}
-                </p>
+
+                  <span className="rounded-full bg-[#f6db00] text-[#0d0c11] font-semibold text-xs px-4 py-2 hover:opacity-90 transition inline-flex items-center gap-1.5 shadow-sm flex-shrink-0">
+                    <span>Manage</span>
+                    <span aria-hidden="true" className="group-hover:translate-x-0.5 transition-transform duration-200">&rarr;</span>
+                  </span>
               </div>
 
-              <div className="mt-5 pt-3 border-t border-white/[0.06] flex items-center justify-between text-xs font-semibold text-[#aaa7b4] group-hover:text-[#6c3cff] transition-colors">
-                <span>Manage entries</span>
-                <span className="transform group-hover:translate-x-1 transition-transform">&rarr;</span>
+              {/* Right Column (Visual Hero — Oversized Thematic SVG) */}
+              <div className="relative flex-shrink-0 w-20 h-20 sm:w-24 sm:h-24 flex items-center justify-center self-center z-10 ml-2">
+                <div className="transform group-hover:scale-105 transition-transform duration-300">
+                  {col.heroGraphic}
+                </div>
               </div>
             </a>
           ))}

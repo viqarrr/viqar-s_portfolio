@@ -70,7 +70,7 @@ export default function ContactManager({ initialLinks }: ContactManagerProps) {
           <div className="flex items-center gap-3.5">
             {item.icon_svg && (
               <div
-                className="w-10 h-10 p-2 rounded-xl bg-white/[0.04] text-[#6c3cff] flex items-center justify-center flex-shrink-0"
+                className="w-10 h-10 p-2 rounded-[14px] bg-white/[0.04] text-[#f6db00] flex items-center justify-center flex-shrink-0"
                 dangerouslySetInnerHTML={{ __html: item.icon_svg }}
               />
             )}

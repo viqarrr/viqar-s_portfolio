@@ -20,6 +20,19 @@
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
+:root {
+  --color-1: #0d0c11;
+  --color-2: #ffffff;
+  --color-3: #f6db00;
+  --color-4: #efeef4;
+  --color-5: #aaa7b4;
+  --color-6: #5d5a67;
+  --color-7: #1f1d26;
+  --radius-1: 28px;
+  --radius-2: 999px;
+  --radius-3: 14px;
+}
+
 @layer base {
   body.admin-body {
     background-color: #0d0c11;
@@ -38,23 +51,48 @@
   }
 }
 
-/* Custom Apple-inspired scrollbars */
-.admin-scrollbar::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
+/* Native dark scrollbars for textareas, inputs, and all scrollable containers in Admin */
+body.admin-body textarea,
+body.admin-body select,
+body.admin-body pre,
+body.admin-body .admin-scrollbar,
+body.admin-body * {
+  scrollbar-width: thin;
+  scrollbar-color: #1f1d26 transparent;
 }
 
-.admin-scrollbar::-webkit-scrollbar-track {
+body.admin-body textarea::-webkit-scrollbar,
+body.admin-body select::-webkit-scrollbar,
+body.admin-body pre::-webkit-scrollbar,
+body.admin-body .admin-scrollbar::-webkit-scrollbar,
+body.admin-body *::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+body.admin-body textarea::-webkit-scrollbar-track,
+body.admin-body select::-webkit-scrollbar-track,
+body.admin-body pre::-webkit-scrollbar-track,
+body.admin-body .admin-scrollbar::-webkit-scrollbar-track,
+body.admin-body *::-webkit-scrollbar-track {
   background: transparent;
 }
 
-.admin-scrollbar::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.12);
+body.admin-body textarea::-webkit-scrollbar-thumb,
+body.admin-body select::-webkit-scrollbar-thumb,
+body.admin-body pre::-webkit-scrollbar-thumb,
+body.admin-body .admin-scrollbar::-webkit-scrollbar-thumb,
+body.admin-body *::-webkit-scrollbar-thumb {
+  background: #1f1d26;
   border-radius: 9999px;
 }
 
-.admin-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.22);
+body.admin-body textarea::-webkit-scrollbar-thumb:hover,
+body.admin-body select::-webkit-scrollbar-thumb:hover,
+body.admin-body pre::-webkit-scrollbar-thumb:hover,
+body.admin-body .admin-scrollbar::-webkit-scrollbar-thumb:hover,
+body.admin-body *::-webkit-scrollbar-thumb:hover {
+  background: #2a2734;
 }
 
 /* iOS Safe area padding utility */

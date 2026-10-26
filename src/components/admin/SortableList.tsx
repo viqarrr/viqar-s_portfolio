@@ -67,8 +67,8 @@ function SortableRow({
     <div
       ref={setNodeRef}
       style={style}
-      className={`p-4 md:p-5 bg-[#18171f] hover:bg-[#1f1d26] rounded-2xl transition-all duration-150 shadow-apple-card flex flex-col md:flex-row md:items-center justify-between gap-4 select-none ${
-        isDragging ? 'scale-[1.02] shadow-apple-float bg-[#1f1d26] ring-2 ring-[#6c3cff]' : ''
+      className={`p-4 md:p-5 bg-[#1f1d26] hover:bg-[#282631] rounded-[28px] transition-all duration-150 shadow-apple-card flex flex-col md:flex-row md:items-center justify-between gap-4 select-none border border-white/[0.04] ${
+        isDragging ? 'scale-[1.02] shadow-apple-float bg-[#282631] ring-2 ring-[#f6db00]' : ''
       }`}
     >
       {/* Left: Drag grip + Content */}
@@ -247,7 +247,7 @@ export default function SortableList({
   return (
     <div className="space-y-4">
       {feedback && (
-        <div className="p-4 bg-[#6c3cff]/15 text-white text-xs font-semibold rounded-2xl flex items-center justify-between animate-in fade-in">
+        <div className="p-4 bg-[#f6db00]/15 text-[#f6db00] text-xs font-semibold rounded-[14px] flex items-center justify-between border border-[#f6db00]/20 animate-in fade-in">
           <span>{feedback}</span>
           <button
             type="button"
@@ -260,7 +260,7 @@ export default function SortableList({
       )}
 
       {items.length === 0 ? (
-        <div className="p-12 text-center bg-[#18171f] rounded-3xl text-[#aaa7b4] text-sm">
+        <div className="p-12 text-center bg-[#1f1d26] rounded-[28px] text-[#aaa7b4] text-sm border border-white/[0.04]">
           No entries found. Click "+ Add New" to create the first record.
         </div>
       ) : (

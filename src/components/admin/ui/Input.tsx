@@ -15,16 +15,16 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
         {label && (
           <label htmlFor={inputId} className="block text-xs font-semibold text-[#aaa7b4] uppercase tracking-wider">
             {label}
-            {props.required && <span className="text-[#6c3cff] ml-1">*</span>}
+            {props.required && <span className="text-[#f6db00] ml-1">*</span>}
           </label>
         )}
         <input
           ref={ref}
           id={inputId}
-          className={`w-full min-h-[44px] px-4 py-3 bg-white/[0.04] hover:bg-white/[0.06] focus:bg-white/[0.08] text-sm text-white placeholder-[#5d5a67] rounded-xl outline-none ring-1 transition-all duration-150 disabled:opacity-40 disabled:cursor-not-allowed ${
+          className={`w-full min-h-[44px] px-4 py-3 bg-white/[0.04] hover:bg-white/[0.06] focus:bg-white/[0.08] text-sm text-white placeholder-[#5d5a67] rounded-[14px] outline-none ring-1 transition-all duration-150 disabled:opacity-40 disabled:cursor-not-allowed ${
             error
               ? 'ring-red-500/80 focus:ring-red-500'
-              : 'ring-white/10 focus:ring-2 focus:ring-[#6c3cff]'
+              : 'ring-white/10 focus:ring-2 focus:ring-[#f6db00]'
           } ${className}`}
           {...props}
         />
@@ -51,17 +51,17 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
         {label && (
           <label htmlFor={inputId} className="block text-xs font-semibold text-[#aaa7b4] uppercase tracking-wider">
             {label}
-            {props.required && <span className="text-[#6c3cff] ml-1">*</span>}
+            {props.required && <span className="text-[#f6db00] ml-1">*</span>}
           </label>
         )}
         <textarea
           ref={ref}
           id={inputId}
           rows={rows}
-          className={`w-full px-4 py-3 bg-white/[0.04] hover:bg-white/[0.06] focus:bg-white/[0.08] text-sm text-white placeholder-[#5d5a67] rounded-xl outline-none ring-1 transition-all duration-150 disabled:opacity-40 disabled:cursor-not-allowed ${
+          className={`w-full px-4 py-3 bg-white/[0.04] hover:bg-white/[0.06] focus:bg-white/[0.08] text-sm text-white placeholder-[#5d5a67] rounded-[14px] outline-none ring-1 transition-all duration-150 disabled:opacity-40 disabled:cursor-not-allowed admin-scrollbar resize-y ${
             error
               ? 'ring-red-500/80 focus:ring-red-500'
-              : 'ring-white/10 focus:ring-2 focus:ring-[#6c3cff]'
+              : 'ring-white/10 focus:ring-2 focus:ring-[#f6db00]'
           } ${className}`}
           {...props}
         />

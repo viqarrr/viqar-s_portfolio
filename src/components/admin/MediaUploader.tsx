@@ -140,13 +140,13 @@ export default function MediaUploader({ onUploadComplete, folder = 'general' }: 
         onDragLeave={() => setDragOver(false)}
         onDrop={handleDrop}
         onClick={() => fileInputRef.current?.click()}
-        className={`p-8 md:p-12 rounded-3xl text-center transition-all flex flex-col items-center justify-center gap-4 cursor-pointer ${
+        className={`p-8 md:p-12 rounded-[28px] text-center transition-all flex flex-col items-center justify-center gap-4 cursor-pointer ${
           dragOver
-            ? 'bg-[#6c3cff]/15 ring-2 ring-[#6c3cff]'
+            ? 'bg-[#f6db00]/15 ring-2 ring-[#f6db00]'
             : 'bg-white/[0.03] hover:bg-white/[0.05] ring-1 ring-white/10 hover:ring-white/20'
         }`}
       >
-        <div className="w-14 h-14 rounded-2xl bg-[#6c3cff]/15 text-[#6c3cff] flex items-center justify-center">
+        <div className="w-14 h-14 rounded-2xl bg-[#f6db00]/15 text-[#f6db00] flex items-center justify-center">
           <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
           </svg>
@@ -155,7 +155,7 @@ export default function MediaUploader({ onUploadComplete, folder = 'general' }: 
         <div>
           <p className="text-sm font-medium text-white">
             Drag and drop an image here, or{' '}
-            <span className="text-[#a78bfa] underline underline-offset-2 font-semibold">
+            <span className="text-[#f6db00] underline underline-offset-2 font-semibold">
               browse
             </span>
           </p>
@@ -175,8 +175,8 @@ export default function MediaUploader({ onUploadComplete, folder = 'general' }: 
         />
 
         {uploading && (
-          <div className="flex items-center gap-2 text-xs text-[#a78bfa] mt-2 font-medium">
-            <svg className="animate-spin w-4 h-4 text-[#6c3cff]" fill="none" viewBox="0 0 24 24">
+          <div className="flex items-center gap-2 text-xs text-[#f6db00] mt-2 font-medium">
+            <svg className="animate-spin w-4 h-4 text-[#f6db00]" fill="none" viewBox="0 0 24 24">
               <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
               <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z" />
             </svg>
@@ -186,11 +186,11 @@ export default function MediaUploader({ onUploadComplete, folder = 'general' }: 
       </div>
 
       {preview && (
-        <div className="p-4 bg-[#18171f] rounded-2xl flex items-center gap-4 shadow-lg">
+        <div className="p-4 bg-[#1f1d26] rounded-[20px] flex items-center gap-4 shadow-lg border border-white/[0.04]">
           <img
             src={preview.url}
             alt="Uploaded preview"
-            className="w-16 h-16 rounded-xl object-cover bg-white/[0.04] flex-shrink-0"
+            className="w-16 h-16 rounded-[14px] object-cover bg-white/[0.04] flex-shrink-0"
           />
           <div className="min-w-0 flex-1">
             <p className="text-xs font-semibold text-white">Latest Upload:</p>
@@ -199,7 +199,7 @@ export default function MediaUploader({ onUploadComplete, folder = 'general' }: 
               readOnly
               value={preview.url}
               onClick={(e) => (e.target as HTMLInputElement).select()}
-              className="w-full mt-1.5 px-3 py-2 text-xs font-mono bg-white/[0.04] rounded-xl text-[#aaa7b4] ring-1 ring-white/10 cursor-pointer select-all outline-none focus:ring-2 focus:ring-[#6c3cff]"
+              className="w-full mt-1.5 px-3 py-2 text-xs font-mono bg-white/[0.04] rounded-[14px] text-[#aaa7b4] ring-1 ring-white/10 cursor-pointer select-all outline-none focus:ring-2 focus:ring-[#f6db00]"
             />
             {preview.width && preview.height && (
               <p className="text-xs text-[#5d5a67] mt-1">

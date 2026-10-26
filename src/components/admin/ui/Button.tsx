@@ -16,19 +16,19 @@ export function Button({
   ...props
 }: ButtonProps) {
   const baseStyles =
-    'inline-flex items-center justify-center font-medium rounded-xl transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-[#6c3cff]/50 disabled:opacity-40 disabled:pointer-events-none select-none active:scale-[0.98] min-h-[44px]';
+    'inline-flex items-center justify-center font-semibold rounded-full transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-[#f6db00]/50 disabled:opacity-40 disabled:pointer-events-none select-none active:scale-[0.98] min-h-[44px]';
 
   const sizeStyles = {
-    sm: 'text-xs px-3.5 py-2 gap-1.5 min-w-[44px]',
-    md: 'text-sm px-4.5 py-2.5 gap-2 min-w-[44px]',
-    lg: 'text-base px-6 py-3 gap-2.5 min-w-[48px] rounded-2xl',
+    sm: 'text-xs px-4 py-2 gap-1.5 min-w-[44px]',
+    md: 'text-sm px-5 py-2.5 gap-2 min-w-[44px]',
+    lg: 'text-base px-6 py-3 gap-2.5 min-w-[48px]',
   };
 
   const variantStyles = {
     primary:
-      'bg-[#6c3cff] hover:bg-[#5a2de0] text-white shadow-sm font-semibold',
+      'bg-[#f6db00] hover:bg-[#e6cc00] text-[#0d0c11] shadow-sm font-semibold',
     secondary:
-      'bg-[#18171f] hover:bg-[#1f1d26] text-white',
+      'bg-[#1f1d26] hover:bg-[#282631] text-white border border-white/[0.06]',
     destructive:
       'bg-red-500/15 hover:bg-red-500/25 text-red-400 font-medium',
     ghost:
@@ -58,7 +58,7 @@ export function Button({
           <path
             className="opacity-75"
             fill="currentColor"
-            d="M4 12a8 8 0 018-8v8H4z"
+            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
           />
         </svg>
       )}

@@ -92,9 +92,9 @@ export default function SettingsForm({ initialSettings }: SettingsFormProps) {
       )}
 
       {/* General & SEO */}
-      <div className="p-6 md:p-8 bg-[#18171f] rounded-3xl space-y-6 shadow-xl">
+      <div className="p-6 md:p-8 bg-[#1f1d26] rounded-[28px] space-y-6 shadow-xl border border-white/[0.04]">
         <h2 className="text-lg font-heading font-extrabold text-white pb-3 border-b border-white/[0.06] flex items-center gap-2.5">
-          <span className="w-2.5 h-2.5 rounded-full bg-[#6c3cff]"></span>
+          <span className="w-2 h-2 rounded-full bg-[#f6db00]"></span>
           General & Metadata
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -144,9 +144,9 @@ export default function SettingsForm({ initialSettings }: SettingsFormProps) {
       </div>
 
       {/* Hero Section */}
-      <div className="p-6 md:p-8 bg-[#18171f] rounded-3xl space-y-6 shadow-xl">
+      <div className="p-6 md:p-8 bg-[#1f1d26] rounded-[28px] space-y-6 shadow-xl border border-white/[0.04]">
         <h2 className="text-lg font-heading font-extrabold text-white pb-3 border-b border-white/[0.06] flex items-center gap-2.5">
-          <span className="w-2.5 h-2.5 rounded-full bg-[#6c3cff]"></span>
+          <span className="w-2 h-2 rounded-full bg-[#f6db00]"></span>
           Hero Section
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -166,9 +166,9 @@ export default function SettingsForm({ initialSettings }: SettingsFormProps) {
       </div>
 
       {/* Statement Section */}
-      <div className="p-6 md:p-8 bg-[#18171f] rounded-3xl space-y-6 shadow-xl">
+      <div className="p-6 md:p-8 bg-[#1f1d26] rounded-[28px] space-y-6 shadow-xl border border-white/[0.04]">
         <h2 className="text-lg font-heading font-extrabold text-white pb-3 border-b border-white/[0.06] flex items-center gap-2.5">
-          <span className="w-2.5 h-2.5 rounded-full bg-[#6c3cff]"></span>
+          <span className="w-2 h-2 rounded-full bg-[#f6db00]"></span>
           Statement Section
         </h2>
         <div className="space-y-5">
@@ -205,7 +205,7 @@ export default function SettingsForm({ initialSettings }: SettingsFormProps) {
                     {index + 1}.
                   </span>
                   <input
-                    className="flex-1 px-4 py-2.5 bg-white/[0.04] focus:bg-white/[0.07] text-white rounded-xl text-sm outline-none ring-1 ring-white/10 focus:ring-2 focus:ring-[#6c3cff] transition-all min-h-[44px]"
+                    className="flex-1 px-4 py-2.5 bg-white/[0.04] focus:bg-white/[0.07] text-white rounded-[14px] text-sm outline-none ring-1 ring-white/10 focus:ring-2 focus:ring-[#f6db00] transition-all min-h-[44px]"
                     {...register(`statement_lines.${index}` as const)}
                   />
                   <button
@@ -226,9 +226,9 @@ export default function SettingsForm({ initialSettings }: SettingsFormProps) {
       </div>
 
       {/* Section Leads */}
-      <div className="p-6 md:p-8 bg-[#18171f] rounded-3xl space-y-6 shadow-xl">
+      <div className="p-6 md:p-8 bg-[#1f1d26] rounded-[28px] space-y-6 shadow-xl border border-white/[0.04]">
         <h2 className="text-lg font-heading font-extrabold text-white pb-3 border-b border-white/[0.06] flex items-center gap-2.5">
-          <span className="w-2.5 h-2.5 rounded-full bg-[#6c3cff]"></span>
+          <span className="w-2 h-2 rounded-full bg-[#f6db00]"></span>
           Section Lead Texts
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
