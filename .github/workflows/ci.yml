@@ -1,0 +1,52 @@
+name: Continuous Integration
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  test-and-verify:
+    name: Check, Build, Test & Parity
+    runs-on: ubuntu-latest
+    env:
+      PUBLIC_SUPABASE_URL: https://mock.supabase.co
+      PUBLIC_SUPABASE_ANON_KEY: mock-anon-key-placeholder
+      SITE_URL: https://viqar.dev
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Install Playwright Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: Type Check & Unit Tests
+        run: npm run check
+
+      - name: Production Build
+        run: npm run build
+
+      - name: Client Secret Audit
+        run: node scripts/audit-secrets.mjs
+
+      - name: Start Preview Server
+        run: npx astro preview --port 4321 --background
+
+      - name: Visual Parity Verification
+        run: npm run parity
