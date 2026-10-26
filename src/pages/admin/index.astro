@@ -1,0 +1,87 @@
+---
+export const prerender = false;
+
+import AdminLayout from '../../layouts/AdminLayout.astro';
+import DashboardOverview from '../../components/admin/DashboardOverview';
+import { createAstroServerClient, checkAdminUser } from '../../lib/supabase-server';
+import {
+  getProjects,
+  getSkills,
+  getCredentials,
+  getExperiences,
+  getContactLinks,
+} from '../../lib/content';
+
+const client = createAstroServerClient(Astro);
+const { user, isAdmin } = await checkAdminUser(client);
+
+if (!user || !isAdmin) {
+  return Astro.redirect('/admin/login');
+}
+
+let counts = {
+  projects: 0,
+  skills: 0,
+  credentials: 0,
+  experiences: 0,
+  contactLinks: 0,
+};
+
+try {
+  const [
+    { count: projectsCount },
+    { count: skillsCount },
+    { count: credentialsCount },
+    { count: experiencesCount },
+    { count: contactLinksCount },
+  ] = await Promise.all([
+    client.from('projects').select('*', { count: 'exact', head: true }),
+    client.from('skills').select('*', { count: 'exact', head: true }),
+    client.from('credentials').select('*', { count: 'exact', head: true }),
+    client.from('experiences').select('*', { count: 'exact', head: true }),
+    client.from('contact_links').select('*', { count: 'exact', head: true }),
+  ]);
+
+  if (projectsCount !== null && projectsCount !== undefined) {
+    counts.projects = projectsCount;
+    counts.skills = skillsCount ?? 0;
+    counts.credentials = credentialsCount ?? 0;
+    counts.experiences = experiencesCount ?? 0;
+    counts.contactLinks = contactLinksCount ?? 0;
+  } else {
+    const [p, s, c, e, cl] = await Promise.all([
+      getProjects(),
+      getSkills(),
+      getCredentials(),
+      getExperiences(),
+      getContactLinks(),
+    ]);
+    counts = {
+      projects: p.length,
+      skills: s.length,
+      credentials: c.length,
+      experiences: e.length,
+      contactLinks: cl.length,
+    };
+  }
+} catch {
+  const [p, s, c, e, cl] = await Promise.all([
+    getProjects(),
+    getSkills(),
+    getCredentials(),
+    getExperiences(),
+    getContactLinks(),
+  ]);
+  counts = {
+    projects: p.length,
+    skills: s.length,
+    credentials: c.length,
+    experiences: e.length,
+    contactLinks: cl.length,
+  };
+}
+---
+
+<AdminLayout title="Overview" userEmail={user.email}>
+  <DashboardOverview counts={counts} userEmail={user.email ?? ''} client:only="react" />
+</AdminLayout>
