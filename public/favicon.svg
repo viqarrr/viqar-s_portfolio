@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256"><g transform="translate(5.12 5.12) scale(0.96)">
+  <title id="viqar-mark-title">Viqar Monogram</title>
+  <!-- Dark Squircle Canvas with Subtle Border -->
+  <rect width="256" height="256" rx="56" fill="#1f1d26"/>
+  <rect x="2" y="2" width="252" height="252" rx="54" fill="#0d0c11"/>
+  <!-- Geometric V -->
+  <path fill="#ffffff" d="M 46 64 L 92 64 L 124 138 L 156 64 L 202 64 L 142 196 L 106 196 Z"/>
+  <!-- Signature Accent Dot -->
+  <circle cx="186" cy="174" r="22" fill="#f6db00"/>
+</g></svg>
