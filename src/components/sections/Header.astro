@@ -11,11 +11,11 @@ const brandName = settings?.brand_name ?? 'Viqar';
 
 <header id="navigation" class="nav" data-8b-section="navigation">
   <a class="nav__brand" href="#hero" aria-label="Hello, back to the top"><span class="nav__brand-word">{brandName}</span><span class="m-dot" aria-hidden="true"></span></a>
-  <button class="m-icon-btn nav__toggle" type="button" aria-expanded="false" aria-controls="menu"><span class="m-icon-btn__dot" aria-hidden="true"></span><span class="m-icon-btn__name">Open menu</span></button>
-  <div class="menu" id="menu" role="dialog" aria-modal="true" aria-label="Menu" data-lenis-prevent hidden>
+  <button class="m-icon-btn nav__toggle" type="button" aria-expanded="false" aria-controls="menu" aria-haspopup="dialog" aria-label="Open navigation menu"><span class="m-icon-btn__dot" aria-hidden="true"></span><span class="m-icon-btn__name">Open menu</span></button>
+  <div class="menu" id="menu" role="dialog" aria-modal="true" aria-label="Site Navigation" data-lenis-prevent hidden>
     <div class="menu__top">
       <a class="menu__brand" href="#hero">{brandName}<span class="m-dot" aria-hidden="true"></span></a>
-      <button class="m-icon-btn menu__close" type="button"><span class="m-icon-btn__dot" aria-hidden="true"></span><span class="m-icon-btn__name">Close menu</span></button>
+      <button class="m-icon-btn menu__close" type="button" aria-label="Close navigation menu"><span class="m-icon-btn__dot" aria-hidden="true"></span><span class="m-icon-btn__name">Close menu</span></button>
     </div>
     <ul class="menu__list">
       <li><a href="#work">Work<span class="m-dot" aria-hidden="true"></span></a></li>

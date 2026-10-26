@@ -50,6 +50,9 @@ export default defineConfig({
     tailwind({ applyBaseStyles: false }),
     isolateTailwindToAdmin()
   ],
+  devToolbar: {
+    enabled: false
+  },
   adapter: vercel({
     webAnalytics: {
       enabled: false

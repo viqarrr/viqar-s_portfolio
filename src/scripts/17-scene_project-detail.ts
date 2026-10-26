@@ -44,10 +44,10 @@
     if (tagEl) tagEl.textContent = project.tag || '';
     if (descEl) descEl.innerHTML = project.line || '';
 
-    // Action buttons (Live Preview ↗ & GitHub / Code ↗)
-    const liveBtn = detailEl.querySelector('#pdetail-live-btn');
-    const githubBtn = detailEl.querySelector('#pdetail-github-btn');
-    const actionBar = detailEl.querySelector('#pdetail-action-bar');
+    // Action buttons (Live Preview & GitHub / Code)
+    const liveBtn = detailEl.querySelector<HTMLAnchorElement>('#pdetail-live, #pdetail-live-btn');
+    const githubBtn = detailEl.querySelector<HTMLAnchorElement>('#pdetail-github, #pdetail-github-btn');
+    const actionBar = detailEl.querySelector<HTMLElement>('.pdetail__actions, #pdetail-action-bar');
 
     const liveUrl = (project.live_url || '').trim();
     const githubUrl = (project.github_url || '').trim();
