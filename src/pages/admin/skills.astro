@@ -1,0 +1,36 @@
+---
+export const prerender = false;
+
+import AdminLayout from '../../layouts/AdminLayout.astro';
+import SkillsManager from '../../components/admin/SkillsManager';
+// Integrates SortableList via SkillsManager
+import { createAstroServerClient, checkAdminUser } from '../../lib/supabase-server';
+import { getSkills } from '../../lib/content';
+
+const client = createAstroServerClient(Astro);
+const { user, isAdmin } = await checkAdminUser(client);
+
+if (!user || !isAdmin) {
+  return Astro.redirect('/admin/login');
+}
+
+let skills: any[] = [];
+try {
+  const { data, error } = await client
+    .from('skills')
+    .select('*')
+    .order('sort_order', { ascending: true });
+
+  if (!error && data && data.length > 0) {
+    skills = data;
+  } else {
+    skills = await getSkills();
+  }
+} catch {
+  skills = await getSkills();
+}
+---
+
+<AdminLayout title="Skills & Tools" userEmail={user.email}>
+  <SkillsManager initialSkills={skills} client:only="react" />
+</AdminLayout>
