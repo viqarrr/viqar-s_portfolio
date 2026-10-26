@@ -2,6 +2,7 @@
 // Requires SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY in environment.
 // NEVER hardcode, commit, or log the service role key.
 
+import 'dotenv/config';
 import { readFileSync } from 'node:fs';
 import { createClient } from '@supabase/supabase-js';
 

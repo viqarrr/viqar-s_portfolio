@@ -3,6 +3,14 @@
 -- Extension for UUID generation
 create extension if not exists pgcrypto;
 
+-- 1. Admin Users Table (Dibuat terlebih dahulu agar direferensikan oleh is_admin)
+create table if not exists public.admin_users (
+  id uuid primary key default gen_random_uuid(),
+  user_id uuid references auth.users(id) on delete cascade unique not null,
+  email text not null,
+  created_at timestamptz not null default now()
+);
+
 -- Helper function to verify if current authenticated user is an administrator
 create or replace function public.is_admin()
 returns boolean
@@ -25,14 +33,6 @@ begin
   return new;
 end;
 $$;
-
--- 1. Admin Users Table
-create table if not exists public.admin_users (
-  id uuid primary key default gen_random_uuid(),
-  user_id uuid references auth.users(id) on delete cascade unique not null,
-  email text not null,
-  created_at timestamptz not null default now()
-);
 
 -- 2. Site Settings Table (Singleton)
 create table if not exists public.site_settings (
