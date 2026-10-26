@@ -27,6 +27,8 @@ export default function ProjectForm({
     name: '',
     tag: '',
     line: '',
+    live_url: '',
+    github_url: '',
     image_src: '',
     image_srcset: '',
     image_sizes: '(max-width: 767px) 100vw, 50vw',
@@ -176,6 +178,21 @@ export default function ProjectForm({
             required
             placeholder="Detailed description, bulleted features, and technology stack..."
           />
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <Input
+              label="Live Preview URL"
+              placeholder="https://example.com"
+              {...register('live_url')}
+              error={errors.live_url?.message}
+            />
+            <Input
+              label="GitHub / Source Code URL"
+              placeholder="https://github.com/username/repo"
+              {...register('github_url')}
+              error={errors.github_url?.message}
+            />
+          </div>
 
           <div className="border-t border-white/[0.06] pt-5 space-y-4">
             <h4 className="text-xs font-semibold text-[#aaa7b4] uppercase tracking-wider">

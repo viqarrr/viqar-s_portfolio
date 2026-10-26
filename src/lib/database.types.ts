@@ -108,6 +108,8 @@ export interface Database {
           name: string;
           tag: string;
           line: string;
+          live_url?: string | null;
+          github_url?: string | null;
           image_srcset: string;
           image_src: string;
           image_sizes: string;
@@ -126,6 +128,8 @@ export interface Database {
           name: string;
           tag: string;
           line: string;
+          live_url?: string | null;
+          github_url?: string | null;
           image_srcset: string;
           image_src: string;
           image_sizes: string;
@@ -144,6 +148,8 @@ export interface Database {
           name?: string;
           tag?: string;
           line?: string;
+          live_url?: string | null;
+          github_url?: string | null;
           image_srcset?: string;
           image_src?: string;
           image_sizes?: string;

@@ -194,33 +194,66 @@
     }
   }
 
-  /* Bottom CTA Banner inside Detail Page */
-  .pdetail__cta {
-    margin-top: clamp(48px, 8vh, 96px);
-    padding-top: clamp(48px, 8vh, 80px);
-    border-top: 1px solid color-mix(in srgb, var(--color-2) 14%, transparent);
-    text-align: center;
-    display: grid;
-    justify-items: center;
+  /* Project Detail Action Buttons */
+  .pdetail__action-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
     gap: 14px;
+    margin-top: clamp(32px, 5vh, 56px);
+    padding-top: clamp(28px, 4vh, 48px);
+    border-top: 1px solid color-mix(in srgb, var(--color-2) 12%, transparent);
   }
-  .pdetail__cta-sub {
-    color: var(--color-5);
-    font-size: 18px;
+
+  .pdetail__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
   }
-  .pdetail__cta-mail {
-    font-family: var(--font-1);
-    font-size: clamp(28px, 4.8vw, 64px);
-    font-weight: 800;
-    letter-spacing: -0.03em;
-    color: var(--color-2);
-    text-decoration: underline;
-    text-decoration-color: var(--color-3);
-    text-underline-offset: 8px;
-    text-decoration-thickness: 4px;
-    transition: color 0.25s ease;
+
+  .pdetail__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 44px;
+    padding: 0 24px;
+    border-radius: var(--radius-2);
+    font-family: var(--font-2);
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: -0.01em;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.2s cubic-bezier(0.16, 0.84, 0.24, 1), opacity 0.2s, background-color 0.2s;
+  }
+  .pdetail__btn:active {
+    transform: scale(0.98);
+  }
+
+  .pdetail__btn--primary {
+    background: var(--color-3);
+    color: var(--color-1);
+    border: none;
   }
   @media (hover: hover) {
-    .pdetail__cta-mail:hover { color: var(--color-3); }
+    .pdetail__btn--primary:hover {
+      opacity: 0.92;
+      transform: translateY(-2px);
+    }
+  }
+
+  .pdetail__btn--secondary {
+    background: var(--color-7);
+    color: var(--color-2);
+    border: 1px solid color-mix(in srgb, var(--color-2) 14%, transparent);
+  }
+  @media (hover: hover) {
+    .pdetail__btn--secondary:hover {
+      background: color-mix(in srgb, var(--color-7) 80%, white);
+      transform: translateY(-2px);
+    }
   }
 }

@@ -28,6 +28,8 @@ export const ProjectSchema = z.object({
   tag: z.string().min(1),
   line: z.string().min(1),
   description: z.string().optional(),
+  live_url: z.string().optional().nullable(),
+  github_url: z.string().optional().nullable(),
   image_srcset: z.string().min(1),
   image_src: z.string().min(1),
   image_sizes: z.string().min(1),

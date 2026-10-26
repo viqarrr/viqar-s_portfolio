@@ -62,6 +62,21 @@ describe('Zod Validation Schemas', () => {
       const zeroHeight = { ...seedData.projects[0], image_height: 0 };
       expect(ProjectSchema.safeParse(zeroHeight).success).toBe(false);
     });
+
+    it('accepts optional live_url, github_url, and description', () => {
+      const withUrls = {
+        ...seedData.projects[0],
+        live_url: 'https://example.com',
+        github_url: 'https://github.com/example/repo',
+        description: '<p>Rich project description</p>'
+      };
+      const result = ProjectSchema.safeParse(withUrls);
+      expect(result.success).toBe(true);
+      if (result.success) {
+        expect(result.data.live_url).toBe('https://example.com');
+        expect(result.data.github_url).toBe('https://github.com/example/repo');
+      }
+    });
   });
 
   describe('SkillSchema & SkillsSchema', () => {

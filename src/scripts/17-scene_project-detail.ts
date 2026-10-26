@@ -43,6 +43,36 @@
     if (nameEl) nameEl.textContent = project.name || '';
     if (tagEl) tagEl.textContent = project.tag || '';
     if (descEl) descEl.innerHTML = project.line || '';
+
+    // Action buttons (Live Site & GitHub)
+    const hasLive = Boolean(project.live_url && project.live_url.trim());
+    const hasGithub = Boolean(project.github_url && project.github_url.trim());
+    const hasAnyAction = hasLive || hasGithub;
+
+    const liveBtns = detailEl.querySelectorAll('.pdetail-live-btn');
+    liveBtns.forEach(btn => {
+      if (hasLive) {
+        btn.setAttribute('href', project.live_url);
+        btn.style.display = 'inline-flex';
+      } else {
+        btn.style.display = 'none';
+      }
+    });
+
+    const githubBtns = detailEl.querySelectorAll('.pdetail-github-btn');
+    githubBtns.forEach(btn => {
+      if (hasGithub) {
+        btn.setAttribute('href', project.github_url);
+        btn.style.display = 'inline-flex';
+      } else {
+        btn.style.display = 'none';
+      }
+    });
+
+    const actionBars = detailEl.querySelectorAll('.pdetail-action-bar');
+    actionBars.forEach(bar => {
+      bar.style.display = hasAnyAction ? 'flex' : 'none';
+    });
   };
 
   const openProject = (slug: string, pushState = true) => {
@@ -125,12 +155,9 @@
 
     const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches || !window.gsap;
 
+    // Address bar stays clean as '/' without '#'
     if (pushState) {
-      if (targetAnchor) {
-        history.pushState(null, '', `/${targetAnchor}`);
-      } else {
-        history.pushState(null, '', '/');
-      }
+      history.pushState(null, '', '/');
     }
 
     const restoreMain = () => {
@@ -214,41 +241,54 @@
   // Event Listener for Back to projects button
   backBtn?.addEventListener('click', () => closeProject(true));
 
-  // Seamless cross-view anchor navigation from detail view
-  document.querySelectorAll('a[href^="#"], a[href^="/#"]').forEach(anchor => {
-    anchor.addEventListener('click', e => {
-      let targetId = anchor.getAttribute('href');
-      if (!targetId) return;
-      if (targetId.startsWith('/#')) {
-        targetId = targetId.slice(1);
+  // Global anchor click interceptor: completely suppresses '#' in the browser URL
+  document.addEventListener('click', (e: MouseEvent) => {
+    const anchor = (e.target as HTMLElement)?.closest('a');
+    if (!anchor) return;
+
+    let href = anchor.getAttribute('href');
+    if (!href) return;
+
+    if (href.startsWith('/#')) {
+      href = href.slice(1);
+    }
+
+    if (href.startsWith('#') && href.length > 1 && !href.startsWith('#project/')) {
+      const targetEl = document.querySelector(href);
+      if (!targetEl) return;
+
+      // 1. Suppress default browser hash navigation so '#' NEVER appears in address bar
+      e.preventDefault();
+
+      // 2. Close mobile navigation drawer if open
+      const closeBtn = document.querySelector('#navigation .menu__close');
+      const menuEl = document.getElementById('menu');
+      if (menuEl && !menuEl.hidden && closeBtn) {
+        closeBtn.click();
       }
 
-      if (!detailEl.hidden && targetId.startsWith('#') && !targetId.startsWith('#project/')) {
-        e.preventDefault();
-
-        // Close mobile drawer if open
-        const closeBtn = document.querySelector('#navigation .menu__close');
-        const menuEl = document.getElementById('menu');
-        if (menuEl && !menuEl.hidden && closeBtn) {
-          closeBtn.click();
+      // 3. If inside project detail view: close detail view, reset URL to '/', and scroll to target
+      if (!detailEl.hidden) {
+        closeProject(true, href);
+      } else {
+        // 4. On homepage main view: scroll smoothly using Lenis with navbar offset, NO hash in URL
+        const navOffset = navEl ? navEl.offsetHeight : 0;
+        if (window.lenis) {
+          window.lenis.scrollTo(targetEl, { offset: -navOffset });
+        } else {
+          targetEl.scrollIntoView({ behavior: 'smooth' });
         }
-
-        // Close project detail view and scroll to target section
-        closeProject(true, targetId);
       }
-    });
+    }
   });
 
   // Handle browser Back / Forward buttons
   window.addEventListener('popstate', () => {
     const path = window.location.pathname;
-    const hash = window.location.hash;
-
     const workMatch = path.match(/^\/work\/([a-zA-Z0-9_-]+)/);
-    const targetSlug = workMatch ? workMatch[1] : (hash.startsWith('#project/') ? hash.replace('#project/', '') : null);
 
-    if (targetSlug) {
-      openProject(targetSlug, false);
+    if (workMatch) {
+      openProject(workMatch[1], false);
     } else if (!detailEl.hidden) {
       closeProject(false);
     }
@@ -261,13 +301,12 @@
     window.ScrollTrigger?.refresh();
   }
 
-  // Handle initial page load if URL has /work/:slug or #project/:slug
+  // Handle initial page load if URL has /work/:slug
   const initialPath = window.location.pathname;
-  const initialHash = window.location.hash;
   const initialWorkMatch = initialPath.match(/^\/work\/([a-zA-Z0-9_-]+)/);
-  const initialSlug = initialWorkMatch ? initialWorkMatch[1] : (initialHash.startsWith('#project/') ? initialHash.replace('#project/', '') : null);
 
-  if (initialSlug && detailEl.hidden) {
+  if (initialWorkMatch && detailEl.hidden) {
+    const initialSlug = initialWorkMatch[1];
     if (document.readyState === 'complete') {
       openProject(initialSlug, false);
     } else {
