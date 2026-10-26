@@ -1,0 +1,177 @@
+@layer sections {
+  /* Curtain Wipe Transition Layers */
+  .page-curtain {
+    position: fixed;
+    inset: 0;
+    z-index: 90;
+    pointer-events: none;
+    display: grid;
+  }
+  .page-curtain__layer {
+    grid-area: 1 / 1;
+    width: 100%;
+    height: 100%;
+    transform: scaleY(0);
+    transform-origin: bottom;
+  }
+  .page-curtain__layer--dark { background: #16151d; }
+  .page-curtain__layer--accent { background: var(--color-3); }
+
+  /* Clickable Project Card Cursor & Hover */
+  #work .case { cursor: pointer; text-decoration: none; color: inherit; }
+  #work .case:focus-visible { outline: 2px solid var(--color-3); outline-offset: 4px; }
+  #work .case__img { transition: scale 0.6s cubic-bezier(0.16, 0.84, 0.24, 1); }
+  @media (hover: hover) {
+    #work .case:hover .case__img { scale: 1.04; }
+  }
+
+  /* Project Detail View Container */
+  #project-detail {
+    position: relative;
+    z-index: 35;
+    min-height: 100svh;
+    background: var(--color-1);
+    color: var(--color-2);
+    padding: clamp(96px, 14svh, 140px) var(--space-1) var(--space-2);
+  }
+  #project-detail[hidden] { display: none; }
+
+  .pdetail__wrap {
+    max-width: 78rem;
+    margin-inline: auto;
+    display: grid;
+    gap: clamp(36px, 6vh, 64px);
+  }
+
+  /* Top Back Navigation */
+  .pdetail__back {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    width: fit-content;
+    padding: 8px 0;
+    border: 0;
+    background: none;
+    color: var(--color-5);
+    font-family: var(--font-2);
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: color 0.25s ease, transform 0.25s ease;
+  }
+  .pdetail__back svg {
+    width: 18px;
+    height: 18px;
+    stroke: currentColor;
+    stroke-width: 2;
+    transition: transform 0.3s cubic-bezier(0.3, 0.7, 0.2, 1);
+  }
+  @media (hover: hover) {
+    .pdetail__back:hover { color: var(--color-3); }
+    .pdetail__back:hover svg { transform: translateX(-5px); }
+  }
+
+  /* Hero Showcase Image inside Detail */
+  .pdetail__hero {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius-1);
+    background: var(--color-7);
+    aspect-ratio: 16 / 9;
+    border: 1px solid color-mix(in srgb, var(--color-2) 10%, transparent);
+  }
+  .pdetail__hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Header Bar: Title + Tag */
+  .pdetail__head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 20px;
+    padding-bottom: clamp(24px, 4vh, 40px);
+    border-bottom: 1px solid color-mix(in srgb, var(--color-2) 14%, transparent);
+  }
+  .pdetail__heading {
+    display: grid;
+    gap: 16px;
+  }
+  .pdetail__tag {
+    width: fit-content;
+  }
+  .pdetail__title {
+    font-family: var(--font-1);
+    font-size: clamp(44px, 7.5vw, 112px);
+    font-weight: 800;
+    line-height: 0.88;
+    letter-spacing: -0.05em;
+    text-transform: uppercase;
+    margin: 0;
+  }
+  .pdetail__actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .pdetail__main {
+    display: grid;
+    gap: 36px;
+    align-content: start;
+    max-width: 60rem;
+  }
+
+  .pdetail__block {
+    display: grid;
+    gap: 14px;
+  }
+  .pdetail__label {
+    font-family: var(--font-2);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-3);
+  }
+
+  .pdetail__desc {
+    color: var(--color-4);
+    font-size: clamp(19px, 1.8vw, 28px);
+    line-height: 1.5;
+    font-weight: 400;
+  }
+
+  /* Bottom CTA Banner inside Detail Page */
+  .pdetail__cta {
+    margin-top: clamp(48px, 8vh, 96px);
+    padding-top: clamp(48px, 8vh, 80px);
+    border-top: 1px solid color-mix(in srgb, var(--color-2) 14%, transparent);
+    text-align: center;
+    display: grid;
+    justify-items: center;
+    gap: 14px;
+  }
+  .pdetail__cta-sub {
+    color: var(--color-5);
+    font-size: 18px;
+  }
+  .pdetail__cta-mail {
+    font-family: var(--font-1);
+    font-size: clamp(28px, 4.8vw, 64px);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: var(--color-2);
+    text-decoration: underline;
+    text-decoration-color: var(--color-3);
+    text-underline-offset: 8px;
+    text-decoration-thickness: 4px;
+    transition: color 0.25s ease;
+  }
+  @media (hover: hover) {
+    .pdetail__cta-mail:hover { color: var(--color-3); }
+  }
+}

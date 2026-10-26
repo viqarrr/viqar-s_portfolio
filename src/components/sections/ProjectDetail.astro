@@ -1,0 +1,58 @@
+---
+import type { Project, SiteSettings } from '../../lib/content';
+
+export interface Props {
+  project?: Project;
+  settings?: SiteSettings;
+  hidden?: boolean;
+}
+
+const { project, settings, hidden = true } = Astro.props;
+---
+
+<article id="project-detail" aria-labelledby="pdetail-title" hidden={hidden}>
+  <div class="pdetail__wrap">
+    <button type="button" class="pdetail__back" id="pdetail-back">
+      <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M19 12H5M12 19l-7-7 7-7"></path>
+      </svg>
+      <span>Back to projects</span>
+    </button>
+
+    <div class="pdetail__hero" id="pdetail-hero" style={project?.image_bg ? `background:${project.image_bg}` : undefined}>
+      <img
+        id="pdetail-img"
+        src={project?.image_src ?? ''}
+        srcset={project?.image_srcset ?? ''}
+        sizes={project?.image_sizes ?? '(max-width: 900px) 94vw, 78rem'}
+        width={project?.image_width ?? 1600}
+        height={project?.image_height ?? 1000}
+        alt={project?.image_alt ?? ''}
+      />
+    </div>
+
+    <header class="pdetail__head" data-pdetail-anim>
+      <div class="pdetail__heading">
+        <span class="m-badge pdetail__tag" id="pdetail-tag">{project?.tag ?? ''}</span>
+        <h1 class="pdetail__title" id="pdetail-title"><span id="pdetail-name">{project?.name ?? ''}</span><span class="m-dot" aria-hidden="true"></span></h1>
+      </div>
+      <div class="pdetail__actions">
+        <a class="m-btn pdetail__cta-btn" href="#contact">
+          <span class="m-btn__label">Start a project</span>
+        </a>
+      </div>
+    </header>
+
+    <div class="pdetail__main" data-pdetail-anim>
+      <div class="pdetail__block">
+        <span class="pdetail__label">Description</span>
+        <p class="pdetail__desc" id="pdetail-desc">{project?.line ?? ''}</p>
+      </div>
+    </div>
+
+    <div class="pdetail__cta" data-pdetail-anim>
+      <p class="pdetail__cta-sub">Have a project in mind?</p>
+      <a class="pdetail__cta-mail" href="mailto:viqar@example.com">viqar@example.com</a>
+    </div>
+  </div>
+</article>
