@@ -110,6 +110,97 @@
     gap: 12px;
   }
 
+  /* Active Project Detail View: Centered CTA Buttons with Logo + Text */
+  #project-detail:not([hidden]) .pdetail__head {
+    align-items: center;
+  }
+  #project-detail:not([hidden]) .pdetail__actions {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  #project-detail:not([hidden]) .pdetail__btn {
+    width: auto;
+    height: auto;
+    min-height: 44px;
+    padding: 0 20px;
+    border-radius: 9999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    text-decoration: none;
+    font-family: var(--font-2);
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+                background 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  #project-detail:not([hidden]) .pdetail__btn::after {
+    display: none;
+  }
+  #project-detail:not([hidden]) .pdetail__btn-icon {
+    width: 16px;
+    height: 16px;
+    flex: none;
+    display: block;
+  }
+  #project-detail:not([hidden]) .pdetail__btn-text {
+    display: inline-block;
+  }
+  #project-detail:not([hidden]) .pdetail__btn--primary {
+    background: var(--color-3);
+    color: var(--color-1);
+    font-weight: 700;
+    border: none;
+    order: -1;
+  }
+  @media (hover: hover) {
+    #project-detail:not([hidden]) .pdetail__btn--primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 18px color-mix(in srgb, var(--color-3) 40%, transparent);
+      filter: brightness(1.05);
+      color: var(--color-1);
+    }
+  }
+  #project-detail:not([hidden]) .pdetail__btn--secondary {
+    background: var(--color-7);
+    color: var(--color-2);
+    font-weight: 600;
+    border: 1.5px solid color-mix(in srgb, var(--color-2) 18%, transparent);
+  }
+  @media (hover: hover) {
+    #project-detail:not([hidden]) .pdetail__btn--secondary:hover {
+      background: #2a2734;
+      border-color: color-mix(in srgb, var(--color-2) 35%, transparent);
+      transform: translateY(-2px);
+      color: var(--color-2);
+    }
+  }
+  #project-detail:not([hidden]) .pdetail__btn:active {
+    transform: scale(0.97);
+  }
+
+  @media (max-width: 768px) {
+    #project-detail:not([hidden]) .pdetail__head {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 24px;
+    }
+    #project-detail:not([hidden]) .pdetail__title {
+      text-align: center;
+    }
+    #project-detail:not([hidden]) .pdetail__actions {
+      justify-content: center;
+      width: 100%;
+    }
+  }
+
   /* 2-Column Content Grid (Left: Year/Tech, Right: Description/Features/Role) */
   .pdetail__grid {
     display: grid;
