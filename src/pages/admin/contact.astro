@@ -1,0 +1,36 @@
+---
+export const prerender = false;
+
+import AdminLayout from '../../layouts/AdminLayout.astro';
+import ContactManager from '../../components/admin/ContactManager';
+// Integrates SortableList via ContactManager
+import { createAstroServerClient, checkAdminUser } from '../../lib/supabase-server';
+import { getContactLinks } from '../../lib/content';
+
+const client = createAstroServerClient(Astro);
+const { user, isAdmin } = await checkAdminUser(client);
+
+if (!user || !isAdmin) {
+  return Astro.redirect('/admin/login');
+}
+
+let contactLinks: any[] = [];
+try {
+  const { data, error } = await client
+    .from('contact_links')
+    .select('*')
+    .order('sort_order', { ascending: true });
+
+  if (!error && data && data.length > 0) {
+    contactLinks = data;
+  } else {
+    contactLinks = await getContactLinks();
+  }
+} catch {
+  contactLinks = await getContactLinks();
+}
+---
+
+<AdminLayout title="Contact Links" userEmail={user.email}>
+  <ContactManager initialLinks={contactLinks} client:only="react" />
+</AdminLayout>

@@ -1,0 +1,36 @@
+---
+export const prerender = false;
+
+import AdminLayout from '../../layouts/AdminLayout.astro';
+import ExperiencesManager from '../../components/admin/ExperiencesManager';
+// Integrates SortableList via ExperiencesManager
+import { createAstroServerClient, checkAdminUser } from '../../lib/supabase-server';
+import { getExperiences } from '../../lib/content';
+
+const client = createAstroServerClient(Astro);
+const { user, isAdmin } = await checkAdminUser(client);
+
+if (!user || !isAdmin) {
+  return Astro.redirect('/admin/login');
+}
+
+let experiences: any[] = [];
+try {
+  const { data, error } = await client
+    .from('experiences')
+    .select('*')
+    .order('sort_order', { ascending: true });
+
+  if (!error && data && data.length > 0) {
+    experiences = data;
+  } else {
+    experiences = await getExperiences();
+  }
+} catch {
+  experiences = await getExperiences();
+}
+---
+
+<AdminLayout title="Work Experiences" userEmail={user.email}>
+  <ExperiencesManager initialExperiences={experiences} client:only="react" />
+</AdminLayout>
