@@ -39,7 +39,7 @@ let failed = false;
 async function capture(url, vp, ctxOpts) {
   const ctx = await browser.newContext({ viewport: { width: vp.w, height: vp.h }, ...ctxOpts });
   const page = await ctx.newPage();
-  await page.goto(url, { waitUntil: 'networkidle' });
+  await page.goto(url, { waitUntil: 'networkidle', timeout: 60000 });
   await page.evaluate(() => document.fonts.ready);
   const height = await page.evaluate(() => document.documentElement.scrollHeight);
   const shots = [];

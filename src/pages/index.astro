@@ -18,12 +18,14 @@ import {
   getContactLinks
 } from '../lib/content';
 
-const settings = await getSettings();
-const projects = await getProjects();
-const skills = await getSkills();
-const credentials = await getCredentials();
-const experiences = await getExperiences();
-const contactLinks = await getContactLinks();
+const [settings, projects, skills, credentials, experiences, contactLinks] = await Promise.all([
+  getSettings(),
+  getProjects(),
+  getSkills(),
+  getCredentials(),
+  getExperiences(),
+  getContactLinks()
+]);
 ---
 
 <Base title={settings.site_title} description={settings.meta_description}>

@@ -36,7 +36,7 @@ create table if not exists public.admin_users (
 
 -- 2. Site Settings Table (Singleton)
 create table if not exists public.site_settings (
-  id uuid primary key default gen_random_uuid(),
+  id uuid primary key default '00000000-0000-0000-0000-000000000001'::uuid check (id = '00000000-0000-0000-0000-000000000001'::uuid),
   site_title text not null,
   meta_description text not null,
   og_title text not null,

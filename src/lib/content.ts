@@ -55,6 +55,7 @@ export async function getSettings(): Promise<SiteSettings> {
     const { data, error } = await client
       .from('site_settings')
       .select('*')
+      .order('updated_at', { ascending: false })
       .limit(1)
       .maybeSingle();
 
@@ -78,7 +79,7 @@ export async function getProjects(): Promise<Project[]> {
       .eq('status', 'published')
       .order('sort_order', { ascending: true });
 
-    if (!error && data && data.length > 0) {
+    if (!error && data) {
       return ProjectsSchema.parse(data);
     }
     if (error) {
@@ -102,7 +103,7 @@ export async function getSkills(): Promise<Skill[]> {
       .eq('status', 'published')
       .order('sort_order', { ascending: true });
 
-    if (!error && data && data.length > 0) {
+    if (!error && data) {
       return SkillsSchema.parse(data);
     }
     if (error) {
@@ -126,7 +127,7 @@ export async function getCredentials(): Promise<Credential[]> {
       .eq('status', 'published')
       .order('sort_order', { ascending: true });
 
-    if (!error && data && data.length > 0) {
+    if (!error && data) {
       return CredentialsSchema.parse(data);
     }
     if (error) {
@@ -150,7 +151,7 @@ export async function getExperiences(): Promise<Experience[]> {
       .eq('status', 'published')
       .order('sort_order', { ascending: true });
 
-    if (!error && data && data.length > 0) {
+    if (!error && data) {
       return ExperiencesSchema.parse(data);
     }
     if (error) {
@@ -174,7 +175,7 @@ export async function getContactLinks(): Promise<ContactLink[]> {
       .eq('status', 'published')
       .order('sort_order', { ascending: true });
 
-    if (!error && data && data.length > 0) {
+    if (!error && data) {
       return ContactLinksSchema.parse(data);
     }
     if (error) {
