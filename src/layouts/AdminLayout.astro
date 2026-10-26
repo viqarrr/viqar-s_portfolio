@@ -2,6 +2,7 @@
 export const prerender = false;
 
 import '../styles/admin.css';
+import PublishButton from '../components/admin/PublishButton';
 
 interface Props {
   title?: string;
@@ -88,6 +89,7 @@ const navItems = [
       <header class="h-16 border-b border-slate-800 px-8 flex items-center justify-between flex-shrink-0 bg-slate-900/50 backdrop-blur">
         <h1 class="text-lg font-semibold text-white">{title}</h1>
         <div class="flex items-center gap-4 text-xs text-slate-400">
+          <PublishButton client:only="react" />
           <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-950 text-emerald-400 border border-emerald-800/60 font-medium">
             <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
             CMS Online

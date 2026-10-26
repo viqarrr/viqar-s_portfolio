@@ -1,0 +1,123 @@
+---
+export const prerender = false;
+
+import Base from '../../layouts/Base.astro';
+import Header from '../../components/sections/Header.astro';
+import Hero from '../../components/sections/Hero.astro';
+import Statement from '../../components/sections/Statement.astro';
+import Work from '../../components/sections/Work.astro';
+import Again from '../../components/sections/Again.astro';
+import Capabilities from '../../components/sections/Capabilities.astro';
+import Method from '../../components/sections/Method.astro';
+import Contact from '../../components/sections/Contact.astro';
+import Footer from '../../components/sections/Footer.astro';
+
+import { createAstroServerClient, checkAdminUser } from '../../lib/supabase-server';
+import {
+  getSettings,
+  getProjects,
+  getSkills,
+  getCredentials,
+  getExperiences,
+  getContactLinks,
+} from '../../lib/content';
+import {
+  ProjectsSchema,
+  SkillsSchema,
+  CredentialsSchema,
+  ExperiencesSchema,
+  ContactLinksSchema,
+} from '../../lib/schemas';
+
+const client = createAstroServerClient(Astro);
+const { user, isAdmin } = await checkAdminUser(client);
+
+if (!user || !isAdmin) {
+  return Astro.redirect('/admin/login');
+}
+
+Astro.response.headers.set('X-Robots-Tag', 'noindex, nofollow');
+
+const settings = await getSettings();
+
+let projects = await getProjects();
+let skills = await getSkills();
+let credentials = await getCredentials();
+let experiences = await getExperiences();
+let contactLinks = await getContactLinks();
+
+try {
+  const [pRes, sRes, cRes, eRes, clRes] = await Promise.all([
+    client.from('projects').select('*').order('sort_order', { ascending: true }),
+    client.from('skills').select('*').order('sort_order', { ascending: true }),
+    client.from('credentials').select('*').order('sort_order', { ascending: true }),
+    client.from('experiences').select('*').order('sort_order', { ascending: true }),
+    client.from('contact_links').select('*').order('sort_order', { ascending: true }),
+  ]);
+
+  if (!pRes.error && pRes.data && pRes.data.length > 0) {
+    const parsed = ProjectsSchema.safeParse(pRes.data);
+    if (parsed.success) projects = parsed.data;
+  }
+  if (!sRes.error && sRes.data && sRes.data.length > 0) {
+    const parsed = SkillsSchema.safeParse(sRes.data);
+    if (parsed.success) skills = parsed.data;
+  }
+  if (!cRes.error && cRes.data && cRes.data.length > 0) {
+    const parsed = CredentialsSchema.safeParse(cRes.data);
+    if (parsed.success) credentials = parsed.data;
+  }
+  if (!eRes.error && eRes.data && eRes.data.length > 0) {
+    const parsed = ExperiencesSchema.safeParse(eRes.data);
+    if (parsed.success) experiences = parsed.data;
+  }
+  if (!clRes.error && clRes.data && clRes.data.length > 0) {
+    const parsed = ContactLinksSchema.safeParse(clRes.data);
+    if (parsed.success) contactLinks = parsed.data;
+  }
+} catch {
+  // Fallbacks already loaded
+}
+
+const totalDrafts =
+  projects.filter((p) => p.status === 'draft').length +
+  skills.filter((s) => s.status === 'draft').length +
+  credentials.filter((c) => c.status === 'draft').length +
+  experiences.filter((e) => e.status === 'draft').length +
+  contactLinks.filter((cl) => cl.status === 'draft').length;
+---
+
+<Base title={`[DRAFT PREVIEW] ${settings.site_title}`} description={settings.meta_description}>
+  <!-- Floating Draft Preview Banner -->
+  <div
+    style="position: fixed; top: 0; left: 0; right: 0; z-index: 99999; background: #92400e; color: #fef3c7; font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 13px; font-weight: 500; padding: 10px 16px; border-bottom: 2px solid #f59e0b; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 4px 12px rgba(0,0,0,0.5);"
+  >
+    <div style="display: flex; align-items: center; gap: 8px;">
+      <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #fbbf24;"></span>
+      <span><strong>DRAFT PREVIEW MODE</strong> &mdash; Viewing unpublished drafts alongside published content</span>
+      <span style="background: rgba(0,0,0,0.3); padding: 2px 8px; border-radius: 9999px; font-size: 11px; font-weight: 600;">
+        {totalDrafts} Drafts Active
+      </span>
+    </div>
+    <a
+      href="/admin"
+      style="background: #1e293b; color: #f8fafc; padding: 4px 12px; border-radius: 6px; text-decoration: none; font-size: 12px; font-weight: 600; border: 1px solid #475569;"
+    >
+      &larr; Back to Admin Dashboard
+    </a>
+  </div>
+
+  <div style="padding-top: 42px;">
+    <Header settings={settings} />
+    <main id="main">
+      <Hero settings={settings} />
+      <Statement settings={settings} />
+      <Work settings={settings} projects={projects} />
+      <Again settings={settings} skills={skills} />
+      <Capabilities settings={settings} credentials={credentials} />
+      <Method settings={settings} experiences={experiences} />
+      <Contact settings={settings} contactLinks={contactLinks} />
+    </main>
+    <Footer settings={settings} />
+  </div>
+</Base>
