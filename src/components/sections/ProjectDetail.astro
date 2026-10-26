@@ -46,7 +46,7 @@ const { project, settings, hidden = true } = Astro.props;
     <div class="pdetail__main" data-pdetail-anim>
       <div class="pdetail__block">
         <span class="pdetail__label">Description</span>
-        <p class="pdetail__desc" id="pdetail-desc">{project?.line ?? ''}</p>
+        <div class="pdetail__desc" id="pdetail-desc" set:html={project?.line ?? ''}></div>
       </div>
     </div>
 

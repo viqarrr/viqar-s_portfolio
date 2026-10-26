@@ -4,6 +4,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { ProjectSchema, type Project } from '../../lib/schemas';
 import { Input, Textarea } from './ui/Input';
 import { Button } from './ui/Button';
+import { RichTextEditor } from './ui/RichTextEditor';
 
 interface ProjectFormProps {
   project?: (Project & { id?: string }) | null;
@@ -41,11 +42,19 @@ export default function ProjectForm({
     register,
     handleSubmit,
     reset,
+    setValue,
+    watch,
     formState: { errors },
   } = useForm<Project>({
     resolver: zodResolver(ProjectSchema),
     defaultValues: project || defaultValues,
   });
+
+  const lineValue = watch('line') || '';
+
+  useEffect(() => {
+    register('line', { required: true });
+  }, [register]);
 
   useEffect(() => {
     if (project) {
@@ -159,13 +168,13 @@ export default function ProjectForm({
             </div>
           </div>
 
-          <Textarea
-            label="Tagline / Line"
-            rows={2}
-            placeholder="A short punchy description of the project"
-            {...register('line')}
+          <RichTextEditor
+            label="Project Description / Features (Rich Text)"
+            value={lineValue}
+            onChange={(val) => setValue('line', val, { shouldValidate: true, shouldDirty: true })}
             error={errors.line?.message}
             required
+            placeholder="Detailed description, bulleted features, and technology stack..."
           />
 
           <div className="border-t border-white/[0.06] pt-5 space-y-4">

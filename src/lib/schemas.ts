@@ -27,6 +27,7 @@ export const ProjectSchema = z.object({
   name: z.string().min(1),
   tag: z.string().min(1),
   line: z.string().min(1),
+  description: z.string().optional(),
   image_srcset: z.string().min(1),
   image_src: z.string().min(1),
   image_sizes: z.string().min(1),

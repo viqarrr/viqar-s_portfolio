@@ -140,9 +140,58 @@
 
   .pdetail__desc {
     color: var(--color-4);
-    font-size: clamp(19px, 1.8vw, 28px);
-    line-height: 1.5;
+    font-size: clamp(17px, 1.35vw, 21px);
+    line-height: 1.65;
     font-weight: 400;
+  }
+  .pdetail__desc p {
+    margin-bottom: 0.85rem;
+    color: var(--color-4);
+  }
+  .pdetail__desc p:last-child {
+    margin-bottom: 0;
+  }
+  .pdetail__desc ul {
+    list-style-type: disc;
+    padding-left: 1.5rem;
+    margin-block: 0.65rem 0.85rem;
+    display: grid;
+    gap: 0.35rem;
+  }
+  .pdetail__desc ol {
+    list-style-type: decimal;
+    padding-left: 1.5rem;
+    margin-block: 0.65rem 0.85rem;
+    display: grid;
+    gap: 0.35rem;
+  }
+  .pdetail__desc li {
+    color: var(--color-4);
+    line-height: 1.6;
+    padding-left: 0.25rem;
+  }
+  .pdetail__desc li::marker {
+    color: var(--color-3);
+  }
+  .pdetail__desc strong,
+  .pdetail__desc b {
+    color: var(--color-2);
+    font-weight: 700;
+  }
+  .pdetail__desc em,
+  .pdetail__desc i {
+    font-style: italic;
+  }
+  .pdetail__desc a {
+    color: var(--color-3);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    transition: opacity 0.2s;
+  }
+  @media (hover: hover) {
+    .pdetail__desc a:hover {
+      opacity: 0.85;
+    }
   }
 
   /* Bottom CTA Banner inside Detail Page */

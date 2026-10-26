@@ -42,7 +42,7 @@
     }
     if (nameEl) nameEl.textContent = project.name || '';
     if (tagEl) tagEl.textContent = project.tag || '';
-    if (descEl) descEl.textContent = project.line || '';
+    if (descEl) descEl.innerHTML = project.line || '';
   };
 
   const openProject = (slug: string, pushState = true) => {
@@ -60,10 +60,17 @@
     if (reduce) {
       populateProject(project);
       mainEl.hidden = true;
+      mainEl.setAttribute('hidden', '');
       detailEl.hidden = false;
+      detailEl.removeAttribute('hidden');
       navEl?.classList.add('is-scrolled');
-      window.lenis?.stop();
+
       window.scrollTo(0, 0);
+      window.lenis?.scrollTo(0, { immediate: true });
+      window.lenis?.start();
+      window.lenis?.resize();
+      window.ScrollTrigger?.refresh();
+
       isAnimating = false;
       return;
     }
@@ -72,83 +79,118 @@
     const heroBox = document.getElementById('pdetail-hero');
     const heroImg = document.getElementById('pdetail-img');
 
+    // Pause smooth scroll during sweep
+    window.lenis?.stop();
+
     window.gsap.timeline({
       onComplete: () => {
-        isAnimating = false;
+        // Resume Lenis, recalculate dimensions and update ScrollTrigger
+        window.lenis?.start();
+        window.lenis?.resize();
         window.ScrollTrigger?.refresh();
+        isAnimating = false;
       }
     })
-      // 1. Sweep layers up from the bottom (transformOrigin: 'bottom')
+      // 1. Sweep layers up from bottom
       .set([darkLayer, accentLayer], { transformOrigin: 'bottom' })
       .fromTo(darkLayer, { scaleY: 0 }, { scaleY: 1, duration: 0.48, ease: 'expo.inOut' }, 0)
       .fromTo(accentLayer, { scaleY: 0 }, { scaleY: 1, duration: 0.48, ease: 'expo.inOut' }, 0.08)
-      // 2. Swap content and reset scroll position to top (pausing Lenis)
+      // 2. Unhide detail, hide main, reset scroll to top
       .add(() => {
         populateProject(project);
         mainEl.hidden = true;
+        mainEl.setAttribute('hidden', '');
         detailEl.hidden = false;
+        detailEl.removeAttribute('hidden');
         navEl?.classList.add('is-scrolled');
-        window.lenis?.stop();
+
         window.scrollTo(0, 0);
+        window.lenis?.scrollTo(0, { immediate: true });
+        window.lenis?.resize();
+        window.ScrollTrigger?.refresh();
       })
-      // 3. Sweep layers away to the top (transformOrigin: 'top')
+      // 3. Sweep layers away to top
       .set([darkLayer, accentLayer], { transformOrigin: 'top' })
       .to(accentLayer, { scaleY: 0, duration: 0.52, ease: 'expo.inOut' })
       .to(darkLayer, { scaleY: 0, duration: 0.52, ease: 'expo.inOut' }, '-=0.44')
-      // 4. Reveal hero image (clipPath expand) and animate text elements (translateY + opacity)
+      // 4. Reveal hero image & anim blocks
       .fromTo(heroBox, { clipPath: 'inset(12% 4% 12% 4% round 28px)', opacity: 0 }, { clipPath: 'inset(0% 0% 0% 0% round 28px)', opacity: 1, duration: 0.85, ease: 'expo.out', clearProps: 'clipPath' }, '-=0.35')
       .fromTo(heroImg, { scale: 1.15 }, { scale: 1, duration: 1.1, ease: 'expo.out' }, '<')
       .fromTo(animBlocks, { y: 36, opacity: 0 }, { y: 0, opacity: 1, duration: 0.65, stagger: 0.07, ease: 'power3.out', clearProps: 'all' }, '-=0.7');
   };
 
-  const closeProject = (pushState = true) => {
+  const closeProject = (pushState = true, targetAnchor: string | null = null) => {
     if (detailEl.hidden || isAnimating) return;
     isAnimating = true;
 
     const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches || !window.gsap;
 
     if (pushState) {
-      history.pushState(null, '', '/');
+      if (targetAnchor) {
+        history.pushState(null, '', `/${targetAnchor}`);
+      } else {
+        history.pushState(null, '', '/');
+      }
     }
 
-    if (reduce) {
+    const restoreMain = () => {
       detailEl.hidden = true;
+      detailEl.setAttribute('hidden', '');
       mainEl.hidden = false;
-      window.lenis?.start();
+      mainEl.removeAttribute('hidden');
+
+      window.lenis?.resize();
       window.ScrollTrigger?.refresh();
+
+      if (targetAnchor) {
+        const targetEl = document.querySelector(targetAnchor);
+        if (targetEl) {
+          const navOffset = navEl ? navEl.offsetHeight : 0;
+          if (window.lenis) {
+            window.lenis.scrollTo(targetEl, { offset: -navOffset, immediate: true });
+          } else {
+            targetEl.scrollIntoView();
+          }
+          return;
+        }
+      }
+
       const workEl = document.getElementById('work');
       if (savedScrollY > 0) {
-        window.scrollTo(0, savedScrollY);
+        window.lenis ? window.lenis.scrollTo(savedScrollY, { immediate: true }) : window.scrollTo(0, savedScrollY);
       } else if (workEl) {
-        workEl.scrollIntoView();
+        window.lenis ? window.lenis.scrollTo(workEl, { immediate: true }) : workEl.scrollIntoView();
       }
+    };
+
+    if (reduce) {
+      restoreMain();
+      window.lenis?.start();
+      window.lenis?.resize();
+      window.ScrollTrigger?.refresh();
       isAnimating = false;
       return;
     }
 
+    window.lenis?.stop();
+
     window.gsap.timeline({
       onComplete: () => {
+        window.lenis?.start();
+        window.lenis?.resize();
+        window.ScrollTrigger?.refresh();
         isAnimating = false;
       }
     })
-      // 1. Sweep layers up from the bottom (accent and dark)
+      // 1. Sweep layers up from bottom
       .set([accentLayer, darkLayer], { transformOrigin: 'bottom' })
       .fromTo(accentLayer, { scaleY: 0 }, { scaleY: 1, duration: 0.48, ease: 'expo.inOut' }, 0)
       .fromTo(darkLayer, { scaleY: 0 }, { scaleY: 1, duration: 0.48, ease: 'expo.inOut' }, 0.07)
-      // 2. Restore main page view and restore previous scroll position at #work
+      // 2. Restore main page view and restore scroll position
       .add(() => {
-        detailEl.hidden = true;
-        mainEl.hidden = false;
-        window.lenis?.start();
-        window.ScrollTrigger?.refresh();
-        const workEl = document.getElementById('work');
-        if (savedScrollY > 0) {
-          window.lenis ? window.lenis.scrollTo(savedScrollY, { immediate: true }) : window.scrollTo(0, savedScrollY);
-        } else if (workEl) {
-          window.lenis ? window.lenis.scrollTo(workEl, { immediate: true }) : workEl.scrollIntoView();
-        }
+        restoreMain();
       })
-      // 3. Sweep layers away to the top and resume Lenis / refresh ScrollTrigger
+      // 3. Sweep layers away to top
       .set([darkLayer, accentLayer], { transformOrigin: 'top' })
       .to(darkLayer, { scaleY: 0, duration: 0.5, ease: 'expo.inOut' })
       .to(accentLayer, { scaleY: 0, duration: 0.55, ease: 'expo.inOut' }, '-=0.42');
@@ -172,19 +214,27 @@
   // Event Listener for Back to projects button
   backBtn?.addEventListener('click', () => closeProject(true));
 
-  // If user clicks anchor nav while in detail view (e.g. #contact, #work), close detail first then scroll
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  // Seamless cross-view anchor navigation from detail view
+  document.querySelectorAll('a[href^="#"], a[href^="/#"]').forEach(anchor => {
     anchor.addEventListener('click', e => {
-      const targetId = anchor.getAttribute('href');
-      if (!detailEl.hidden && targetId && !targetId.startsWith('#project/')) {
+      let targetId = anchor.getAttribute('href');
+      if (!targetId) return;
+      if (targetId.startsWith('/#')) {
+        targetId = targetId.slice(1);
+      }
+
+      if (!detailEl.hidden && targetId.startsWith('#') && !targetId.startsWith('#project/')) {
         e.preventDefault();
-        const targetEl = document.querySelector(targetId);
-        if (targetEl) {
-          closeProject(true);
-          setTimeout(() => {
-            window.lenis ? window.lenis.scrollTo(targetEl) : targetEl.scrollIntoView({ behavior: 'smooth' });
-          }, 520);
+
+        // Close mobile drawer if open
+        const closeBtn = document.querySelector('#navigation .menu__close');
+        const menuEl = document.getElementById('menu');
+        if (menuEl && !menuEl.hidden && closeBtn) {
+          closeBtn.click();
         }
+
+        // Close project detail view and scroll to target section
+        closeProject(true, targetId);
       }
     });
   });
@@ -203,6 +253,13 @@
       closeProject(false);
     }
   });
+
+  // Ensure scroll is ready if direct load on /work/:slug
+  if (!detailEl.hidden) {
+    window.lenis?.start();
+    window.lenis?.resize();
+    window.ScrollTrigger?.refresh();
+  }
 
   // Handle initial page load if URL has /work/:slug or #project/:slug
   const initialPath = window.location.pathname;

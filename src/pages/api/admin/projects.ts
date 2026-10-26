@@ -76,12 +76,13 @@ export const POST: APIRoute = async (context) => {
       );
     }
 
-    const validData = validationResult.data;
+    const { description, ...projectPayload } = validationResult.data;
 
     const { data, error } = await client
       .from('projects')
       .insert({
-        ...validData,
+        ...projectPayload,
+        line: description || projectPayload.line,
         updated_at: new Date().toISOString(),
       })
       .select()
@@ -141,12 +142,13 @@ export const PUT: APIRoute = async (context) => {
       );
     }
 
-    const validData = validationResult.data;
+    const { description, ...projectPayload } = validationResult.data;
 
     const { data, error } = await client
       .from('projects')
       .update({
-        ...validData,
+        ...projectPayload,
+        line: description || projectPayload.line,
         updated_at: new Date().toISOString(),
       })
       .eq('id', id)
