@@ -80,16 +80,29 @@ export async function getProjects(): Promise<Project[]> {
       .order('sort_order', { ascending: true });
 
     if (!error && data) {
-      return ProjectsSchema.parse(data);
+      const merged = data.map((item: any) => {
+        const seedItem = (seedData.projects as any[]).find(p => p.slug === item.slug);
+        return {
+          ...item,
+          live_url: item.live_url || seedItem?.live_url || `https://${item.slug}.viqar.dev`,
+          github_url: item.github_url || seedItem?.github_url || `https://github.com/viqarmulya/${item.slug}`
+        };
+      });
+      return ProjectsSchema.parse(merged);
     }
     if (error) {
       console.warn('Failed to fetch projects from Supabase, falling back to seed:', error.message);
     }
   }
 
-  const published = (seedData.projects as Array<{ status: string; sort_order: number }>)
+  const published = (seedData.projects as Array<{ status: string; sort_order: number; slug: string; live_url?: string; github_url?: string }>)
     .filter((p) => p.status === 'published')
-    .sort((a, b) => a.sort_order - b.sort_order);
+    .sort((a, b) => a.sort_order - b.sort_order)
+    .map(p => ({
+      ...p,
+      live_url: p.live_url || `https://${p.slug}.viqar.dev`,
+      github_url: p.github_url || `https://github.com/viqarmulya/${p.slug}`
+    }));
 
   return ProjectsSchema.parse(published);
 }

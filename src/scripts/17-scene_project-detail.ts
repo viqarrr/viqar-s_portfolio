@@ -44,35 +44,35 @@
     if (tagEl) tagEl.textContent = project.tag || '';
     if (descEl) descEl.innerHTML = project.line || '';
 
-    // Action buttons (Live Site & GitHub)
-    const hasLive = Boolean(project.live_url && project.live_url.trim());
-    const hasGithub = Boolean(project.github_url && project.github_url.trim());
-    const hasAnyAction = hasLive || hasGithub;
+    // Action buttons (Live Preview ↗ & GitHub / Code ↗)
+    const liveBtn = detailEl.querySelector('#pdetail-live-btn');
+    const githubBtn = detailEl.querySelector('#pdetail-github-btn');
+    const actionBar = detailEl.querySelector('#pdetail-action-bar');
 
-    const liveBtns = detailEl.querySelectorAll('.pdetail-live-btn');
-    liveBtns.forEach(btn => {
-      if (hasLive) {
-        btn.setAttribute('href', project.live_url);
-        btn.style.display = 'inline-flex';
+    const liveUrl = (project.live_url || '').trim();
+    const githubUrl = (project.github_url || '').trim();
+
+    if (liveBtn) {
+      if (liveUrl) {
+        liveBtn.setAttribute('href', liveUrl);
+        liveBtn.style.display = 'inline-flex';
       } else {
-        btn.style.display = 'none';
+        liveBtn.style.display = 'none';
       }
-    });
+    }
 
-    const githubBtns = detailEl.querySelectorAll('.pdetail-github-btn');
-    githubBtns.forEach(btn => {
-      if (hasGithub) {
-        btn.setAttribute('href', project.github_url);
-        btn.style.display = 'inline-flex';
+    if (githubBtn) {
+      if (githubUrl) {
+        githubBtn.setAttribute('href', githubUrl);
+        githubBtn.style.display = 'inline-flex';
       } else {
-        btn.style.display = 'none';
+        githubBtn.style.display = 'none';
       }
-    });
+    }
 
-    const actionBars = detailEl.querySelectorAll('.pdetail-action-bar');
-    actionBars.forEach(bar => {
-      bar.style.display = hasAnyAction ? 'flex' : 'none';
-    });
+    if (actionBar) {
+      actionBar.style.display = (liveUrl || githubUrl) ? 'flex' : 'none';
+    }
   };
 
   const openProject = (slug: string, pushState = true) => {

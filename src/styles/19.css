@@ -194,66 +194,68 @@
     }
   }
 
-  /* Project Detail Action Buttons */
-  .pdetail__action-bar {
+  /* Project Detail Action CTA Buttons */
+  .pdetail__cta-bar {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 14px;
-    margin-top: clamp(32px, 5vh, 56px);
-    padding-top: clamp(28px, 4vh, 48px);
-    border-top: 1px solid color-mix(in srgb, var(--color-2) 12%, transparent);
+    gap: 1rem;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
   }
 
-  .pdetail__actions {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 12px;
-  }
-
-  .pdetail__btn {
+  .pdetail__btn-primary {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
-    min-height: 44px;
-    padding: 0 24px;
-    border-radius: var(--radius-2);
+    gap: 0.5rem;
+    border-radius: 9999px;
+    min-height: 48px;
+    padding: 0.75rem 1.75rem;
+    background: #f6db00;
+    color: #0d0c11;
     font-family: var(--font-2);
-    font-size: 14px;
-    font-weight: 600;
-    line-height: 1;
-    letter-spacing: -0.01em;
+    font-size: 0.875rem;
+    font-weight: 700;
+    letter-spacing: -0.025em;
     text-decoration: none;
     cursor: pointer;
-    transition: transform 0.2s cubic-bezier(0.16, 0.84, 0.24, 1), opacity 0.2s, background-color 0.2s;
+    transition: opacity 0.2s, transform 0.2s cubic-bezier(0.16, 0.84, 0.24, 1);
   }
-  .pdetail__btn:active {
+  .pdetail__btn-primary:active {
     transform: scale(0.98);
   }
-
-  .pdetail__btn--primary {
-    background: var(--color-3);
-    color: var(--color-1);
-    border: none;
-  }
   @media (hover: hover) {
-    .pdetail__btn--primary:hover {
-      opacity: 0.92;
-      transform: translateY(-2px);
+    .pdetail__btn-primary:hover {
+      opacity: 0.9;
     }
   }
 
-  .pdetail__btn--secondary {
-    background: var(--color-7);
-    color: var(--color-2);
-    border: 1px solid color-mix(in srgb, var(--color-2) 14%, transparent);
+  .pdetail__btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: 9999px;
+    min-height: 48px;
+    padding: 0.75rem 1.75rem;
+    background: #1f1d26;
+    color: #ffffff;
+    font-family: var(--font-2);
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-decoration: none;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s cubic-bezier(0.16, 0.84, 0.24, 1);
+  }
+  .pdetail__btn-secondary:active {
+    transform: scale(0.98);
   }
   @media (hover: hover) {
-    .pdetail__btn--secondary:hover {
-      background: color-mix(in srgb, var(--color-7) 80%, white);
-      transform: translateY(-2px);
+    .pdetail__btn-secondary:hover {
+      background: #2a2734;
     }
   }
 }
