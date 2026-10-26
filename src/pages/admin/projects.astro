@@ -1,0 +1,36 @@
+---
+export const prerender = false;
+
+import AdminLayout from '../../layouts/AdminLayout.astro';
+import ProjectsManager from '../../components/admin/ProjectsManager';
+// Integrates SortableList via ProjectsManager
+import { createAstroServerClient, checkAdminUser } from '../../lib/supabase-server';
+import { getProjects } from '../../lib/content';
+
+const client = createAstroServerClient(Astro);
+const { user, isAdmin } = await checkAdminUser(client);
+
+if (!user || !isAdmin) {
+  return Astro.redirect('/admin/login');
+}
+
+let projects: any[] = [];
+try {
+  const { data, error } = await client
+    .from('projects')
+    .select('*')
+    .order('sort_order', { ascending: true });
+
+  if (!error && data && data.length > 0) {
+    projects = data;
+  } else {
+    projects = await getProjects();
+  }
+} catch {
+  projects = await getProjects();
+}
+---
+
+<AdminLayout title="Manage Projects" userEmail={user.email}>
+  <ProjectsManager initialProjects={projects} client:only="react" />
+</AdminLayout>

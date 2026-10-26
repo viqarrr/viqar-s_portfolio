@@ -269,7 +269,6 @@ export default function SortableList({
                 <SortableRow
                   key={item.id}
                   item={item}
-                  collection={collection}
                   onEdit={onEdit}
                   onDelete={onDelete}
                   onStatusToggle={handleStatusToggle}
