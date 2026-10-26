@@ -49,10 +49,10 @@ export default function SkillsManager({ initialSkills }: SkillsManagerProps) {
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h2 className="text-xl font-bold text-white tracking-tight">Skills & Tools</h2>
-          <p className="text-sm text-slate-400 mt-1">
+          <h2 className="text-2xl font-heading font-extrabold text-white tracking-tight">Skills & Tools</h2>
+          <p className="text-sm text-[#aaa7b4] font-sans mt-1">
             Manage interactive skill radar nodes, categorized badges, and SVG logos.
           </p>
         </div>
@@ -67,17 +67,17 @@ export default function SkillsManager({ initialSkills }: SkillsManagerProps) {
         onEdit={handleEdit}
         onDelete={handleDelete}
         renderContent={(item) => (
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3.5">
             {item.logo_svg && (
               <div
-                className="w-8 h-8 p-1.5 rounded-lg bg-slate-800 border border-slate-700 text-blue-400 flex items-center justify-center flex-shrink-0"
+                className="w-10 h-10 p-2 rounded-xl bg-white/[0.04] text-[#6c3cff] flex items-center justify-center flex-shrink-0"
                 dangerouslySetInnerHTML={{ __html: item.logo_svg }}
               />
             )}
             <div className="min-w-0">
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2 flex-wrap">
                 <h4 className="text-sm font-semibold text-white truncate">{item.name}</h4>
-                <span className="text-xs text-slate-400 bg-slate-800/80 px-2 py-0.5 rounded-full border border-slate-700/60">
+                <span className="text-xs text-[#aaa7b4] bg-white/[0.06] px-2.5 py-0.5 rounded-full font-medium">
                   {item.category}
                 </span>
               </div>

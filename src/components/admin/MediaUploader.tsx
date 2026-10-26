@@ -107,18 +107,26 @@ export default function MediaUploader({ onUploadComplete, folder = 'general' }: 
   return (
     <div className="space-y-4">
       {error && (
-        <div className="p-3 bg-red-950/80 border border-red-800 text-red-300 rounded-lg text-xs flex items-center justify-between">
+        <div className="p-4 bg-rose-500/10 text-rose-300 rounded-2xl text-xs font-medium flex items-center justify-between">
           <span>{error}</span>
-          <button type="button" onClick={() => setError(null)} className="text-red-400 hover:text-white">
+          <button
+            type="button"
+            onClick={() => setError(null)}
+            className="w-6 h-6 flex items-center justify-center text-rose-400 hover:text-white"
+          >
             &times;
           </button>
         </div>
       )}
 
       {success && (
-        <div className="p-3 bg-emerald-950/80 border border-emerald-800 text-emerald-300 rounded-lg text-xs flex items-center justify-between">
+        <div className="p-4 bg-emerald-500/10 text-emerald-300 rounded-2xl text-xs font-medium flex items-center justify-between">
           <span>{success}</span>
-          <button type="button" onClick={() => setSuccess(null)} className="text-emerald-400 hover:text-white">
+          <button
+            type="button"
+            onClick={() => setSuccess(null)}
+            className="w-6 h-6 flex items-center justify-center text-emerald-400 hover:text-white"
+          >
             &times;
           </button>
         </div>
@@ -131,30 +139,27 @@ export default function MediaUploader({ onUploadComplete, folder = 'general' }: 
         }}
         onDragLeave={() => setDragOver(false)}
         onDrop={handleDrop}
-        className={`p-8 border-2 border-dashed rounded-xl text-center transition-colors flex flex-col items-center justify-center gap-3 ${
+        onClick={() => fileInputRef.current?.click()}
+        className={`p-8 md:p-12 rounded-3xl text-center transition-all flex flex-col items-center justify-center gap-4 cursor-pointer ${
           dragOver
-            ? 'border-blue-500 bg-blue-950/20'
-            : 'border-slate-700 bg-slate-900/50 hover:border-slate-600'
+            ? 'bg-[#6c3cff]/15 ring-2 ring-[#6c3cff]'
+            : 'bg-white/[0.03] hover:bg-white/[0.05] ring-1 ring-white/10 hover:ring-white/20'
         }`}
       >
-        <div className="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 border border-slate-700">
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div className="w-14 h-14 rounded-2xl bg-[#6c3cff]/15 text-[#6c3cff] flex items-center justify-center">
+          <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
           </svg>
         </div>
 
         <div>
-          <p className="text-sm font-medium text-slate-200">
+          <p className="text-sm font-medium text-white">
             Drag and drop an image here, or{' '}
-            <button
-              type="button"
-              onClick={() => fileInputRef.current?.click()}
-              className="text-blue-400 hover:text-blue-300 underline font-semibold"
-            >
+            <span className="text-[#a78bfa] underline underline-offset-2 font-semibold">
               browse
-            </button>
+            </span>
           </p>
-          <p className="text-xs text-slate-500 mt-1">PNG, JPEG, WebP, or SVG up to 5MB</p>
+          <p className="text-xs text-[#5d5a67] mt-1.5">PNG, JPEG, WebP, or SVG up to 5MB</p>
         </div>
 
         <input
@@ -170,8 +175,8 @@ export default function MediaUploader({ onUploadComplete, folder = 'general' }: 
         />
 
         {uploading && (
-          <div className="flex items-center gap-2 text-xs text-blue-400 mt-2 font-medium">
-            <svg className="animate-spin w-4 h-4 text-blue-400" fill="none" viewBox="0 0 24 24">
+          <div className="flex items-center gap-2 text-xs text-[#a78bfa] mt-2 font-medium">
+            <svg className="animate-spin w-4 h-4 text-[#6c3cff]" fill="none" viewBox="0 0 24 24">
               <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
               <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z" />
             </svg>
@@ -181,11 +186,11 @@ export default function MediaUploader({ onUploadComplete, folder = 'general' }: 
       </div>
 
       {preview && (
-        <div className="p-4 bg-slate-900 border border-slate-800 rounded-xl flex items-center gap-4">
+        <div className="p-4 bg-[#18171f] rounded-2xl flex items-center gap-4 shadow-lg">
           <img
             src={preview.url}
             alt="Uploaded preview"
-            className="w-16 h-16 rounded-lg object-cover bg-slate-800 border border-slate-700 flex-shrink-0"
+            className="w-16 h-16 rounded-xl object-cover bg-white/[0.04] flex-shrink-0"
           />
           <div className="min-w-0 flex-1">
             <p className="text-xs font-semibold text-white">Latest Upload:</p>
@@ -194,10 +199,10 @@ export default function MediaUploader({ onUploadComplete, folder = 'general' }: 
               readOnly
               value={preview.url}
               onClick={(e) => (e.target as HTMLInputElement).select()}
-              className="w-full mt-1 px-2.5 py-1 text-xs font-mono bg-slate-800 border border-slate-700 rounded text-slate-300 cursor-pointer"
+              className="w-full mt-1.5 px-3 py-2 text-xs font-mono bg-white/[0.04] rounded-xl text-[#aaa7b4] ring-1 ring-white/10 cursor-pointer select-all outline-none focus:ring-2 focus:ring-[#6c3cff]"
             />
             {preview.width && preview.height && (
-              <p className="text-xs text-slate-500 mt-1">
+              <p className="text-xs text-[#5d5a67] mt-1">
                 Intrinsic dimensions: {preview.width} &times; {preview.height}px
               </p>
             )}

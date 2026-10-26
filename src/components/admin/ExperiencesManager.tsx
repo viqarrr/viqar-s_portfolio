@@ -49,10 +49,10 @@ export default function ExperiencesManager({ initialExperiences }: ExperiencesMa
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h2 className="text-xl font-bold text-white tracking-tight">Work Experiences</h2>
-          <p className="text-sm text-slate-400 mt-1">
+          <h2 className="text-2xl font-heading font-extrabold text-white tracking-tight">Work Experiences</h2>
+          <p className="text-sm text-[#aaa7b4] font-sans mt-1">
             Chronological career history, roles, responsibilities, and key technologies.
           </p>
         </div>
@@ -68,12 +68,12 @@ export default function ExperiencesManager({ initialExperiences }: ExperiencesMa
         onDelete={handleDelete}
         renderContent={(item) => (
           <div className="min-w-0">
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 flex-wrap">
               <h4 className="text-sm font-semibold text-white truncate">{item.title}</h4>
-              <span className="text-xs text-blue-400 font-medium">@ {item.org}</span>
-              <span className="text-xs text-slate-500">({item.period})</span>
+              <span className="text-xs text-[#a78bfa] font-medium">@ {item.org}</span>
+              <span className="text-xs text-[#5d5a67]">({item.period})</span>
             </div>
-            <p className="text-xs text-slate-400 truncate mt-0.5">{item.description}</p>
+            <p className="text-xs text-[#aaa7b4] truncate mt-0.5">{item.description}</p>
           </div>
         )}
       />

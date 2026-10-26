@@ -87,24 +87,33 @@ export default function ContactForm({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm overflow-y-auto">
-      <div className="bg-slate-900 border border-slate-800 rounded-2xl max-w-xl w-full p-6 shadow-2xl space-y-6 my-8 max-h-[90vh] overflow-y-auto admin-scrollbar">
-        <div className="flex items-center justify-between border-b border-slate-800 pb-4">
-          <h3 className="text-lg font-bold text-white">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md overflow-y-auto">
+      <div className="bg-[#18171f] rounded-3xl max-w-xl w-full p-6 sm:p-8 shadow-2xl space-y-6 my-8 max-h-[90vh] overflow-y-auto admin-scrollbar">
+        <div className="flex items-center justify-between border-b border-white/[0.06] pb-4">
+          <h3 className="text-xl font-heading font-extrabold text-white tracking-tight">
             {contactLink?.id ? 'Edit Contact Link' : 'Create Contact Link'}
           </h3>
           <button
             type="button"
             onClick={onClose}
-            className="text-slate-400 hover:text-white text-xl font-bold p-1"
+            className="min-w-[44px] min-h-[44px] rounded-xl flex items-center justify-center text-[#aaa7b4] hover:text-white hover:bg-white/[0.06] active:scale-[0.98] transition-all"
           >
-            &times;
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
           </button>
         </div>
 
         {serverError && (
-          <div className="p-3.5 bg-red-950/80 border border-red-800 text-red-300 rounded-lg text-xs">
-            {serverError}
+          <div className="p-4 bg-rose-500/10 text-rose-300 rounded-2xl text-xs font-medium flex items-center justify-between">
+            <span>{serverError}</span>
+            <button
+              type="button"
+              onClick={() => setServerError(null)}
+              className="text-rose-400 hover:text-white"
+            >
+              &times;
+            </button>
           </div>
         )}
 
@@ -143,37 +152,37 @@ export default function ContactForm({
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 items-center">
             <div>
-              <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5">
+              <label className="block text-xs font-semibold text-[#aaa7b4] uppercase tracking-wider mb-2">
                 Status
               </label>
               <select
                 {...register('status')}
-                className="w-full px-3.5 py-2 bg-slate-800 border border-slate-700 rounded-lg text-sm text-slate-100 focus:outline-none focus:ring-2 focus:ring-blue-500/30"
+                className="w-full px-4 py-3 bg-white/[0.04] focus:bg-white/[0.07] text-white rounded-xl text-sm outline-none ring-1 ring-white/10 focus:ring-2 focus:ring-[#6c3cff] min-h-[44px] transition-all"
               >
-                <option value="draft">Draft</option>
-                <option value="published">Published</option>
+                <option value="draft" className="bg-[#18171f] text-white">Draft</option>
+                <option value="published" className="bg-[#18171f] text-white">Published</option>
               </select>
             </div>
 
-            <div className="flex items-center gap-2 pt-5">
+            <div className="flex items-center gap-3 pt-5 min-h-[44px]">
               <input
                 type="checkbox"
                 id="external"
                 {...register('external')}
-                className="w-4 h-4 rounded bg-slate-800 border-slate-700 text-blue-600 focus:ring-blue-500"
+                className="w-5 h-5 rounded-lg bg-white/[0.06] border-0 text-[#6c3cff] focus:ring-[#6c3cff] cursor-pointer"
               />
-              <label htmlFor="external" className="text-xs text-slate-300 font-medium">
+              <label htmlFor="external" className="text-xs text-[#aaa7b4] font-medium cursor-pointer select-none">
                 Open in new tab (external link)
               </label>
             </div>
           </div>
 
           <div>
-            <div className="flex items-center justify-between mb-1.5">
-              <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider">
+            <div className="flex items-center justify-between mb-2">
+              <label className="block text-xs font-semibold text-[#aaa7b4] uppercase tracking-wider">
                 Icon SVG
               </label>
-              <span className="text-xs text-slate-500">Vector graphic</span>
+              <span className="text-xs text-[#5d5a67]">Vector graphic</span>
             </div>
             <Textarea
               rows={4}
@@ -185,17 +194,17 @@ export default function ContactForm({
           </div>
 
           {liveSvg && (
-            <div className="p-3 bg-slate-800/80 rounded-lg border border-slate-700 flex items-center gap-3">
-              <span className="text-xs text-slate-400 font-medium">SVG Preview:</span>
+            <div className="p-4 bg-white/[0.02] rounded-2xl flex items-center gap-4">
+              <span className="text-xs text-[#aaa7b4] font-medium">SVG Preview:</span>
               <div
-                className="w-6 h-6 flex items-center justify-center text-cyan-400"
+                className="w-9 h-9 flex items-center justify-center text-[#6c3cff]"
                 dangerouslySetInnerHTML={{ __html: liveSvg }}
               />
             </div>
           )}
 
-          <div className="flex justify-end gap-3 pt-4 border-t border-slate-800">
-            <Button type="button" variant="ghost" onClick={onClose}>
+          <div className="flex justify-end gap-3 pt-5 border-t border-white/[0.06]">
+            <Button type="button" variant="secondary" onClick={onClose}>
               Cancel
             </Button>
             <Button type="submit" loading={submitting}>

@@ -88,26 +88,29 @@ const totalDrafts =
 ---
 
 <Base title={`[DRAFT PREVIEW] ${settings.site_title}`} description={settings.meta_description}>
-  <!-- Floating Draft Preview Banner -->
+  <!-- Floating Apple-style Draft Preview Banner -->
   <div
-    style="position: fixed; top: 0; left: 0; right: 0; z-index: 99999; background: #92400e; color: #fef3c7; font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 13px; font-weight: 500; padding: 10px 16px; border-bottom: 2px solid #f59e0b; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 4px 12px rgba(0,0,0,0.5);"
+    style="position: fixed; top: 0; left: 0; right: 0; z-index: 99999; backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); background: rgba(13, 12, 17, 0.88); color: #ffffff; font-family: 'Onest', -apple-system, BlinkMacSystemFont, sans-serif; font-size: 13px; font-weight: 500; padding: 10px 16px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); display: flex; align-items: center; justify-content: space-between; gap: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.6);"
   >
-    <div style="display: flex; align-items: center; gap: 8px;">
-      <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #fbbf24;"></span>
-      <span><strong>DRAFT PREVIEW MODE</strong> &mdash; Viewing unpublished drafts alongside published content</span>
-      <span style="background: rgba(0,0,0,0.3); padding: 2px 8px; border-radius: 9999px; font-size: 11px; font-weight: 600;">
+    <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+      <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #6c3cff; box-shadow: 0 0 10px #6c3cff;"></span>
+      <span style="font-weight: 600; letter-spacing: -0.01em;">DRAFT PREVIEW MODE</span>
+      <span style="color: #aaa7b4; font-size: 12px;">Viewing unpublished drafts alongside live content</span>
+      <span style="background: rgba(108, 60, 255, 0.2); color: #c4b5fd; padding: 3px 10px; border-radius: 9999px; font-size: 11px; font-weight: 600;">
         {totalDrafts} Drafts Active
       </span>
     </div>
     <a
       href="/admin"
-      style="background: #1e293b; color: #f8fafc; padding: 4px 12px; border-radius: 6px; text-decoration: none; font-size: 12px; font-weight: 600; border: 1px solid #475569;"
+      style="background: #6c3cff; color: #ffffff; padding: 6px 14px; border-radius: 12px; text-decoration: none; font-size: 12px; font-weight: 600; display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; transition: opacity 0.15s ease;"
+      onmouseover="this.style.opacity='0.9'"
+      onmouseout="this.style.opacity='1'"
     >
-      &larr; Back to Admin Dashboard
+      &larr; Return to Admin
     </a>
   </div>
 
-  <div style="padding-top: 42px;">
+  <div style="padding-top: 52px;">
     <Header settings={settings} />
     <main id="main">
       <Hero settings={settings} />

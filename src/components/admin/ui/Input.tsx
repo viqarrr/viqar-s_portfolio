@@ -13,23 +13,23 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
     return (
       <div className="w-full space-y-1.5">
         {label && (
-          <label htmlFor={inputId} className="block text-xs font-semibold text-slate-300 uppercase tracking-wider">
+          <label htmlFor={inputId} className="block text-xs font-semibold text-[#aaa7b4] uppercase tracking-wider">
             {label}
-            {props.required && <span className="text-red-400 ml-1">*</span>}
+            {props.required && <span className="text-[#6c3cff] ml-1">*</span>}
           </label>
         )}
         <input
           ref={ref}
           id={inputId}
-          className={`w-full px-3.5 py-2 bg-slate-800/90 border rounded-lg text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-2 transition-all disabled:opacity-50 disabled:cursor-not-allowed ${
+          className={`w-full min-h-[44px] px-4 py-3 bg-white/[0.04] hover:bg-white/[0.06] focus:bg-white/[0.08] text-sm text-white placeholder-[#5d5a67] rounded-xl outline-none ring-1 transition-all duration-150 disabled:opacity-40 disabled:cursor-not-allowed ${
             error
-              ? 'border-red-500 focus:ring-red-500/50'
-              : 'border-slate-700 focus:border-blue-500 focus:ring-blue-500/30'
+              ? 'ring-red-500/80 focus:ring-red-500'
+              : 'ring-white/10 focus:ring-2 focus:ring-[#6c3cff]'
           } ${className}`}
           {...props}
         />
-        {error && <p className="text-xs text-red-400 font-medium">{error}</p>}
-        {!error && helperText && <p className="text-xs text-slate-400">{helperText}</p>}
+        {error && <p className="text-xs text-red-400 font-medium mt-1">{error}</p>}
+        {!error && helperText && <p className="text-xs text-[#5d5a67] mt-1">{helperText}</p>}
       </div>
     );
   }
@@ -49,24 +49,24 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
     return (
       <div className="w-full space-y-1.5">
         {label && (
-          <label htmlFor={inputId} className="block text-xs font-semibold text-slate-300 uppercase tracking-wider">
+          <label htmlFor={inputId} className="block text-xs font-semibold text-[#aaa7b4] uppercase tracking-wider">
             {label}
-            {props.required && <span className="text-red-400 ml-1">*</span>}
+            {props.required && <span className="text-[#6c3cff] ml-1">*</span>}
           </label>
         )}
         <textarea
           ref={ref}
           id={inputId}
           rows={rows}
-          className={`w-full px-3.5 py-2 bg-slate-800/90 border rounded-lg text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-2 transition-all disabled:opacity-50 disabled:cursor-not-allowed ${
+          className={`w-full px-4 py-3 bg-white/[0.04] hover:bg-white/[0.06] focus:bg-white/[0.08] text-sm text-white placeholder-[#5d5a67] rounded-xl outline-none ring-1 transition-all duration-150 disabled:opacity-40 disabled:cursor-not-allowed ${
             error
-              ? 'border-red-500 focus:ring-red-500/50'
-              : 'border-slate-700 focus:border-blue-500 focus:ring-blue-500/30'
+              ? 'ring-red-500/80 focus:ring-red-500'
+              : 'ring-white/10 focus:ring-2 focus:ring-[#6c3cff]'
           } ${className}`}
           {...props}
         />
-        {error && <p className="text-xs text-red-400 font-medium">{error}</p>}
-        {!error && helperText && <p className="text-xs text-slate-400">{helperText}</p>}
+        {error && <p className="text-xs text-red-400 font-medium mt-1">{error}</p>}
+        {!error && helperText && <p className="text-xs text-[#5d5a67] mt-1">{helperText}</p>}
       </div>
     );
   }

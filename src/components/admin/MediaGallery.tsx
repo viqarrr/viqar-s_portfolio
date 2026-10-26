@@ -60,8 +60,9 @@ export default function MediaGallery() {
   return (
     <div className="space-y-8">
       {/* Upload Zone */}
-      <div className="p-6 bg-slate-900 border border-slate-800 rounded-xl space-y-4">
-        <h3 className="text-sm font-semibold text-white uppercase tracking-wider">
+      <div className="p-6 md:p-8 bg-[#18171f] rounded-3xl space-y-5 shadow-xl">
+        <h3 className="text-base font-heading font-extrabold text-white tracking-tight flex items-center gap-2.5">
+          <span className="w-2.5 h-2.5 rounded-full bg-[#6c3cff]"></span>
           Upload New Asset
         </h3>
         <MediaUploader onUploadComplete={() => fetchFiles()} />
@@ -70,7 +71,7 @@ export default function MediaGallery() {
       {/* Asset Grid */}
       <div className="space-y-4">
         <div className="flex items-center justify-between">
-          <h3 className="text-sm font-semibold text-white uppercase tracking-wider">
+          <h3 className="text-base font-heading font-extrabold text-white tracking-tight">
             Uploaded Assets ({files.length})
           </h3>
           <Button size="sm" variant="secondary" onClick={fetchFiles} disabled={loading}>
@@ -79,9 +80,9 @@ export default function MediaGallery() {
         </div>
 
         {loading ? (
-          <div className="p-8 text-center text-slate-400 text-sm">Loading media files...</div>
+          <div className="p-12 text-center text-[#aaa7b4] text-sm">Loading media files...</div>
         ) : files.length === 0 ? (
-          <div className="p-8 text-center bg-slate-900 border border-dashed border-slate-800 rounded-xl text-slate-500 text-sm">
+          <div className="p-12 text-center bg-[#18171f] rounded-3xl text-[#5d5a67] text-sm">
             No media files found in the storage bucket. Upload your first asset above.
           </div>
         ) : (
@@ -89,16 +90,16 @@ export default function MediaGallery() {
             {files.map((file) => (
               <div
                 key={file.path}
-                className="bg-slate-900 border border-slate-800 hover:border-slate-700 rounded-xl overflow-hidden group flex flex-col justify-between"
+                className="bg-[#18171f] rounded-2xl overflow-hidden group flex flex-col justify-between shadow-lg hover:shadow-xl transition-all duration-200"
               >
-                <div className="h-32 bg-slate-950 flex items-center justify-center p-2 relative overflow-hidden">
+                <div className="h-36 bg-black/40 flex items-center justify-center p-3 relative overflow-hidden">
                   <img
                     src={file.publicUrl}
                     alt={file.name}
                     className="max-h-full max-w-full object-contain"
                   />
                 </div>
-                <div className="p-3 border-t border-slate-800/80 space-y-2">
+                <div className="p-3.5 border-t border-white/[0.06] space-y-2">
                   <p className="text-xs font-medium text-white truncate" title={file.name}>
                     {file.name}
                   </p>
@@ -106,14 +107,14 @@ export default function MediaGallery() {
                     <button
                       type="button"
                       onClick={() => copyUrl(file.publicUrl)}
-                      className="text-xs text-blue-400 hover:text-blue-300 font-medium"
+                      className="text-xs font-semibold text-[#6c3cff] hover:text-[#a78bfa] min-h-[36px] flex items-center active:scale-95 transition-all"
                     >
                       {copiedPath === file.publicUrl ? 'Copied!' : 'Copy URL'}
                     </button>
                     <button
                       type="button"
                       onClick={() => handleDelete(file.path)}
-                      className="text-xs text-red-400 hover:text-red-300"
+                      className="text-xs text-rose-400 hover:text-rose-300 min-h-[36px] flex items-center active:scale-95 transition-all"
                     >
                       Delete
                     </button>

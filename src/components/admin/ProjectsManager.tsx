@@ -49,10 +49,10 @@ export default function ProjectsManager({ initialProjects }: ProjectsManagerProp
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h2 className="text-xl font-bold text-white tracking-tight">Projects</h2>
-          <p className="text-sm text-slate-400 mt-1">
+          <h2 className="text-2xl font-heading font-extrabold text-white tracking-tight">Projects</h2>
+          <p className="text-sm text-[#aaa7b4] font-sans mt-1">
             Reorder projects by dragging handles. Toggle status or click Edit to update details.
           </p>
         </div>
@@ -67,22 +67,22 @@ export default function ProjectsManager({ initialProjects }: ProjectsManagerProp
         onEdit={handleEdit}
         onDelete={handleDelete}
         renderContent={(item) => (
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3.5">
             {item.image_src && (
               <img
                 src={item.image_src}
                 alt={item.image_alt || ''}
-                className="w-10 h-10 rounded-lg object-cover bg-slate-800 border border-slate-700 flex-shrink-0"
+                className="w-12 h-12 rounded-xl object-cover bg-white/[0.04] flex-shrink-0"
               />
             )}
             <div className="min-w-0">
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2 flex-wrap">
                 <h4 className="text-sm font-semibold text-white truncate">{item.name}</h4>
-                <span className="text-xs font-mono text-slate-500 bg-slate-800 px-1.5 py-0.5 rounded">
+                <span className="text-xs font-mono text-[#aaa7b4] bg-white/[0.06] px-2 py-0.5 rounded-lg">
                   /{item.slug}
                 </span>
               </div>
-              <p className="text-xs text-slate-400 truncate">{item.tag}</p>
+              <p className="text-xs text-[#aaa7b4] truncate mt-0.5">{item.tag}</p>
             </div>
           </div>
         )}

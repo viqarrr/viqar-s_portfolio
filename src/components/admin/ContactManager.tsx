@@ -49,10 +49,10 @@ export default function ContactManager({ initialLinks }: ContactManagerProps) {
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h2 className="text-xl font-bold text-white tracking-tight">Contact & Social Links</h2>
-          <p className="text-sm text-slate-400 mt-1">
+          <h2 className="text-2xl font-heading font-extrabold text-white tracking-tight">Contact & Social Links</h2>
+          <p className="text-sm text-[#aaa7b4] font-sans mt-1">
             Direct channels, social profiles, email targets, and footer links.
           </p>
         </div>
@@ -67,27 +67,27 @@ export default function ContactManager({ initialLinks }: ContactManagerProps) {
         onEdit={handleEdit}
         onDelete={handleDelete}
         renderContent={(item) => (
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3.5">
             {item.icon_svg && (
               <div
-                className="w-8 h-8 p-1.5 rounded-lg bg-slate-800 border border-slate-700 text-cyan-400 flex items-center justify-center flex-shrink-0"
+                className="w-10 h-10 p-2 rounded-xl bg-white/[0.04] text-[#6c3cff] flex items-center justify-center flex-shrink-0"
                 dangerouslySetInnerHTML={{ __html: item.icon_svg }}
               />
             )}
             <div className="min-w-0">
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2 flex-wrap">
                 <h4 className="text-sm font-semibold text-white truncate">{item.label}</h4>
                 <a
                   href={item.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-xs text-slate-500 hover:text-blue-400 truncate"
+                  className="text-xs text-[#aaa7b4] hover:text-white truncate"
                 >
                   {item.href}
                 </a>
               </div>
               {item.description && (
-                <p className="text-xs text-slate-400 truncate mt-0.5">{item.description}</p>
+                <p className="text-xs text-[#5d5a67] truncate mt-0.5">{item.description}</p>
               )}
             </div>
           </div>

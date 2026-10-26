@@ -67,18 +67,20 @@ function SortableRow({
     <div
       ref={setNodeRef}
       style={style}
-      className={`p-4 bg-slate-900 border border-slate-800 rounded-xl flex items-center justify-between gap-4 transition-shadow ${
-        isDragging ? 'shadow-2xl ring-2 ring-blue-500 bg-slate-850' : 'hover:border-slate-700'
+      className={`p-4 md:p-5 bg-[#18171f] hover:bg-[#1f1d26] rounded-2xl transition-all duration-150 shadow-apple-card flex flex-col md:flex-row md:items-center justify-between gap-4 select-none ${
+        isDragging ? 'scale-[1.02] shadow-apple-float bg-[#1f1d26] ring-2 ring-[#6c3cff]' : ''
       }`}
     >
-      <div className="flex items-center gap-3.5 min-w-0 flex-1">
-        {/* Drag Handle */}
+      {/* Left: Drag grip + Content */}
+      <div className="flex items-start md:items-center gap-3.5 min-w-0 flex-1">
+        {/* Drag Handle (44x44px touch target) */}
         <button
           type="button"
           {...attributes}
           {...listeners}
-          className="p-1.5 text-slate-500 hover:text-slate-300 hover:bg-slate-800 rounded cursor-grab active:cursor-grabbing flex-shrink-0"
+          className="w-11 h-11 flex items-center justify-center rounded-xl bg-white/[0.04] hover:bg-white/[0.08] text-[#aaa7b4] hover:text-white cursor-grab active:cursor-grabbing flex-shrink-0 transition-colors"
           title="Drag to reorder"
+          aria-label="Drag to reorder"
         >
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 8h16M4 16h16" />
@@ -86,7 +88,7 @@ function SortableRow({
         </button>
 
         {/* Sort Order Display */}
-        <span className="w-8 text-center text-xs font-mono text-slate-500 flex-shrink-0">
+        <span className="hidden sm:inline-block w-8 text-center text-xs font-mono text-[#5d5a67] flex-shrink-0">
           #{item.sort_order}
         </span>
 
@@ -96,10 +98,10 @@ function SortableRow({
             renderContent(item)
           ) : (
             <div>
-              <div className="flex items-center gap-2">
-                <h4 className="text-sm font-semibold text-white truncate">{displayName}</h4>
+              <div className="flex flex-wrap items-center gap-2">
+                <h4 className="font-heading font-bold text-base text-white truncate">{displayName}</h4>
                 {item.slug && (
-                  <span className="text-xs font-mono text-slate-500 bg-slate-800 px-1.5 py-0.5 rounded">
+                  <span className="text-xs font-mono text-[#aaa7b4] bg-white/[0.05] px-2 py-0.5 rounded-lg">
                     /{item.slug}
                   </span>
                 )}
@@ -109,37 +111,40 @@ function SortableRow({
         </div>
       </div>
 
-      {/* Right controls */}
-      <div className="flex items-center gap-3 flex-shrink-0">
+      {/* Right / Bottom on mobile: Controls */}
+      <div className="flex items-center justify-between md:justify-end gap-2.5 pt-2 md:pt-0 border-t border-white/[0.04] md:border-t-0 flex-shrink-0">
         <button
           type="button"
           onClick={() =>
             onStatusToggle(item.id, item.status === 'published' ? 'draft' : 'published')
           }
-          className="cursor-pointer"
+          className="cursor-pointer min-h-[44px] flex items-center active:scale-95 transition-transform"
           title={`Click to switch to ${item.status === 'published' ? 'draft' : 'published'}`}
         >
           <Badge status={item.status} />
         </button>
 
-        <Button
-          type="button"
-          size="sm"
-          variant="secondary"
-          onClick={() => onEdit(item)}
-        >
-          Edit
-        </Button>
+        <div className="flex items-center gap-2">
+          <Button
+            type="button"
+            size="sm"
+            variant="secondary"
+            onClick={() => onEdit(item)}
+            className="min-h-[44px] px-4"
+          >
+            Edit
+          </Button>
 
-        <Button
-          type="button"
-          size="sm"
-          variant="ghost"
-          onClick={() => onDelete(item.id)}
-          className="text-red-400 hover:text-red-300 hover:bg-red-950/40"
-        >
-          Delete
-        </Button>
+          <Button
+            type="button"
+            size="sm"
+            variant="ghost"
+            onClick={() => onDelete(item.id)}
+            className="text-red-400 hover:text-red-300 hover:bg-red-500/10 min-h-[44px] px-3"
+          >
+            Delete
+          </Button>
+        </div>
       </div>
     </div>
   );
@@ -181,7 +186,6 @@ export default function SortableList({
 
     if (oldIndex !== -1 && newIndex !== -1) {
       const moved = arrayMove(items, oldIndex, newIndex);
-      // Re-index sort_order by 10
       const reindexed = moved.map((item, idx) => ({
         ...item,
         sort_order: (idx + 1) * 10,
@@ -215,7 +219,6 @@ export default function SortableList({
   };
 
   const handleStatusToggle = async (id: string, newStatus: 'draft' | 'published') => {
-    // Optimistic update
     setItems((prev) =>
       prev.map((item) => (item.id === id ? { ...item, status: newStatus } : item))
     );
@@ -230,7 +233,6 @@ export default function SortableList({
       if (!res.ok) {
         const err = await res.json();
         setFeedback(`Status update failed: ${err.error || 'Server error'}`);
-        // Revert
         setItems(initialItems);
       } else {
         setFeedback(`Status updated to ${newStatus}`);
@@ -245,12 +247,12 @@ export default function SortableList({
   return (
     <div className="space-y-4">
       {feedback && (
-        <div className="p-3 bg-blue-950/80 border border-blue-800 text-blue-300 text-xs rounded-lg flex items-center justify-between">
+        <div className="p-4 bg-[#6c3cff]/15 text-white text-xs font-semibold rounded-2xl flex items-center justify-between animate-in fade-in">
           <span>{feedback}</span>
           <button
             type="button"
             onClick={() => setFeedback(null)}
-            className="text-blue-400 hover:text-white"
+            className="text-[#aaa7b4] hover:text-white"
           >
             &times;
           </button>
@@ -258,13 +260,13 @@ export default function SortableList({
       )}
 
       {items.length === 0 ? (
-        <div className="p-8 text-center bg-slate-900 border border-dashed border-slate-800 rounded-xl text-slate-500 text-sm">
+        <div className="p-12 text-center bg-[#18171f] rounded-3xl text-[#aaa7b4] text-sm">
           No entries found. Click "+ Add New" to create the first record.
         </div>
       ) : (
         <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
           <SortableContext items={items.map((i) => i.id)} strategy={verticalListSortingStrategy}>
-            <div className="space-y-2.5">
+            <div className="space-y-3">
               {items.map((item) => (
                 <SortableRow
                   key={item.id}

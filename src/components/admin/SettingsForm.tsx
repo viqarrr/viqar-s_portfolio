@@ -60,30 +60,44 @@ export default function SettingsForm({ initialSettings }: SettingsFormProps) {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-8 max-w-4xl pb-12">
       {successMsg && (
-        <div className="p-4 bg-emerald-950/80 border border-emerald-800 text-emerald-300 rounded-lg text-sm flex items-center justify-between">
-          <span>{successMsg}</span>
-          <button type="button" onClick={() => setSuccessMsg(null)} className="text-emerald-400 hover:text-emerald-200">
+        <div className="p-4 bg-emerald-500/10 text-emerald-300 rounded-2xl text-sm flex items-center justify-between transition-all">
+          <div className="flex items-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-emerald-400"></span>
+            <span>{successMsg}</span>
+          </div>
+          <button
+            type="button"
+            onClick={() => setSuccessMsg(null)}
+            className="w-8 h-8 flex items-center justify-center rounded-lg text-emerald-400 hover:text-white hover:bg-emerald-500/20 active:scale-95 transition-all"
+          >
             &times;
           </button>
         </div>
       )}
 
       {errorMsg && (
-        <div className="p-4 bg-red-950/80 border border-red-800 text-red-300 rounded-lg text-sm flex items-center justify-between">
-          <span>{errorMsg}</span>
-          <button type="button" onClick={() => setErrorMsg(null)} className="text-red-400 hover:text-red-200">
+        <div className="p-4 bg-rose-500/10 text-rose-300 rounded-2xl text-sm flex items-center justify-between transition-all">
+          <div className="flex items-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-rose-400"></span>
+            <span>{errorMsg}</span>
+          </div>
+          <button
+            type="button"
+            onClick={() => setErrorMsg(null)}
+            className="w-8 h-8 flex items-center justify-center rounded-lg text-rose-400 hover:text-white hover:bg-rose-500/20 active:scale-95 transition-all"
+          >
             &times;
           </button>
         </div>
       )}
 
       {/* General & SEO */}
-      <div className="p-6 bg-slate-900 border border-slate-800 rounded-xl space-y-4">
-        <h2 className="text-lg font-bold text-white border-b border-slate-800 pb-3 flex items-center gap-2">
-          <span className="w-2 h-2 rounded-full bg-blue-500"></span>
+      <div className="p-6 md:p-8 bg-[#18171f] rounded-3xl space-y-6 shadow-xl">
+        <h2 className="text-lg font-heading font-extrabold text-white pb-3 border-b border-white/[0.06] flex items-center gap-2.5">
+          <span className="w-2.5 h-2.5 rounded-full bg-[#6c3cff]"></span>
           General & Metadata
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           <Input
             label="Site Title"
             {...register('site_title')}
@@ -130,12 +144,12 @@ export default function SettingsForm({ initialSettings }: SettingsFormProps) {
       </div>
 
       {/* Hero Section */}
-      <div className="p-6 bg-slate-900 border border-slate-800 rounded-xl space-y-4">
-        <h2 className="text-lg font-bold text-white border-b border-slate-800 pb-3 flex items-center gap-2">
-          <span className="w-2 h-2 rounded-full bg-purple-500"></span>
+      <div className="p-6 md:p-8 bg-[#18171f] rounded-3xl space-y-6 shadow-xl">
+        <h2 className="text-lg font-heading font-extrabold text-white pb-3 border-b border-white/[0.06] flex items-center gap-2.5">
+          <span className="w-2.5 h-2.5 rounded-full bg-[#6c3cff]"></span>
           Hero Section
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           <Input
             label="Hero Lead Text"
             {...register('hero_lead')}
@@ -152,12 +166,12 @@ export default function SettingsForm({ initialSettings }: SettingsFormProps) {
       </div>
 
       {/* Statement Section */}
-      <div className="p-6 bg-slate-900 border border-slate-800 rounded-xl space-y-4">
-        <h2 className="text-lg font-bold text-white border-b border-slate-800 pb-3 flex items-center gap-2">
-          <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
+      <div className="p-6 md:p-8 bg-[#18171f] rounded-3xl space-y-6 shadow-xl">
+        <h2 className="text-lg font-heading font-extrabold text-white pb-3 border-b border-white/[0.06] flex items-center gap-2.5">
+          <span className="w-2.5 h-2.5 rounded-full bg-[#6c3cff]"></span>
           Statement Section
         </h2>
-        <div className="space-y-4">
+        <div className="space-y-5">
           <Input
             label="Statement Lead"
             {...register('statement_lead')}
@@ -166,8 +180,8 @@ export default function SettingsForm({ initialSettings }: SettingsFormProps) {
           />
 
           <div>
-            <div className="flex items-center justify-between mb-2">
-              <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider">
+            <div className="flex items-center justify-between mb-3">
+              <label className="block text-xs font-semibold text-[#aaa7b4] uppercase tracking-wider">
                 Statement Lines ({fields.length})
               </label>
               <Button
@@ -180,30 +194,30 @@ export default function SettingsForm({ initialSettings }: SettingsFormProps) {
               </Button>
             </div>
             {errors.statement_lines && (
-              <p className="text-xs text-red-400 mb-2 font-medium">
+              <p className="text-xs text-rose-400 mb-2 font-medium">
                 {errors.statement_lines.message}
               </p>
             )}
-            <div className="space-y-2">
+            <div className="space-y-3">
               {fields.map((field, index) => (
-                <div key={field.id} className="flex items-center gap-2">
-                  <span className="text-xs font-mono text-slate-500 w-6 text-right">
+                <div key={field.id} className="flex items-center gap-3">
+                  <span className="text-xs font-mono text-[#5d5a67] w-6 text-right select-none">
                     {index + 1}.
                   </span>
                   <input
-                    className="flex-1 px-3.5 py-2 bg-slate-800/90 border border-slate-700 rounded-lg text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500/30 transition-all"
+                    className="flex-1 px-4 py-2.5 bg-white/[0.04] focus:bg-white/[0.07] text-white rounded-xl text-sm outline-none ring-1 ring-white/10 focus:ring-2 focus:ring-[#6c3cff] transition-all min-h-[44px]"
                     {...register(`statement_lines.${index}` as const)}
                   />
-                  <Button
+                  <button
                     type="button"
-                    size="sm"
-                    variant="ghost"
                     onClick={() => remove(index)}
-                    className="text-red-400 hover:text-red-300 hover:bg-red-950/40"
+                    className="min-w-[44px] min-h-[44px] rounded-xl flex items-center justify-center text-[#aaa7b4] hover:text-rose-400 hover:bg-rose-500/10 active:scale-[0.98] transition-all"
                     title="Remove line"
                   >
-                    &times;
-                  </Button>
+                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                    </svg>
+                  </button>
                 </div>
               ))}
             </div>
@@ -212,12 +226,12 @@ export default function SettingsForm({ initialSettings }: SettingsFormProps) {
       </div>
 
       {/* Section Leads */}
-      <div className="p-6 bg-slate-900 border border-slate-800 rounded-xl space-y-4">
-        <h2 className="text-lg font-bold text-white border-b border-slate-800 pb-3 flex items-center gap-2">
-          <span className="w-2 h-2 rounded-full bg-amber-500"></span>
+      <div className="p-6 md:p-8 bg-[#18171f] rounded-3xl space-y-6 shadow-xl">
+        <h2 className="text-lg font-heading font-extrabold text-white pb-3 border-b border-white/[0.06] flex items-center gap-2.5">
+          <span className="w-2.5 h-2.5 rounded-full bg-[#6c3cff]"></span>
           Section Lead Texts
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           <Input
             label="Work Section Lead"
             {...register('work_lead')}

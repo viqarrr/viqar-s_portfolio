@@ -49,10 +49,10 @@ export default function CredentialsManager({ initialCredentials }: CredentialsMa
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h2 className="text-xl font-bold text-white tracking-tight">Credentials & Honours</h2>
-          <p className="text-sm text-slate-400 mt-1">
+          <h2 className="text-2xl font-heading font-extrabold text-white tracking-tight">Credentials & Honours</h2>
+          <p className="text-sm text-[#aaa7b4] font-sans mt-1">
             Manage honors, certifications, and awards presented on the deck.
           </p>
         </div>
@@ -67,22 +67,22 @@ export default function CredentialsManager({ initialCredentials }: CredentialsMa
         onEdit={handleEdit}
         onDelete={handleDelete}
         renderContent={(item) => (
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3.5">
             {item.image_src && (
               <img
                 src={item.image_src}
                 alt={item.image_alt || ''}
-                className="w-10 h-10 rounded-lg object-cover bg-slate-800 border border-slate-700 flex-shrink-0"
+                className="w-12 h-12 rounded-xl object-cover bg-white/[0.04] flex-shrink-0"
               />
             )}
             <div className="min-w-0">
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2 flex-wrap">
                 <h4 className="text-sm font-semibold text-white truncate">{item.name}</h4>
-                <span className="text-xs text-amber-400 bg-amber-950/60 px-2 py-0.5 rounded-full border border-amber-800/60">
+                <span className="text-xs text-amber-400 bg-amber-500/10 px-2.5 py-0.5 rounded-full font-medium">
                   {item.award} ({item.year})
                 </span>
               </div>
-              <p className="text-xs text-slate-400 truncate">{item.issuer}</p>
+              <p className="text-xs text-[#aaa7b4] truncate mt-0.5">{item.issuer}</p>
             </div>
           </div>
         )}

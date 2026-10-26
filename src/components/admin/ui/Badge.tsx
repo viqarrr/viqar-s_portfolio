@@ -10,15 +10,15 @@ export function Badge({ status, className = '' }: BadgeProps) {
 
   return (
     <span
-      className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold capitalize tracking-wide transition-colors ${
+      className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold capitalize tracking-wide transition-all select-none ${
         isPublished
-          ? 'bg-emerald-950/80 text-emerald-300 border border-emerald-800/80'
-          : 'bg-amber-950/80 text-amber-300 border border-amber-800/80'
+          ? 'bg-emerald-500/15 text-emerald-300'
+          : 'bg-amber-500/15 text-amber-300'
       } ${className}`}
     >
       <span
         className={`w-1.5 h-1.5 rounded-full ${
-          isPublished ? 'bg-emerald-400' : 'bg-amber-400'
+          isPublished ? 'bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.6)]' : 'bg-amber-400'
         }`}
       />
       {status}

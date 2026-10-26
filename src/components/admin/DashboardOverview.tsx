@@ -21,7 +21,7 @@ export default function DashboardOverview({ counts, userEmail }: DashboardOvervi
       href: '/admin/projects',
       desc: 'Portfolio showcase cases and featured work',
       icon: (
-        <svg className="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg className="w-6 h-6 text-[#6c3cff]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
         </svg>
       ),
@@ -30,7 +30,7 @@ export default function DashboardOverview({ counts, userEmail }: DashboardOvervi
       title: 'Skills & Tools',
       count: counts.skills,
       href: '/admin/skills',
-      desc: 'Interactive skills wheel and tech radar items',
+      desc: 'Interactive radar nodes and categorized stack',
       icon: (
         <svg className="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
@@ -87,17 +87,23 @@ export default function DashboardOverview({ counts, userEmail }: DashboardOvervi
   return (
     <div className="space-y-8">
       {/* Welcome Banner */}
-      <div className="p-6 bg-gradient-to-r from-blue-950/60 to-slate-900 border border-blue-900/40 rounded-2xl flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-        <div>
-          <h2 className="text-xl font-bold text-white tracking-tight">Welcome back</h2>
-          <p className="text-sm text-slate-400 mt-1">
-            Logged in as <span className="text-blue-400 font-medium">{userEmail}</span> with full administrative privileges.
+      <div className="p-6 md:p-8 bg-[#18171f] rounded-3xl shadow-apple-card flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+        <div className="space-y-1.5">
+          <div className="flex items-center gap-2">
+            <span className="w-2.5 h-2.5 rounded-full bg-[#6c3cff]"></span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-[#aaa7b4]">Control Center</span>
+          </div>
+          <h2 className="font-heading font-extrabold text-2xl md:text-3xl text-white tracking-tight">
+            Welcome back
+          </h2>
+          <p className="text-sm text-[#aaa7b4]">
+            Signed in as <span className="text-white font-medium">{userEmail}</span> with full administrative privileges.
           </p>
         </div>
-        <div className="flex items-center gap-3">
+        <div className="flex flex-wrap items-center gap-3">
           <a
             href="/admin/preview"
-            className="px-4 py-2 text-xs font-semibold bg-blue-600 hover:bg-blue-500 text-white rounded-lg shadow transition-colors flex items-center gap-1.5"
+            className="inline-flex items-center justify-center min-h-[44px] px-5 py-2.5 text-xs font-semibold bg-[#6c3cff] hover:bg-[#5a2de0] text-white rounded-xl shadow-md transition-all active:scale-[0.98]"
           >
             Draft Preview &rarr;
           </a>
@@ -105,7 +111,7 @@ export default function DashboardOverview({ counts, userEmail }: DashboardOvervi
             href="/"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-4 py-2 text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 rounded-lg transition-colors flex items-center gap-1.5"
+            className="inline-flex items-center justify-center min-h-[44px] px-5 py-2.5 text-xs font-semibold bg-white/[0.06] hover:bg-white/[0.1] text-white rounded-xl transition-all active:scale-[0.98]"
           >
             Live Site &nearr;
           </a>
@@ -113,33 +119,35 @@ export default function DashboardOverview({ counts, userEmail }: DashboardOvervi
       </div>
 
       {/* Grid of collections */}
-      <div>
-        <h3 className="text-sm font-semibold uppercase tracking-wider text-slate-400 mb-4">Content Collections</h3>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div className="space-y-4">
+        <h3 className="font-heading font-bold text-sm uppercase tracking-wider text-[#aaa7b4] px-1">
+          Content Collections
+        </h3>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {collections.map((col) => (
             <a
               key={col.title}
               href={col.href}
-              className="p-5 bg-slate-900/90 hover:bg-slate-850 border border-slate-800 hover:border-slate-700 rounded-xl transition-all group flex flex-col justify-between"
+              className="p-6 bg-[#18171f] hover:bg-[#1f1d26] rounded-3xl transition-all duration-150 shadow-apple-card group flex flex-col justify-between active:scale-[0.98] min-h-[160px]"
             >
               <div>
-                <div className="flex items-center justify-between mb-3">
-                  <div className="p-2.5 rounded-lg bg-slate-800 border border-slate-700/60">
+                <div className="flex items-center justify-between mb-4">
+                  <div className="w-12 h-12 rounded-2xl bg-white/[0.04] flex items-center justify-center">
                     {col.icon}
                   </div>
-                  <span className="text-2xl font-bold text-white group-hover:text-blue-400 transition-colors">
+                  <span className="font-heading font-extrabold text-3xl text-white group-hover:text-[#6c3cff] transition-colors">
                     {col.count}
                   </span>
                 </div>
-                <h4 className="text-base font-semibold text-white group-hover:text-blue-300 transition-colors">
+                <h4 className="font-heading font-bold text-lg text-white group-hover:text-[#6c3cff] transition-colors">
                   {col.title}
                 </h4>
-                <p className="text-xs text-slate-400 mt-1 leading-relaxed">
+                <p className="text-xs text-[#aaa7b4] mt-1 leading-relaxed">
                   {col.desc}
                 </p>
               </div>
 
-              <div className="mt-4 pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs font-medium text-slate-400 group-hover:text-blue-400">
+              <div className="mt-5 pt-3 border-t border-white/[0.06] flex items-center justify-between text-xs font-semibold text-[#aaa7b4] group-hover:text-[#6c3cff] transition-colors">
                 <span>Manage entries</span>
                 <span className="transform group-hover:translate-x-1 transition-transform">&rarr;</span>
               </div>

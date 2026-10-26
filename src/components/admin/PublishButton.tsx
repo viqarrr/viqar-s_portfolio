@@ -41,13 +41,13 @@ export default function PublishButton() {
   };
 
   return (
-    <div className="flex items-center gap-2.5">
+    <div className="flex items-center gap-2">
       {statusMsg && (
         <span
-          className={`text-xs px-2.5 py-1 rounded-full font-medium ${
+          className={`text-xs px-3 py-1 rounded-full font-medium ${
             isError
-              ? 'bg-red-950 text-red-300 border border-red-800'
-              : 'bg-emerald-950 text-emerald-300 border border-emerald-800'
+              ? 'bg-red-500/15 text-red-300'
+              : 'bg-emerald-500/15 text-emerald-300'
           }`}
         >
           {statusMsg}
@@ -61,9 +61,9 @@ export default function PublishButton() {
         loading={publishing}
         onClick={handlePublish}
         title={lastPublished ? `Last published at ${lastPublished}` : 'Publish changes to live site'}
-        className="bg-blue-600 hover:bg-blue-500 shadow-sm text-xs font-semibold"
+        className="bg-[#6c3cff] hover:bg-[#5a2de0] shadow-sm text-xs font-semibold rounded-xl min-h-[44px] px-4"
       >
-        <svg className="w-3.5 h-3.5 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg className="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
         </svg>
         Publish Site
