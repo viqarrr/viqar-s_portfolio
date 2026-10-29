@@ -18,7 +18,8 @@ export const GET: APIRoute = async (context) => {
 
   try {
     const url = new URL(context.request.url);
-    const folder = url.searchParams.get('folder') || '';
+    // 1. Ubah default fallback dari '' menjadi 'general'
+    const folder = url.searchParams.get('folder') || 'general';
 
     const { data, error } = await client.storage.from('media').list(folder, {
       limit: 100,
@@ -32,15 +33,18 @@ export const GET: APIRoute = async (context) => {
       });
     }
 
-    const objectsWithUrls = (data || []).map((file) => {
-      const filePath = folder ? `${folder}/${file.name}` : file.name;
-      const { data: urlData } = client.storage.from('media').getPublicUrl(filePath);
-      return {
-        ...file,
-        path: filePath,
-        publicUrl: urlData.publicUrl,
-      };
-    });
+    // 2. Filter file.id !== null agar objek folder tidak ikut masuk ke list asset
+    const objectsWithUrls = (data || [])
+      .filter((file) => file.id !== null && file.name !== '.emptyFolderPlaceholder')
+      .map((file) => {
+        const filePath = folder ? `${folder}/${file.name}` : file.name;
+        const { data: urlData } = client.storage.from('media').getPublicUrl(filePath);
+        return {
+          ...file,
+          path: filePath,
+          publicUrl: urlData.publicUrl,
+        };
+      });
 
     return new Response(JSON.stringify({ success: true, files: objectsWithUrls }), {
       status: 200,
