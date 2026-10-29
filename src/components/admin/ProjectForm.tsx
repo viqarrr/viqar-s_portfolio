@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { ProjectSchema, type Project } from '../../lib/schemas';
-import { Input, Textarea } from './ui/Input';
+import { Input } from './ui/Input';
 import { Button } from './ui/Button';
 import { RichTextEditor } from './ui/RichTextEditor';
 
@@ -60,7 +60,12 @@ export default function ProjectForm({
 
   useEffect(() => {
     if (project) {
-      reset(project);
+      reset({
+        ...defaultValues,
+        ...project,
+        live_url: project.live_url ?? '',
+        github_url: project.github_url ?? '',
+      });
     } else {
       reset(defaultValues);
     }
@@ -77,7 +82,12 @@ export default function ProjectForm({
       const isEdit = Boolean(project?.id);
       const url = '/api/admin/projects';
       const method = isEdit ? 'PUT' : 'POST';
-      const body = isEdit ? { ...data, id: project?.id } : data;
+      const cleanData = {
+        ...data,
+        live_url: data.live_url?.trim() ? data.live_url.trim() : null,
+        github_url: data.github_url?.trim() ? data.github_url.trim() : null,
+      };
+      const body = isEdit ? { ...cleanData, id: project?.id } : cleanData;
 
       const res = await fetch(url, {
         method,
@@ -181,13 +191,15 @@ export default function ProjectForm({
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <Input
-              label="Live Preview URL"
+              label="Live Demo URL"
+              helperText="(Optional - leave empty if confidential / NDA)"
               placeholder="https://example.com"
               {...register('live_url')}
               error={errors.live_url?.message}
             />
             <Input
-              label="GitHub / Source Code URL"
+              label="GitHub Repository URL"
+              helperText="(Optional - leave empty if confidential / NDA)"
               placeholder="https://github.com/username/repo"
               {...register('github_url')}
               error={errors.github_url?.message}

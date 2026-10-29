@@ -82,6 +82,8 @@ export const POST: APIRoute = async (context) => {
       .from('projects')
       .insert({
         ...projectPayload,
+        live_url: projectPayload.live_url?.trim() ? projectPayload.live_url.trim() : null,
+        github_url: projectPayload.github_url?.trim() ? projectPayload.github_url.trim() : null,
         line: description || projectPayload.line,
         updated_at: new Date().toISOString(),
       })
@@ -148,6 +150,8 @@ export const PUT: APIRoute = async (context) => {
       .from('projects')
       .update({
         ...projectPayload,
+        live_url: projectPayload.live_url?.trim() ? projectPayload.live_url.trim() : null,
+        github_url: projectPayload.github_url?.trim() ? projectPayload.github_url.trim() : null,
         line: description || projectPayload.line,
         updated_at: new Date().toISOString(),
       })

@@ -18,9 +18,19 @@ export const SiteSettingsSchema = z.object({
   again_lead: z.string().min(1),
   capabilities_lead: z.string().min(1),
   method_lead: z.string().min(1),
-  contact_lead: z.string().min(1)
+  contact_lead: z.string().min(1),
+  email: z.string().optional().nullable(),
+  github_url: z.string().optional().nullable(),
+  linkedin_url: z.string().optional().nullable(),
+  instagram_url: z.string().optional().nullable(),
+  contact_url: z.string().optional().nullable()
 });
 export type SiteSettings = z.infer<typeof SiteSettingsSchema>;
+
+export const OptionalUrlSchema = z
+  .union([z.string().url(), z.literal('')])
+  .nullable()
+  .optional();
 
 export const ProjectSchema = z.object({
   slug: z.string().min(1),
@@ -28,8 +38,8 @@ export const ProjectSchema = z.object({
   tag: z.string().min(1),
   line: z.string().min(1),
   description: z.string().optional(),
-  live_url: z.string().optional().nullable(),
-  github_url: z.string().optional().nullable(),
+  live_url: OptionalUrlSchema,
+  github_url: OptionalUrlSchema,
   image_srcset: z.string().min(1),
   image_src: z.string().min(1),
   image_sizes: z.string().min(1),

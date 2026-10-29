@@ -77,6 +77,49 @@ describe('Zod Validation Schemas', () => {
         expect(result.data.github_url).toBe('https://github.com/example/repo');
       }
     });
+
+    it('supports confidential and NDA client projects with null or empty URLs', () => {
+      // 1. Explicit null values
+      const confidentialNull = {
+        ...seedData.projects[0],
+        live_url: null,
+        github_url: null
+      };
+      const nullResult = ProjectSchema.safeParse(confidentialNull);
+      expect(nullResult.success).toBe(true);
+      if (nullResult.success) {
+        expect(nullResult.data.live_url).toBeNull();
+        expect(nullResult.data.github_url).toBeNull();
+      }
+
+      // 2. Empty string values (from form inputs)
+      const confidentialEmpty = {
+        ...seedData.projects[0],
+        live_url: '',
+        github_url: ''
+      };
+      const emptyResult = ProjectSchema.safeParse(confidentialEmpty);
+      expect(emptyResult.success).toBe(true);
+      if (emptyResult.success) {
+        expect(emptyResult.data.live_url).toBe('');
+        expect(emptyResult.data.github_url).toBe('');
+      }
+
+      // 3. Omitted / undefined values
+      const confidentialOmitted = { ...seedData.projects[0] };
+      delete (confidentialOmitted as any).live_url;
+      delete (confidentialOmitted as any).github_url;
+      const omittedResult = ProjectSchema.safeParse(confidentialOmitted);
+      expect(omittedResult.success).toBe(true);
+
+      // 4. Invalid URL format fails
+      const invalidUrl = {
+        ...seedData.projects[0],
+        live_url: 'not-a-valid-url'
+      };
+      const invalidResult = ProjectSchema.safeParse(invalidUrl);
+      expect(invalidResult.success).toBe(false);
+    });
   });
 
   describe('SkillSchema & SkillsSchema', () => {
