@@ -17,7 +17,12 @@
     "again_lead": "Technologies, frameworks, and tools applied across web platforms, mobile apps, and game engines.",
     "capabilities_lead": "Selected achievements in digital innovation, software development, and technology competitions.",
     "method_lead": "Hands-on work experience and vocational training across frontend engineering, game development, and production software systems.",
-    "contact_lead": "Interested in working together, discussing a project, or just connecting? Choose the channel that works best for you."
+    "contact_lead": "Interested in working together, discussing a project, or just connecting? Choose the channel that works best for you.",
+    "email": "viqar@example.com",
+    "github_url": "https://github.com/placeholder",
+    "linkedin_url": "https://linkedin.com/in/placeholder",
+    "instagram_url": null,
+    "contact_url": "mailto:viqar@example.com"
   },
   "projects": [
     {

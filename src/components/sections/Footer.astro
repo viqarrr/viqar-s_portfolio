@@ -1,13 +1,24 @@
 ---
-import type { SiteSettings } from '../../lib/content';
+import type { SiteSettings, ContactLink } from '../../lib/content';
+import { resolveContactLinks } from '../../lib/content';
 
 export interface Props {
   settings?: SiteSettings;
+  contactLinks?: ContactLink[];
 }
 
-const { settings } = Astro.props;
+const { settings, contactLinks = [] } = Astro.props;
 const brandName = settings?.brand_name ?? 'Viqar';
 const lenStyle = `--len:${brandName.length}`;
+
+const resolved = resolveContactLinks(contactLinks);
+const githubHref = resolved.githubHref || settings?.github_url || undefined;
+const linkedinHref = resolved.linkedinHref || settings?.linkedin_url || undefined;
+const instagramHref = resolved.instagramHref || settings?.instagram_url || undefined;
+const emailHref = (resolved.emailHref && resolved.emailHref !== '#contact')
+  ? resolved.emailHref
+  : (settings?.email ? `mailto:${settings.email}` : undefined);
+const emailText = resolved.email || settings?.email || 'viqar@example.com';
 ---
 
 <footer id="footer" class="footer" data-8b-section="footer">
@@ -25,9 +36,10 @@ const lenStyle = `--len:${brandName.length}`;
       </nav>
       <div class="footer__right">
         <ul class="footer__social">
-          <li><a class="footer__link" href="https://github.com/placeholder" target="_blank" rel="noopener noreferrer">GitHub</a></li>
-          <li><a class="footer__link" href="https://linkedin.com/in/placeholder" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-          <li><a class="footer__link" href="mailto:viqar@example.com">viqar@example.com</a></li>
+          {githubHref && <li><a class="footer__link" href={githubHref} target="_blank" rel="noopener noreferrer">{resolved.githubLink?.label || 'GitHub'}</a></li>}
+          {linkedinHref && <li><a class="footer__link" href={linkedinHref} target="_blank" rel="noopener noreferrer">{resolved.linkedinLink?.label || 'LinkedIn'}</a></li>}
+          {instagramHref && <li><a class="footer__link" href={instagramHref} target="_blank" rel="noopener noreferrer">{resolved.instagramLink?.label || 'Instagram'}</a></li>}
+          {emailHref && <li><a class="footer__link" href={emailHref}>{emailText}</a></li>}
         </ul>
         <a class="footer__to-top" href="#hero" aria-label="Back to top">
           <span class="footer__to-top-dot" aria-hidden="true"></span>

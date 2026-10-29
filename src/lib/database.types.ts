@@ -56,6 +56,11 @@ export interface Database {
           capabilities_lead: string;
           method_lead: string;
           contact_lead: string;
+          email?: string | null;
+          github_url?: string | null;
+          linkedin_url?: string | null;
+          instagram_url?: string | null;
+          contact_url?: string | null;
           created_at: string;
           updated_at: string;
         };
@@ -76,6 +81,11 @@ export interface Database {
           capabilities_lead: string;
           method_lead: string;
           contact_lead: string;
+          email?: string | null;
+          github_url?: string | null;
+          linkedin_url?: string | null;
+          instagram_url?: string | null;
+          contact_url?: string | null;
           created_at?: string;
           updated_at?: string;
         };
@@ -96,6 +106,11 @@ export interface Database {
           capabilities_lead?: string;
           method_lead?: string;
           contact_lead?: string;
+          email?: string | null;
+          github_url?: string | null;
+          linkedin_url?: string | null;
+          instagram_url?: string | null;
+          contact_url?: string | null;
           created_at?: string;
           updated_at?: string;
         };

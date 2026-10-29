@@ -10,14 +10,34 @@
   if (!detailEl || !mainEl) return;
 
   let projectsData: any[] = [];
-  const scriptTag = document.getElementById('projects-data');
-  if (scriptTag?.textContent) {
-    try {
-      projectsData = JSON.parse(scriptTag.textContent);
-    } catch (e) {
-      console.error('Failed to parse projects data', e);
+  const getProjectsData = (): any[] => {
+    const scriptTag = document.getElementById('projects-data');
+    if (scriptTag?.textContent) {
+      try {
+        const parsed = JSON.parse(scriptTag.textContent);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          projectsData = parsed;
+          return projectsData;
+        }
+      } catch (e) {
+        console.error('Failed to parse projects data', e);
+      }
     }
-  }
+    return projectsData;
+  };
+  getProjectsData();
+
+  const isValidUrl = (url: any): boolean => {
+    if (!url || typeof url !== 'string') return false;
+    const trimmed = url.trim();
+    if (!trimmed || trimmed === '#' || trimmed === 'null' || trimmed === 'undefined') return false;
+    try {
+      const parsed = new URL(trimmed);
+      return Boolean(parsed.protocol === 'http:' || parsed.protocol === 'https:');
+    } catch {
+      return false;
+    }
+  };
 
   let savedScrollY = 0;
   let isAnimating = false;
@@ -68,38 +88,61 @@
     if (descEl) descEl.innerHTML = project.line || '';
 
     // Action buttons (Live Preview & GitHub / Code)
+    const hasLive = isValidUrl(project?.live_url);
+    const hasGithub = isValidUrl(project?.github_url);
+
     const liveBtn = detailEl.querySelector<HTMLAnchorElement>('#pdetail-live, #pdetail-live-btn');
     const githubBtn = detailEl.querySelector<HTMLAnchorElement>('#pdetail-github, #pdetail-github-btn');
-    const actionBar = detailEl.querySelector<HTMLElement>('.pdetail__actions, #pdetail-action-bar');
-
-    const liveUrl = (project.live_url || '').trim();
-    const githubUrl = (project.github_url || '').trim();
+    const actionBar = detailEl.querySelector<HTMLElement>('#pdetail-action-bar, .pdetail__actions');
 
     if (liveBtn) {
-      if (liveUrl) {
-        liveBtn.setAttribute('href', liveUrl);
+      if (hasLive) {
+        liveBtn.setAttribute('href', project.live_url.trim());
         liveBtn.style.display = 'inline-flex';
       } else {
         liveBtn.style.display = 'none';
+        liveBtn.removeAttribute('href');
       }
     }
 
     if (githubBtn) {
-      if (githubUrl) {
-        githubBtn.setAttribute('href', githubUrl);
+      if (hasGithub) {
+        githubBtn.setAttribute('href', project.github_url.trim());
         githubBtn.style.display = 'inline-flex';
       } else {
         githubBtn.style.display = 'none';
+        githubBtn.removeAttribute('href');
       }
     }
 
     if (actionBar) {
-      actionBar.style.display = (liveUrl || githubUrl) ? 'flex' : 'none';
+      actionBar.style.display = (hasLive || hasGithub) ? 'flex' : 'none';
+    }
+
+    const ctaMailEl = detailEl.querySelector<HTMLAnchorElement>('.pdetail__cta-mail, #pdetail-cta-mail');
+    if (ctaMailEl) {
+      let email = project?.contact_email;
+      if (!email) {
+        const settingsTag = document.getElementById('site-settings');
+        if (settingsTag?.textContent) {
+          try {
+            const parsed = JSON.parse(settingsTag.textContent);
+            email = parsed?.email;
+          } catch (e) {}
+        }
+      }
+      if (email) {
+        const cleanEmail = email.replace(/^mailto:/i, '').split('?')[0].trim();
+        const mailHref = email.startsWith('mailto:') ? email : `mailto:${cleanEmail}`;
+        ctaMailEl.setAttribute('href', mailHref);
+        ctaMailEl.textContent = cleanEmail;
+      }
     }
   };
 
   const openProject = (slug: string, pushState = true) => {
-    const project = projectsData.find(p => p.slug === slug);
+    const list = getProjectsData();
+    const project = list.find((p: any) => p.slug === slug);
     if (!project || isAnimating) return;
     isAnimating = true;
 
@@ -330,7 +373,8 @@
     if (projectMatch) {
       const slug = projectMatch[1];
       openProject(slug, false);
-      const project = projectsData.find(p => p.slug === slug);
+      const list = getProjectsData();
+      const project = list.find((p: any) => p.slug === slug);
       if (project) {
         updateMetaTitle(`${project.name} — Viqar`);
       }
@@ -355,7 +399,8 @@
 
   if (initialProjectMatch) {
     const initialSlug = initialProjectMatch[1];
-    const initialProject = projectsData.find(p => p.slug === initialSlug);
+    const list = getProjectsData();
+    const initialProject = list.find((p: any) => p.slug === initialSlug);
     if (initialProject) {
       updateMetaTitle(`${initialProject.name} — Viqar`);
     }

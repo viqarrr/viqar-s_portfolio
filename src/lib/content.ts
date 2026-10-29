@@ -60,7 +60,10 @@ export async function getSettings(): Promise<SiteSettings> {
       .maybeSingle();
 
     if (!error && data) {
-      return SiteSettingsSchema.parse(data);
+      return SiteSettingsSchema.parse({
+        ...seedData.settings,
+        ...data,
+      });
     }
     if (error) {
       console.warn('Failed to fetch site settings from Supabase, falling back to seed:', error.message);
@@ -69,6 +72,8 @@ export async function getSettings(): Promise<SiteSettings> {
 
   return SiteSettingsSchema.parse(seedData.settings);
 }
+
+export const getSiteSettings = getSettings;
 
 export async function getProjects(): Promise<Project[]> {
   const client = getSupabaseClient();
@@ -80,28 +85,38 @@ export async function getProjects(): Promise<Project[]> {
       .order('sort_order', { ascending: true });
 
     if (!error && data) {
-      const merged = data.map((item: any) => {
-        const seedItem = (seedData.projects as any[]).find(p => p.slug === item.slug);
+      const cleaned = data.map((item: any) => {
+        const liveUrl = typeof item.live_url === 'string' && item.live_url.trim() && item.live_url.trim() !== '#'
+          ? item.live_url.trim()
+          : null;
+        const githubUrl = typeof item.github_url === 'string' && item.github_url.trim() && item.github_url.trim() !== '#'
+          ? item.github_url.trim()
+          : null;
+
         return {
           ...item,
-          live_url: item.live_url || seedItem?.live_url || `https://${item.slug}.viqar.dev`,
-          github_url: item.github_url || seedItem?.github_url || `https://github.com/viqarmulya/${item.slug}`
+          live_url: liveUrl,
+          github_url: githubUrl
         };
       });
-      return ProjectsSchema.parse(merged);
+      return ProjectsSchema.parse(cleaned);
     }
     if (error) {
       console.warn('Failed to fetch projects from Supabase, falling back to seed:', error.message);
     }
   }
 
-  const published = (seedData.projects as Array<{ status: string; sort_order: number; slug: string; live_url?: string; github_url?: string }>)
+  const published = (seedData.projects as Array<{ status: string; sort_order: number; slug: string; live_url?: string | null; github_url?: string | null }>)
     .filter((p) => p.status === 'published')
     .sort((a, b) => a.sort_order - b.sort_order)
     .map(p => ({
       ...p,
-      live_url: p.live_url || `https://${p.slug}.viqar.dev`,
-      github_url: p.github_url || `https://github.com/viqarmulya/${p.slug}`
+      live_url: typeof p.live_url === 'string' && p.live_url.trim() && p.live_url.trim() !== '#'
+        ? p.live_url.trim()
+        : null,
+      github_url: typeof p.github_url === 'string' && p.github_url.trim() && p.github_url.trim() !== '#'
+        ? p.github_url.trim()
+        : null
     }));
 
   return ProjectsSchema.parse(published);
@@ -201,4 +216,87 @@ export async function getContactLinks(): Promise<ContactLink[]> {
     .sort((a, b) => a.sort_order - b.sort_order);
 
   return ContactLinksSchema.parse(published);
+}
+
+export interface ResolvedContactLinks {
+  emailLink?: ContactLink;
+  githubLink?: ContactLink;
+  linkedinLink?: ContactLink;
+  instagramLink?: ContactLink;
+  otherLinks: ContactLink[];
+  email: string;
+  emailHref: string;
+  githubHref?: string;
+  linkedinHref?: string;
+  instagramHref?: string;
+}
+
+export function resolveContactLinks(contactLinks: ContactLink[] = []): ResolvedContactLinks {
+  const getHref = (link?: ContactLink): string | undefined => {
+    if (!link) return undefined;
+    const raw = link.href || (link as any).url;
+    if (typeof raw !== 'string') return undefined;
+    const trimmed = raw.trim();
+    return trimmed.length > 0 ? trimmed : undefined;
+  };
+
+  const findLink = (...keys: string[]): ContactLink | undefined => {
+    return contactLinks.find((l) => {
+      const slug = (l.slug || '').toLowerCase();
+      const label = (l.label || (l as any).title || (l as any).name || '').toLowerCase();
+      const href = (l.href || (l as any).url || '').toLowerCase();
+      return keys.some(
+        (key) =>
+          slug === key ||
+          slug.includes(key) ||
+          label === key ||
+          label.includes(key) ||
+          href.includes(key)
+      );
+    });
+  };
+
+  const emailLink = findLink('email', 'mailto:');
+  const githubLink = findLink('github');
+  const linkedinLink = findLink('linkedin');
+  const instagramLink = findLink('instagram');
+
+  let rawEmail = getHref(emailLink) || '';
+  let email = '';
+  let emailHref = '#contact';
+
+  if (rawEmail) {
+    if (rawEmail.startsWith('mailto:')) {
+      email = rawEmail.replace(/^mailto:/i, '').split('?')[0].trim();
+      emailHref = rawEmail;
+    } else if (rawEmail.includes('@') && !rawEmail.startsWith('http')) {
+      email = rawEmail;
+      emailHref = `mailto:${rawEmail}`;
+    } else {
+      emailHref = rawEmail;
+      email = emailLink?.label || 'Contact';
+    }
+  }
+
+  const githubHref = getHref(githubLink);
+  const linkedinHref = getHref(linkedinLink);
+  const instagramHref = getHref(instagramLink);
+
+  const matchedSlugs = new Set(
+    [emailLink?.slug, githubLink?.slug, linkedinLink?.slug, instagramLink?.slug].filter(Boolean)
+  );
+  const otherLinks = contactLinks.filter((l) => !matchedSlugs.has(l.slug));
+
+  return {
+    emailLink,
+    githubLink,
+    linkedinLink,
+    instagramLink,
+    otherLinks,
+    email,
+    emailHref,
+    githubHref,
+    linkedinHref,
+    instagramHref,
+  };
 }
