@@ -81,9 +81,20 @@ export const PUT: APIRoute = async (context) => {
 
     const validData = validationResult.data;
 
+    // Separate site_settings columns from contact/social links
+    // which are managed separately in the contact_links table.
+    const {
+      email,
+      github_url,
+      linkedin_url,
+      instagram_url,
+      contact_url,
+      ...dbSettings
+    } = validData;
+
     const { error: upsertError } = await client.from('site_settings').upsert({
       id: SINGLETON_ID,
-      ...validData,
+      ...dbSettings,
       updated_at: new Date().toISOString(),
     });
 

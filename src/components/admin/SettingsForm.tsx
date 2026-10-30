@@ -34,13 +34,22 @@ export default function SettingsForm({ initialSettings }: SettingsFormProps) {
     setSuccessMsg(null);
     setErrorMsg(null);
 
+    const {
+      email,
+      github_url,
+      linkedin_url,
+      instagram_url,
+      contact_url,
+      ...cleanData
+    } = data;
+
     try {
       const res = await fetch('/api/admin/settings', {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify(cleanData),
       });
 
       const json = await res.json();
@@ -138,49 +147,6 @@ export default function SettingsForm({ initialSettings }: SettingsFormProps) {
               {...register('og_description')}
               error={errors.og_description?.message}
               required
-            />
-          </div>
-        </div>
-      </div>
-
-      {/* Contact & Social Links */}
-      <div className="p-6 md:p-8 bg-[#1f1d26] rounded-[28px] space-y-6 shadow-xl border border-white/[0.04]">
-        <h2 className="text-lg font-heading font-extrabold text-white pb-3 border-b border-white/[0.06] flex items-center gap-2.5">
-          <span className="w-2 h-2 rounded-full bg-[#f6db00]"></span>
-          Contact & Social Links
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-          <Input
-            label="Contact Email"
-            type="email"
-            placeholder="viqar@example.com"
-            {...register('email')}
-            error={errors.email?.message}
-          />
-          <Input
-            label="Contact / Booking URL (Optional)"
-            placeholder="https://cal.com/viqar or mailto:viqar@example.com"
-            {...register('contact_url')}
-            error={errors.contact_url?.message}
-          />
-          <Input
-            label="GitHub Profile URL"
-            placeholder="https://github.com/username"
-            {...register('github_url')}
-            error={errors.github_url?.message}
-          />
-          <Input
-            label="LinkedIn Profile URL"
-            placeholder="https://linkedin.com/in/username"
-            {...register('linkedin_url')}
-            error={errors.linkedin_url?.message}
-          />
-          <div className="md:col-span-2">
-            <Input
-              label="Instagram Profile URL (Optional)"
-              placeholder="https://instagram.com/username"
-              {...register('instagram_url')}
-              error={errors.instagram_url?.message}
             />
           </div>
         </div>
